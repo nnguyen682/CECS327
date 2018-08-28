@@ -1,0 +1,22 @@
+﻿<Window x:Class="WpfApp1.LoginScreen"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApp1"
+        mc:Ignorable="d"
+        Title="LoginScreen" Height="450" Width="800">
+    <Grid Background="Black">
+        <StackPanel>
+        <Label Foreground="White" FontSize="25" HorizontalAlignment="Center"> Trytify</Label>
+        <Label Foreground="White" FontSize="25">Username</Label>
+            <TextBox HorizontalAlignment="Right" Margin="0,0,-0.4,0" Width="794"> </TextBox>
+        <Label Foreground="White" FontSize="25">Password</Label>
+        <TextBox></TextBox>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <Button  FontSize="50" Width="376" Background="Green" Foreground="White" Content="Sign In"/>
+            </StackPanel>
+        </StackPanel>
+        
+    </Grid>
+</Window>
