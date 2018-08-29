@@ -14,7 +14,7 @@
             <Label Foreground="White" FontSize="25" Margin="46,0,41.6,0">Password:</Label>
             <TextBox Margin="46,0,41.6,0" Height="34" TextChanged="TextBox_TextChanged" FontSize="25" Text="hello"></TextBox>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                <Button  Margin ="20" FontSize="50" Width="376" Background="Green" Foreground="White" Content="Sign In"/>
+                <Button Margin ="20" FontSize="50" Width="376" Background="Green" Foreground="White" Content="Sign In"/>
             </StackPanel>
         </StackPanel>
 
