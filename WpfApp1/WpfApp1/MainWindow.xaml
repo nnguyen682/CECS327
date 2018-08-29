@@ -6,7 +6,10 @@
         xmlns:local="clr-namespace:WpfApp1"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        
+    <Grid Background="Black">
+        <StackPanel>
+            <Label Foreground="White" HorizontalAlignment="Center" FontSize="40" Margin="40">Welcome to Trytify</Label>
+            <Button Click="Button_Click" Background="Green" Foreground="white" FontSize="40" HorizontalAlignment="Center" Margin="284,0,267.6,0" Width="242">Get Started</Button>
+        </StackPanel>
     </Grid>
 </Window>

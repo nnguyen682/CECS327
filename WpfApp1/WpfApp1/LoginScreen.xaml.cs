@@ -28,5 +28,42 @@ namespace WpfApp1
         {
 
         }
+
+        private void TextBox_TextChanged_1(object sender, TextChangedEventArgs e)
+        {
+
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            var msg = "Incorrect Username or Password!";
+            if (user.Text == "cigarAsh" && pass.Password == "nhannguyen1") {
+                Profile b = new Profile();
+                this.Close();
+                b.Show();
+            }
+            else
+            {
+                MessageBox.Show(msg);
+            }
+        }
+
+        private void pass_KeyDown(object sender, KeyEventArgs e)
+        {
+            if(e.Key ==Key.Enter)
+            {
+                var msg = "Incorrect Username or Password!";
+                if (user.Text == "cigarAsh" && pass.Password == "nhannguyen1")
+                {
+                    Profile b = new Profile();
+                    this.Close();
+                    b.Show();
+                }
+                else
+                {
+                    MessageBox.Show(msg);
+                }
+            }
+        }
     }
 }
