@@ -15,25 +15,31 @@ using System.Windows.Shapes;
 namespace WpfApp1
 {
     /// <summary>
-    /// Interaction logic for Profile.xaml
+    /// Interaction logic for Create.xaml
     /// </summary>
-    public partial class Profile : Window
+    public partial class Create : Window
     {
-        public Profile()
+        public Create()
         {
             InitializeComponent();
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
+            Profile b = new Profile();
+            this.Close();
+            b.Show();
 
         }
 
-        private void Button_Click_1(object sender, RoutedEventArgs e)
+        private void TextBlock_Click(object sender, RoutedEventArgs e)
         {
-            Create b = new Create();
-            this.Close();
-            b.Show();
+
+        }
+
+        private void ListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
         }
     }
 }
