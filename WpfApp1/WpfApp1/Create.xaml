@@ -21,13 +21,16 @@
             <Button Click="Button_Click"  HorizontalAlignment="Right" Margin="0,15,19.8,20" FontSize="25" Foreground="White" Background="green" Width="63">back</Button>
 
         </StackPanel>
-        <Button Margin="338,66,9.8,114.6" Background="Green" Foreground="White">Add</Button>
+
         <StackPanel Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2" Margin="0,0,-0.4,210" Grid.RowSpan="2">
             <Label FontSize="25" Foreground="White" HorizontalAlignment="Center">Creating New Playlist</Label>
-            <TextBlock Foreground="White" Background="White" Margin="20,20,463.6,20" FontSize="25" Width="298"/>
-
+            <StackPanel Orientation="Horizontal" >
+                <TextBox x:Name="newList"  Foreground="black" Background="White" Margin="20,20,20,20" FontSize="25" Width="298" ></TextBox >
+                <Button Click="AddButton" Margin="0,20,10,20" Width="42" FontSize="20" Foreground="White" Background="Green" Content="Add"/>
+                <Button Click="DeleteButton" Margin="0,20,20,20" Width="66" FontSize="20" Foreground="White" Background="Green" Content="Delete"/>
+            </StackPanel>
         </StackPanel>
-        <ListBox HorizontalAlignment="Left" Height="300" VerticalAlignment="Top" Width="226" Margin="27,110,0,0" Grid.RowSpan="2"/>
+        <ListBox x:Name="list" HorizontalAlignment="Left" Height="300" VerticalAlignment="Top" Width="226" Margin="27,110,0,0" Grid.RowSpan="2" SelectionChanged="ListBox_SelectionChanged"/>
 
     </Grid>
 </Window>

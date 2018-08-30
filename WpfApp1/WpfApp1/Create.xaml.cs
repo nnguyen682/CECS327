@@ -36,7 +36,16 @@ namespace WpfApp1
         {
 
         }
-
+        private void AddButton(object sender, RoutedEventArgs e)
+        {
+            ListBoxItem itm = new ListBoxItem();
+            itm.Content = newList.Text;
+            list.Items.Add(itm);
+        }
+        private void DeleteButton(object sender, RoutedEventArgs e)
+        {
+           
+        }
         private void ListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
 

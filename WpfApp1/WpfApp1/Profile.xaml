@@ -25,8 +25,8 @@
             <Label  FontSize="25" Foreground="White" >03/07/94</Label>
         </StackPanel>
         <StackPanel Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" Margin="0,0,400,0" >
-            <Button Click="Button_Click_1" Margin="20" Foreground="White" Background="Green">Create</Button>
-            <Button Margin="20" Foreground="White" Background="Green">Delete</Button>
+            <Button Click="Button_Click_1" Margin="20" Foreground="White" Background="Green">Create And Delete Playlist</Button>
+            <Button Margin="20" Foreground="White" Background="Green">Random</Button>
         </StackPanel>
         <StackPanel Grid.Column="1" Grid.Row="1" Margin="103,0,-0.4,0" >
             <Button Margin="20" Foreground="White" Background="Green">Searches</Button>
