@@ -44,7 +44,11 @@ namespace WpfApp1
         }
         private void DeleteButton(object sender, RoutedEventArgs e)
         {
-           
+            var msg = "No Playlist was selected to delete";
+            if (list.SelectedItem!= null)
+                list.Items.Remove(list.SelectedItem);
+            else
+                MessageBox.Show(msg);
         }
         private void ListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
