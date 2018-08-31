@@ -6,8 +6,8 @@
         xmlns:local="clr-namespace:WpfApp1"
         mc:Ignorable="d"
         Title="Create" Height="450" Width="800">
-
-    <Grid Background="Black" RenderTransformOrigin="0.501,0.493">
+    
+        <Grid Background="Black" RenderTransformOrigin="0.501,0.493">
 
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1*" />
@@ -30,7 +30,8 @@
                 <Button Click="DeleteButton" Margin="0,20,20,20" Width="66" FontSize="20" Foreground="White" Background="Green" Content="Delete"/>
             </StackPanel>
         </StackPanel>
-        <ListBox x:Name="list" HorizontalAlignment="Left" Height="300" VerticalAlignment="Top" Width="226" Margin="27,110,0,0" Grid.RowSpan="2" SelectionChanged="ListBox_SelectionChanged"/>
+        <ListBox x:Name="list" HorizontalAlignment="Left" Height="300" VerticalAlignment="Top" Width="226" Margin="27,110,0,0" Grid.RowSpan="2" SelectionChanged="ListBox_SelectionChanged" MouseDoubleClick="list_MouseDoubleClick"/>
+        <Button Click="Go" Content="Go" HorizontalAlignment="Left" Margin="301,31.4,0,0" Grid.Row="1" VerticalAlignment="Top" Width="75" Background="Green" Foreground="White" FontSize="25"/>
 
     </Grid>
 </Window>

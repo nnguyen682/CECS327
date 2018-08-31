@@ -55,7 +55,7 @@ namespace WpfApp1
                 var msg = "Incorrect Username or Password!";
                 if (user.Text == "cigarAsh" && pass.Password == "nhannguyen1")
                 {
-                    Profile b = new Profile();
+                    AfterLogin b = new AfterLogin();
                     this.Close();
                     b.Show();
                 }

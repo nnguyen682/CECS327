@@ -50,7 +50,18 @@ namespace WpfApp1
             else
                 MessageBox.Show(msg);
         }
+        private void Go(object sender, RoutedEventArgs e)
+        {
+            Adding b = new Adding();
+            this.Close();
+            b.Show();
+        }
         private void ListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
+
+        private void list_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
 
         }
