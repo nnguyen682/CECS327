@@ -14,6 +14,7 @@ using System.Windows.Shapes;
 using System.IO;
 using WMPLib;
 using AxWMPLib;
+
 namespace WpfApp1
 {
     /// <summary>
@@ -23,11 +24,23 @@ namespace WpfApp1
     {
 
         List<string> mediaFileList;
-        string mediaFolder = string.Empty;
+        string mediaFolder = Directory.GetCurrentDirectory();
         public AfterLogin()
         {
             InitializeComponent();
-            
+            mediaFileList = new List<string>();
+            DirectoryInfo dir = new DirectoryInfo(mediaFolder);
+            foreach (FileInfo file in dir.GetFiles("*.*", SearchOption.AllDirectories))
+            {
+                if (file.Extension == ".mp3" || file.Extension == ".mp4")
+                    mediaFileList.Add(file.Name);
+
+            }
+            if (mediaFileList != null)
+            {
+                list.ItemsSource = null;
+                list.ItemsSource = mediaFileList;
+            }
         }
         
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -40,7 +53,7 @@ namespace WpfApp1
                 winsFormHost.Child as AxWMPLib.AxWindowsMediaPlayer;
             ax.URL = mediaFolder+ "\\" + list.SelectedItem.ToString();
         }
-
+  /*
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
             
@@ -64,6 +77,13 @@ namespace WpfApp1
                 }
 
             }
+        }
+        */
+        private void Button_Click_2(object sender, RoutedEventArgs e)
+        {
+            Profile b = new Profile();
+            this.Close();
+            b.Show();
         }
     }
 }

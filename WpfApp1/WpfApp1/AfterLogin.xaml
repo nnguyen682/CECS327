@@ -10,10 +10,15 @@
         Title="AfterLogin" Height="450" Width="800">
     <Grid Background="white">
         <DockPanel >
-            <Button Content="Dock=Bottom" DockPanel.Dock="Bottom" Margin="78,0,-0.4,0"/>
+            <Button Content="Dock=Bottom" DockPanel.Dock="Bottom" Margin="77,0,0,0"/>
             <StackPanel>
-                <Button Content="Browse" Margin="0,0,0,-19.2" Width="78" Click="Button_Click_1"></Button>
-                <ListBox x:Name="list" Margin="0,19,0,0" Height="382" SelectionChanged="ListBox_SelectionChanged">
+                <Button Click="Button_Click_2">
+                    <StackPanel>
+                        <Image x:Name="profile"  Source="1.jpg" Width="73" Height="77" />
+                    </StackPanel>
+                </Button>
+                <!-- <Button Content="Browse" Margin="0,0,0,-19.2" Width="78" Click="Button_Click_1"></Button> -->
+                <ListBox x:Name="list"  Height="382" SelectionChanged="ListBox_SelectionChanged">
                 </ListBox>
             </StackPanel>
             
