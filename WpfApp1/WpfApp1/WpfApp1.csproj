@@ -65,6 +65,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Playlist.cs" />
+    <Compile Include="Song.cs" />
+    <Compile Include="User.cs" />
     <Page Include="Adding.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
