@@ -5,18 +5,85 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApp1"
         mc:Ignorable="d"
-        Title="LoginScreen" Height="450" Width="800">
-    <Grid Background="Black">
-        <StackPanel>
-            <Label Foreground="White" FontSize="25" HorizontalAlignment="Center">Trytify</Label>
-            <Label Foreground="White" FontSize="25" Margin="46,0,41.6,0">Username:</Label>
-            <TextBox x:Name="user" HorizontalAlignment="Center" Margin="46,0,41.6,0" Width="706" Height="30" FontSize="25" TextChanged="TextBox_TextChanged_1"/>
-            <Label Foreground="White" FontSize="25" Margin="46,0,41.6,0">Password:</Label>
-            <PasswordBox KeyDown="pass_KeyDown" x:Name="pass" Margin="46,0,41.6,0" Height="34"  FontSize="25" />
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                <Button Click="Button_Click" Margin ="20" FontSize="50" Width="376" Background="Green" Foreground="White" Content="Sign In"/>
-            </StackPanel>
-        </StackPanel>
+        Title="LoginScreen" Height="700" Width="600">
+    <Window.Resources>
+        <Style x:Key="{x:Type PasswordBox}"
+           TargetType="{x:Type PasswordBox}">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="PasswordBox">
+                        <Border CornerRadius="24" x:Name="pBoxBorder" Background="LightGray">
+                            <ScrollViewer x:Name="PART_ContentHost"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <MultiTrigger>
+                                <MultiTrigger.Conditions>
+                                    <Condition Property="IsFocused" Value="False"/>
+                                    <Condition Property="Tag" Value="False"/>
+                                </MultiTrigger.Conditions>
+                                <Setter TargetName="pBoxBorder" Property="Background" Value="Transparent"/>
+                            </MultiTrigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
 
+    <Grid Background="Black">
+        <StackPanel Margin="0,120,0,0">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <Image Source="Images/music-logo-design.png" MaxHeight="60"/>
+                <Label Content="Spooftify" Foreground="LightGray" FontSize="48" HorizontalAlignment="Center" FontWeight="DemiBold"/>
+                <Label Content="®" Foreground="LightGray" FontSize="24" HorizontalAlignment="Center" VerticalContentAlignment="Center" FontWeight="DemiBold"/>
+            </StackPanel>
+            <Grid Margin="0,40,0,10">
+                <Label Content="Username" VerticalContentAlignment="Center" HorizontalAlignment="Center" Width="450" Height="50" FontSize="24" Foreground="Gray" Background ="LightGray" Padding="16,0,0,0">
+                    <Label.Resources>
+                        <Style TargetType="{x:Type Border}">
+                            <Setter Property="CornerRadius" Value="24"/>
+                        </Style>
+                    </Label.Resources>
+                </Label>
+                <TextBox x:Name="user" VerticalContentAlignment="Center" HorizontalAlignment="Center" Width="450" Height="50" FontSize="24" TextChanged="OnUserChanged" Padding="16,0,0,0" Tag="False">
+                    <TextBox.Resources>
+                        <Style TargetType="{x:Type Border}">
+                            <Setter Property="CornerRadius" Value="24"/>
+                        </Style>
+                    </TextBox.Resources>
+                    <TextBox.Style>
+                        <Style TargetType="TextBox" xmlns:sys="clr-namespace:System;assembly=mscorlib">
+                            <Style.Triggers>
+                                <MultiTrigger>
+                                    <MultiTrigger.Conditions>
+                                        <Condition Property="IsFocused" Value="False"/>
+                                        <Condition Property="Tag" Value="False"/>
+                                    </MultiTrigger.Conditions>
+                                    <Setter Property="Background" Value="Transparent"/>
+                                </MultiTrigger>
+                            </Style.Triggers>
+                            <Setter Property="Background" Value="LightGray"/>
+                        </Style>
+                    </TextBox.Style>
+                </TextBox>
+            </Grid>
+            <Grid Margin="0,20,0,20">
+                <Label Content="Password" VerticalContentAlignment="Center" HorizontalAlignment="Center" Width="450" Height="50" FontSize="24" Foreground="Gray" Background ="LightGray" Padding="16,0,0,0">
+                    <Label.Resources>
+                        <Style TargetType="{x:Type Border}">
+                            <Setter Property="CornerRadius" Value="24"/>
+                        </Style>
+                    </Label.Resources>
+                </Label>
+                <PasswordBox x:Name="pass" KeyDown="Login_KeyDown" PasswordChanged="OnPasswordChanged" VerticalContentAlignment="Center" Width="450" Height="50" FontSize="24" Padding="16,0,0,0" Tag="False"/>
+            </Grid>
+            <Button Click="Login_Click" Margin="10" FontSize="24" Width="450" Height="50" Background="Green" Foreground="LightGray" Content="SIGN IN">
+                <Button.Resources>
+                    <Style TargetType="{x:Type Border}">
+                        <Setter Property="CornerRadius" Value="24"/>
+                    </Style>
+                </Button.Resources>
+            </Button>
+        </StackPanel>
     </Grid>
 </Window>

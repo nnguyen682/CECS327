@@ -146,6 +146,9 @@
   <ItemGroup>
     <Content Include="bang.mp4" />
     <Content Include="bangbangbang.mp3" />
+    <Resource Include="Images\music-logo-design.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
   </ItemGroup>
   <ItemGroup>
     <COMReference Include="AxWMPLib">
@@ -171,6 +174,9 @@
       <Project>{fcc73fb5-dac8-44b9-b727-76f1c6da56dd}</Project>
       <Name>windows form</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="MusicLibrary\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

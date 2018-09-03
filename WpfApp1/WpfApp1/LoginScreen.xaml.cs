@@ -24,21 +24,12 @@ namespace WpfApp1
             InitializeComponent();
         }
 
-        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
-        {
-
-        }
-
-        private void TextBox_TextChanged_1(object sender, TextChangedEventArgs e)
-        {
-
-        }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void Login_Click(object sender, RoutedEventArgs e)
         {
             var msg = "Incorrect Username or Password!";
-            if (user.Text == "cigarAsh" && pass.Password == "nhannguyen1") {
-                Profile b = new Profile();
+            if (user.Text == "omponce" && pass.Password == "cecs327")
+            {
+                AfterLogin b = new AfterLogin();
                 this.Close();
                 b.Show();
             }
@@ -48,12 +39,12 @@ namespace WpfApp1
             }
         }
 
-        private void pass_KeyDown(object sender, KeyEventArgs e)
+        private void Login_KeyDown(object sender, KeyEventArgs e)
         {
-            if(e.Key ==Key.Enter)
+            if (e.Key == Key.Enter)
             {
                 var msg = "Incorrect Username or Password!";
-                if (user.Text == "cigarAsh" && pass.Password == "nhannguyen1")
+                if (user.Text == "omponce" && pass.Password == "cecs327")
                 {
                     AfterLogin b = new AfterLogin();
                     this.Close();
@@ -63,6 +54,24 @@ namespace WpfApp1
                 {
                     MessageBox.Show(msg);
                 }
+            }
+        }
+
+        private void OnUserChanged(object sender, RoutedEventArgs e)
+        {
+            TextBox textBox = sender as TextBox;
+            if (textBox.Tag != null)
+            {
+                textBox.Tag = (!String.IsNullOrWhiteSpace(textBox.Text)).ToString();
+            }
+        }
+
+        private void OnPasswordChanged(object sender, RoutedEventArgs e)
+        {
+            PasswordBox passBox = sender as PasswordBox;
+            if (passBox.Tag != null)
+            {
+                passBox.Tag = (!String.IsNullOrWhiteSpace(passBox.Password)).ToString();
             }
         }
     }
