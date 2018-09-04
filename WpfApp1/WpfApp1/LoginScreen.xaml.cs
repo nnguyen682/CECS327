@@ -19,6 +19,7 @@ namespace WpfApp1
     /// </summary>
     public partial class LoginScreen : Window
     {
+        static IList<User> allUsers;
         public LoginScreen()
         {
             InitializeComponent();
@@ -30,7 +31,7 @@ namespace WpfApp1
             var msg = "Incorrect Username or Password!";
             if (user.Text == "omponce" && pass.Password == "cecs327")
             {
-                AfterLogin b = new AfterLogin();
+                AfterLogin b = new AfterLogin("omponce", "cecs327");
                 this.Close();
                 b.Show();
             }

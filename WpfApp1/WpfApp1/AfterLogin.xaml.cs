@@ -42,6 +42,11 @@ namespace WpfApp1
             }
         }
         
+        public AfterLogin(string name, string pass)
+        {
+
+        }
+
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             
