@@ -24,6 +24,7 @@ namespace WpfApp1
     {
 
         public static List<string> mediaFileList = new List<string>();
+        
         string mediaFolder = Directory.GetCurrentDirectory();
         public AfterLogin()
         {
@@ -51,6 +52,7 @@ namespace WpfApp1
             AxWMPLib.AxWindowsMediaPlayer ax=
                 winsFormHost.Child as AxWMPLib.AxWindowsMediaPlayer;
             ax.URL = mediaFolder+ "\\" + list.SelectedItem.ToString();
+            
         }
   /*
         private void Button_Click_1(object sender, RoutedEventArgs e)

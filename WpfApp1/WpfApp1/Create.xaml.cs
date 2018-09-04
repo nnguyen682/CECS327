@@ -20,6 +20,7 @@ namespace WpfApp1
     public partial class Create : Window
     {
         public static List<string> allItems = new List<string>();
+        public static string selectedList = "";
         public Create()
         {
             InitializeComponent();
@@ -49,6 +50,7 @@ namespace WpfApp1
         }
         private void DeleteButton(object sender, RoutedEventArgs e)
         {
+           
             var msg = "No Playlist was selected to delete";
             if (list.SelectedItem!= null)
                 list.Items.Remove(list.SelectedItem);
@@ -58,12 +60,13 @@ namespace WpfApp1
         private void Go(object sender, RoutedEventArgs e)
         {
             Adding b = new Adding();
+            
             this.Close();
             b.Show();
         }
         private void ListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-
+            selectedList = ((ListBoxItem)list.SelectedValue).Content.ToString();
         }
 
         private void list_MouseDoubleClick(object sender, MouseButtonEventArgs e)

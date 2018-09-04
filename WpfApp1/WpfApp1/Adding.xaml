@@ -10,11 +10,12 @@
 
     <Grid Background="Black"  >
         <Button Click="Button_Click"  HorizontalAlignment="Right" Margin="0,15,19.8,368" FontSize="25" Foreground="White" Background="green" Width="63" Content="back"/>
-        <Label FontSize="25" Foreground="White" HorizontalAlignment="Center" Content="Playlist:" Margin="351,9,337.6,367.8" Width="105"/>
+        <Label Name="listTitle"  FontSize="25" Foreground="White" HorizontalAlignment="Center"  Margin="351,9,337.6,367.8" Width="105"/>
         <ListBox Name="aList"  HorizontalAlignment="Left" Height="294" Margin="90,116,0,0" VerticalAlignment="Top" Width="224" SelectionChanged="ListBox_SelectionChanged"/>
         <ListBox HorizontalAlignment="Left" Height="294" Margin="480,116,0,0" VerticalAlignment="Top" Width="224"/>
         <Label FontSize="25" Foreground="White" HorizontalAlignment="Center" Content="Available Songs" Margin="111,51,500.6,326" Width="182"/>
         <Label FontSize="25" Foreground="White" HorizontalAlignment="Center" Content="Added Songs" Margin="509,51,102.6,326" Width="182"/>
+        <Button Click="Button_Click_1"  HorizontalAlignment="Right" Margin="0,225,366.6,158.8" FontSize="25" Foreground="White" Background="green" Width="63" Content="Add" RenderTransformOrigin="-5.554,3.499"/>
 
     </Grid>
 </Window>

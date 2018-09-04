@@ -22,7 +22,9 @@ namespace WpfApp1
         public Adding()
         {
             InitializeComponent();
-            aList.ItemsSource = AfterLogin.mediaFileList; 
+            aList.ItemsSource = AfterLogin.mediaFileList;
+            listTitle.Content =   Create.selectedList.ToString();
+            
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -33,6 +35,11 @@ namespace WpfApp1
         }
 
         private void ListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
         {
 
         }
