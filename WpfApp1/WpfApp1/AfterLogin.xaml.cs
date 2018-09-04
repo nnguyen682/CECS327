@@ -34,7 +34,6 @@ namespace WpfApp1
             {
                 if (file.Extension == ".mp3" || file.Extension == ".mp4")
                     mediaFileList.Add(file.Name);
-
             }
             if (mediaFileList != null)
             {
