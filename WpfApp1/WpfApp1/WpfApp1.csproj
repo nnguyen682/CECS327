@@ -147,8 +147,6 @@
     <Resource Include="1.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="bang.mp4" />
-    <Content Include="bangbangbang.mp3" />
     <Resource Include="Images\music-logo-design.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>

@@ -10,9 +10,8 @@
         Title="AfterLogin" Height="450" Width="800">
     <Grid Background="white">
         <DockPanel >
-            <Button Content="Dock=Bottom" DockPanel.Dock="Bottom" Margin="77,0,0,0"/>
             <StackPanel>
-                <Button Click="Button_Click_2">
+                <Button Click="Button_Click_2" >
                     <StackPanel>
                         <Image x:Name="profile"  Source="1.jpg" Width="73" Height="77" />
                     </StackPanel>

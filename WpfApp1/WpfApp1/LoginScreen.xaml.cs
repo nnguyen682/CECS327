@@ -50,6 +50,12 @@ namespace WpfApp1
                     this.Close();
                     b.Show();
                 }
+                else if (user.Text == "nnguyen682" && pass.Password == "nhannguyen1")
+                {
+                    AfterLogin b = new AfterLogin();
+                    this.Close();
+                    b.Show();
+                }
                 else
                 {
                     MessageBox.Show(msg);
