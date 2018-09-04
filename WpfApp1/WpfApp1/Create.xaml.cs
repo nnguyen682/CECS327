@@ -19,9 +19,13 @@ namespace WpfApp1
     /// </summary>
     public partial class Create : Window
     {
+        public static List<string> allItems = new List<string>();
         public Create()
         {
             InitializeComponent();
+            if (allItems.Count() != 0)
+                foreach (var b in allItems)
+                    list.Items.Add(b);
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -40,6 +44,7 @@ namespace WpfApp1
         {
             ListBoxItem itm = new ListBoxItem();
             itm.Content = newList.Text;
+            allItems.Add(newList.Text);
             list.Items.Add(itm);
         }
         private void DeleteButton(object sender, RoutedEventArgs e)

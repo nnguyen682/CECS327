@@ -22,6 +22,7 @@ namespace WpfApp1
         public Adding()
         {
             InitializeComponent();
+            aList.ItemsSource = AfterLogin.mediaFileList; 
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)

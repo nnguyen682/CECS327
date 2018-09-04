@@ -22,8 +22,9 @@ namespace WpfApp1
         public LoginScreen()
         {
             InitializeComponent();
+            
+            
         }
-
         private void Login_Click(object sender, RoutedEventArgs e)
         {
             var msg = "Incorrect Username or Password!";

@@ -23,12 +23,11 @@ namespace WpfApp1
     public partial class AfterLogin : Window
     {
 
-        List<string> mediaFileList;
+        public static List<string> mediaFileList = new List<string>();
         string mediaFolder = Directory.GetCurrentDirectory();
         public AfterLogin()
         {
             InitializeComponent();
-            mediaFileList = new List<string>();
             DirectoryInfo dir = new DirectoryInfo(mediaFolder);
             foreach (FileInfo file in dir.GetFiles("*.*", SearchOption.AllDirectories))
             {
