@@ -106,9 +106,9 @@ namespace WpfApp1
         }
         private void OpenAddingPlayList(object sender, RoutedEventArgs e)
         {
-            afterLoginWindow = App.Current.Windows[0];
+            afterLoginWindow = this;
             Create b = new Create();
-            afterLoginWindow.Hide();
+            this.Hide();
             b.Show();
         }
     }
