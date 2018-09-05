@@ -14,6 +14,7 @@ using System.Windows.Shapes;
 using System.IO;
 using WMPLib;
 using AxWMPLib;
+using System.Windows.Forms;
 
 namespace WpfApp1
 {
@@ -25,7 +26,7 @@ namespace WpfApp1
 
         public static List<string> mediaFileList = new List<string>();
         public static string LameName;
-        string mediaFolder = Directory.GetCurrentDirectory();
+        string mediaFolder = System.IO.Path.Combine(System.Windows.Forms.Application.StartupPath, "MusicLibrary");
         public AfterLogin()
         {
             InitializeComponent();
@@ -48,7 +49,9 @@ namespace WpfApp1
             username.Content = name;
             LameName = name;
             profile.Source = new BitmapImage(new Uri("pack://application:,,,/Images/"+ name+".png"));
+            
             DirectoryInfo dir = new DirectoryInfo(mediaFolder);
+            
             foreach (FileInfo file in dir.GetFiles("*.*", SearchOption.AllDirectories))
             {
                 if (file.Extension == ".mp3" || file.Extension == ".mp4")
