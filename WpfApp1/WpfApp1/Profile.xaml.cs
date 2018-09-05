@@ -41,7 +41,7 @@ namespace WpfApp1
             b.Show();
         }
 
-        private void Button_Click_2(object sender, RoutedEventArgs e)
+        private void Button_Back(object sender, RoutedEventArgs e)
         {
             this.Close();
             AfterLogin.afterLoginWindow.Show();

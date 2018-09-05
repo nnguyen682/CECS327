@@ -27,11 +27,11 @@ namespace WpfApp1
             
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void Button_Back(object sender, RoutedEventArgs e)
         {
-            Create b = new Create();
+            
             this.Close();
-            b.Show();
+            Create.createWIndow.Show();
         }
 
         private void ListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)

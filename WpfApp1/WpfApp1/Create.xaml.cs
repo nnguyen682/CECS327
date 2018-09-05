@@ -20,6 +20,7 @@ namespace WpfApp1
     public partial class Create : Window
     {
         public static List<string> allItems = new List<string>();
+        public static Window createWIndow;
         public static string selectedList = "";
         public Create()
         {
@@ -29,11 +30,12 @@ namespace WpfApp1
                     list.Items.Add(b);
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void Button_Back(object sender, RoutedEventArgs e)
         {
-            Profile b = new Profile();
             this.Close();
-            b.Show();
+            AfterLogin.afterLoginWindow.Show();
+       
+           
 
         }
 
@@ -60,8 +62,8 @@ namespace WpfApp1
         private void Go(object sender, RoutedEventArgs e)
         {
             Adding b = new Adding();
-            
-            this.Close();
+            createWIndow = this;
+            this.Hide();
             b.Show();
         }
         private void ListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -71,7 +73,11 @@ namespace WpfApp1
 
         private void list_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-
+            selectedList = ((ListBoxItem)list.SelectedValue).Content.ToString();
+            Adding b = new Adding();
+            createWIndow = this;
+            this.Hide();
+            b.Show();
         }
     }
 }

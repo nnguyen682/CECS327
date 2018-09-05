@@ -19,7 +19,7 @@
         </Grid.RowDefinitions>
         <Image Name="profile"  HorizontalAlignment="Left" Grid.Column="0" Grid.Row="0"> </Image>
         <StackPanel Grid.Column="1" Grid.ColumnSpan="2" Margin="392,0,0,0">
-            <Button Click="Button_Click_2" FontSize="25" Margin="20" Background="Green" Foreground="White">Back</Button>
+            <Button Click="Button_Back" FontSize="25" Margin="20" Background="Green" Foreground="White">Back</Button>
         </StackPanel>
         <StackPanel Grid.Column="1" Grid.Row="0" >
             <Label   FontSize="25" Foreground="White" >Username:</Label>
@@ -29,15 +29,9 @@
             <Label   FontSize="25" Foreground="White" >Birthday:</Label>
             <Label x:Name="Birthday" FontSize="25" Foreground="White" >03/07/94</Label>
         </StackPanel>
-        <StackPanel Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" Margin="0,0,319,0" >
-            <Button Click="Button_Click_1" Margin="20" Foreground="White" Background="Green">Create And Delete Playlist</Button>
-            <Button Margin="20" Foreground="White" Background="Green">Random</Button>
-        </StackPanel>
-        <StackPanel Grid.Column="1" Grid.Row="1" Margin="103,0,10,0" Grid.ColumnSpan="2" >
-            <Button Margin="20" Foreground="White" Background="Green">Searches</Button>
-            <Button Margin="20" Foreground="White" Background="Green">Play a Song</Button>
-        </StackPanel>
-        
+        <StackPanel Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" Margin="0,0,319,0" />
+        <StackPanel Grid.Column="1" Grid.Row="1" Margin="103,0,10,0" Grid.ColumnSpan="2" />
+
 
     </Grid>
 </Window>

@@ -18,7 +18,7 @@
             <RowDefinition Height="1*" />
         </Grid.RowDefinitions>
         <StackPanel Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2" Margin="0,0,-0.4,210" Grid.RowSpan="2">
-            <Button Click="Button_Click"  HorizontalAlignment="Right" Margin="0,15,19.8,20" FontSize="25" Foreground="White" Background="green" Width="63">back</Button>
+            <Button Click="Button_Back"  HorizontalAlignment="Right" Margin="0,15,19.8,20" FontSize="25" Foreground="White" Background="green" Width="63">back</Button>
 
         </StackPanel>
 

@@ -11,7 +11,7 @@
     <Grid Background="white">
         <DockPanel >
             <StackPanel>
-                <Button Name="profileButton" Click="Button_Click_2"  >
+                <Button Name="profileButton" Click="Button_Profile"  >
                     <StackPanel>
                         <Image x:Name="profile"  Width="73" Height="77" Stretch="Uniform"    />
                     </StackPanel>
@@ -35,7 +35,7 @@
 
                     </Grid.ColumnDefinitions>
                     <StackPanel Orientation="Horizontal" Grid.Column="0"  Grid.RowSpan="3">
-                        <Button Background="Green" Foreground="White" FontSize="25" Content="PlayList"/>
+                        <Button Click="OpenAddingPlayList"  Background="Green" Foreground="White" FontSize="25" Content="PlayList"/>
                         <Button Margin="10,0,0,0" Background="Green" Foreground="White" FontSize="25" Content="Search"/>
                     </StackPanel>
                     <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,0,0.2,-0.2" Grid.RowSpan="3" >

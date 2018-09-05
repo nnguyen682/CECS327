@@ -80,13 +80,12 @@ namespace WpfApp1
             
         }
 
-        private void Button_Click_2(object sender, RoutedEventArgs e)
+        private void Button_Profile(object sender, RoutedEventArgs e)
         {
-            var c = App.Current.Windows[0];
-            afterLoginWindow = c;
+
+            afterLoginWindow = App.Current.Windows[0];
             Profile b = new Profile();
-            c.Hide();
-           
+            this.Hide();
             b.Show();
         }
 
@@ -102,6 +101,13 @@ namespace WpfApp1
         private void Button_Click_3(object sender, RoutedEventArgs e)
         {
 
+        }
+        private void OpenAddingPlayList(object sender, RoutedEventArgs e)
+        {
+            afterLoginWindow = App.Current.Windows[0];
+            Create b = new Create();
+            afterLoginWindow.Hide();
+            b.Show();
         }
     }
 }
