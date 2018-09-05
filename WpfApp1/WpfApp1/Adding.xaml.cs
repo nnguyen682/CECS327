@@ -25,6 +25,8 @@ namespace WpfApp1
             aList.ItemsSource = AfterLogin.mediaFileList;
             listTitle.Content =   Create.selectedList.ToString();
             
+            foreach (var b in AfterLogin.objectUser.mPlaylists.Where(x => x.mName == Create.selectedList.ToString()).Single().mSongs)
+                addedSongs.Items.Add(b.mArtist + "-" +b.mTitle + b.mExtension);
         }
 
         private void Button_Back(object sender, RoutedEventArgs e)

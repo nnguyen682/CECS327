@@ -25,7 +25,7 @@ namespace WpfApp1
             mEmail = email;
             mBirthday = birthday;
             mProfilePNGDirectory = path.Substring(0, path.LastIndexOf("bin")) + "Images\\" + mUsername + ".png";
-            mPlaylists = null;
+            mPlaylists = new List<Playlist>();
         }
 
         void addPlaylist(Playlist newPlaylist)

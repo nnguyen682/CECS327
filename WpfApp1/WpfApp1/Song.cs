@@ -8,25 +8,20 @@ namespace WpfApp1
 {
     public class Song
     {
-        private string mTitle;
-        private string mAlbumTitle;
-        private string mArtist;
-        private string mMp3Directory;
-        private string mAlbumPngDirectory;
+        public string mTitle;
+        public string mArtist;
+        public string mExtension;
 
-        public Song(string title, string album, string artist)
-        {
-            string path = System.Environment.CurrentDirectory;
-            mTitle = title;
-            mAlbumTitle = album;
-            mArtist = artist;
-            mMp3Directory = path.Substring(0, path.LastIndexOf("bin")) + "MusicLibrary\\" + mArtist + "-" + title + ".mp3";
-            mAlbumPngDirectory = path.Substring(0, path.LastIndexOf("bin")) + "Images\\" + mArtist + "-" + title + ".png";
-        }
         public Song(string title,  string artist)
         {
             mTitle = title;
             mArtist = artist;
+        }
+        public Song(string title, string artist, string extension)
+        {
+            mTitle = title;
+            mArtist = artist;
+            mExtension = extension;
         }
     }
 }

@@ -91,11 +91,12 @@ namespace WpfApp1
 
         private void Button_Logout(object sender, RoutedEventArgs e)
         {
-            LoginScreen b = new LoginScreen();
+            
             mediaFileList.Clear();
             ax.close();
             this.Close();
-            b.Show();
+            list.ItemsSource = null;
+            LoginScreen.LoginWindow.Show();
 
         }
 

@@ -75,7 +75,7 @@
                         </Style>
                     </Label.Resources>
                 </Label>
-                <PasswordBox x:Name="pass" KeyDown="Login_KeyDown" PasswordChanged="OnPasswordChanged" VerticalContentAlignment="Center" Width="450" Height="50" FontSize="24" Padding="16,0,0,0" Tag="False"/>
+                <PasswordBox x:Name="pass" KeyDown="Login_KeyDown" PasswordChanged="OnPasswordChanged" VerticalContentAlignment="Center"  Width="450" Height="50" FontSize="24" Padding="16,0,0,0" Tag="False" />
             </Grid>
             <Button Click="Login_Click" Margin="10" FontSize="24" Width="450" Height="50" Background="Green" Foreground="LightGray" Content="SIGN IN">
                 <Button.Resources>

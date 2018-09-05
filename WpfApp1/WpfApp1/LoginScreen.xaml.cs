@@ -19,17 +19,19 @@ namespace WpfApp1
     /// </summary>
     public partial class LoginScreen : Window
     {
+        public static Window LoginWindow;
         static IList<User> allUsers = new List<User>();
-        static Playlist nhanList = new Playlist("nhanList");
+        static Playlist nhanList;
         static Playlist ponceList = new Playlist("ponceList");
-        static Song BangBangBang = new Song("BangBangBang", "BigBang");
-        static Song Baam = new Song("Baam", "MoMoLand");
-        static Song LaTaTa = new Song("LaTaTa", "(G)I-DLE");
+        static Song BangBangBang = new Song("BangBangBang", "BigBang", ".mp3");
+        static Song Baam = new Song("Baam", "MoMoLand", ".mp3");
+        static Song LaTaTa = new Song("LaTaTa", "(G)I-DLE", ".mp3");
         public LoginScreen()
         {
             InitializeComponent();
             allUsers.Add(new User("nnguyen682", "nhannguyen1", "Nhan Nguyen", "nhannguyen683@gmail.com", "03/07/1994"));
             allUsers.Add(new User("omponce", "cecs327", "Om Ponce", "OmPonce@gmail.com", "03/17/1974"));
+            nhanList = new Playlist("nhanList");
             nhanList.addSong(BangBangBang);
             nhanList.addSong(Baam);
             ponceList.addSong(LaTaTa);
@@ -47,7 +49,10 @@ namespace WpfApp1
                 {
                     AfterLogin b = new AfterLogin(x);
                     counter++;
-                    this.Close();
+                    LoginWindow = this;
+                    user.Text = "";
+                    pass.Password = "";
+                    this.Hide();
                     b.Show();
                     break;
                 }
@@ -72,7 +77,10 @@ namespace WpfApp1
                     {
                         AfterLogin b = new AfterLogin(x);
                         counter++;
-                        this.Close();
+                        LoginWindow = this;
+                        user.Text = "";
+                        pass.Password = "";
+                        this.Hide();
                         b.Show();
                         break;
                     }

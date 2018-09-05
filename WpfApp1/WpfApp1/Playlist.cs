@@ -8,17 +8,18 @@ namespace WpfApp1
 {
     public class Playlist
     {
-        private string mName;
-        IList<Song> mSongs;
+        public string mName;
+        public IList<Song> mSongs;
 
         public Playlist(string name)
         {
             mName = name;
-            mSongs = null;
+            mSongs = new List<Song>();
         }
 
         public void addSong(Song newSong)
         {
+           
             mSongs.Add(newSong);
         }
 

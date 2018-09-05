@@ -28,6 +28,12 @@ namespace WpfApp1
             if (allItems.Count() != 0)
                 foreach (var b in allItems)
                     list.Items.Add(b);
+            foreach (var b in AfterLogin.objectUser.mPlaylists)
+            {
+                ListBoxItem itm = new ListBoxItem();
+                itm.Content = b.mName;
+                list.Items.Add(itm);
+            }
         }
 
         private void Button_Back(object sender, RoutedEventArgs e)
