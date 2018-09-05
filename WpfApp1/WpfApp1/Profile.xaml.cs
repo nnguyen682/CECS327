@@ -23,7 +23,10 @@ namespace WpfApp1
         {
             InitializeComponent();
             
-            profile.Source = new BitmapImage(new Uri("pack://application:,,,/Images/" + AfterLogin.LameName + ".png"));
+            profile.Source = new BitmapImage(new Uri("pack://application:,,,/Images/" + AfterLogin.objectUser.mUsername + ".png"));
+            name.Content = AfterLogin.objectUser.mName;
+            email.Content = AfterLogin.objectUser.mEmail;
+            Birthday.Content = AfterLogin.objectUser.mBirthday;
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -36,6 +39,13 @@ namespace WpfApp1
             Create b = new Create();
             this.Close();
             b.Show();
+        }
+
+        private void Button_Click_2(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+            AfterLogin.afterLoginWindow.Show();
+           
         }
     }
 }

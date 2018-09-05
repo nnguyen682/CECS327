@@ -6,28 +6,34 @@ using System.Threading.Tasks;
 
 namespace WpfApp1
 {
-    class User
+    public class User
     {
         public string mUsername;
         public string mPassword;
         public string mProfilePNGDirectory;
+        public string mName;
+        public string mEmail;
+        public string mBirthday;
         private IList<Playlist> mPlaylists;
 
-        public User(string name, string pass)
+        public User(string name, string pass, string flName, string email, string birthday)
         {
             string path = System.Environment.CurrentDirectory;
             mUsername = name;
             mPassword = pass;
+            mName = flName;
+            mEmail = email;
+            mBirthday = birthday;
             mProfilePNGDirectory = path.Substring(0, path.LastIndexOf("bin")) + "Images\\" + mUsername + ".png";
             mPlaylists = null;
         }
 
-        public void addPlaylist(Playlist newPlaylist)
+        void addPlaylist(Playlist newPlaylist)
         {
             mPlaylists.Add(newPlaylist);
         }
 
-        public void deletePlaylist(Playlist playlist)
+        void deletePlaylist(Playlist playlist)
         {
             mPlaylists.Remove(playlist);
         }

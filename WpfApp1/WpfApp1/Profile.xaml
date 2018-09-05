@@ -7,28 +7,33 @@
         mc:Ignorable="d"
         Title="Profile" Height="450" Width="800">
     <Grid Background="Black">
+        
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="296" />
             <ColumnDefinition Width="1*" />
+            <ColumnDefinition Width="90"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="296" />
             <RowDefinition Height="1*" />
         </Grid.RowDefinitions>
         <Image Name="profile"  HorizontalAlignment="Left" Grid.Column="0" Grid.Row="0"> </Image>
-        <StackPanel Grid.Column="1" Grid.Row="0" >
-            <Label x:Name="name"  FontSize="25" Foreground="White" >Username:</Label>
-            <Label  FontSize="25" Foreground="White" >Nhan Nguyen</Label>
-            <Label x:Name="email"  FontSize="25" Foreground="White" >Email:</Label>
-            <Label  FontSize="25" Foreground="White" Margin="0,0,-0.4,0" >nhannguyen683@gmail.com</Label>
-            <Label x:Name="Birthday"  FontSize="25" Foreground="White" >Birthday:</Label>
-            <Label  FontSize="25" Foreground="White" >03/07/94</Label>
+        <StackPanel Grid.Column="1" Grid.ColumnSpan="2" Margin="392,0,0,0">
+            <Button Click="Button_Click_2" FontSize="25" Margin="20" Background="Green" Foreground="White">Back</Button>
         </StackPanel>
-        <StackPanel Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" Margin="0,0,400,0" >
+        <StackPanel Grid.Column="1" Grid.Row="0" >
+            <Label   FontSize="25" Foreground="White" >Username:</Label>
+            <Label x:Name="name" FontSize="25" Foreground="White" >Nhan Nguyen</Label>
+            <Label   FontSize="25" Foreground="White" >Email:</Label>
+            <Label x:Name="email" FontSize="25" Foreground="White" Margin="0,0,-0.4,0" >nhannguyen683@gmail.com</Label>
+            <Label   FontSize="25" Foreground="White" >Birthday:</Label>
+            <Label x:Name="Birthday" FontSize="25" Foreground="White" >03/07/94</Label>
+        </StackPanel>
+        <StackPanel Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" Margin="0,0,319,0" >
             <Button Click="Button_Click_1" Margin="20" Foreground="White" Background="Green">Create And Delete Playlist</Button>
             <Button Margin="20" Foreground="White" Background="Green">Random</Button>
         </StackPanel>
-        <StackPanel Grid.Column="1" Grid.Row="1" Margin="103,0,-0.4,0" >
+        <StackPanel Grid.Column="1" Grid.Row="1" Margin="103,0,10,0" Grid.ColumnSpan="2" >
             <Button Margin="20" Foreground="White" Background="Green">Searches</Button>
             <Button Margin="20" Foreground="White" Background="Green">Play a Song</Button>
         </StackPanel>

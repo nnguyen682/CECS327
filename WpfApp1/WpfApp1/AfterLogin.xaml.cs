@@ -25,11 +25,13 @@ namespace WpfApp1
     {
 
         public static List<string> mediaFileList = new List<string>();
-        public static string LameName;
+        public static User objectUser;
+        public static Window afterLoginWindow ;
         string mediaFolder = System.IO.Path.Combine(System.Windows.Forms.Application.StartupPath, "MusicLibrary");
         public AfterLogin()
         {
             InitializeComponent();
+            
             DirectoryInfo dir = new DirectoryInfo(mediaFolder);
             foreach (FileInfo file in dir.GetFiles("*.*", SearchOption.AllDirectories))
             {
@@ -43,12 +45,13 @@ namespace WpfApp1
             }
         }
         
-        public AfterLogin(string name)
+        public AfterLogin(User x)
         {
             InitializeComponent();
-            username.Content = name;
-            LameName = name;
-            profile.Source = new BitmapImage(new Uri("pack://application:,,,/Images/"+ name+".png"));
+            username.Content = x.mUsername;
+            
+            objectUser = x;
+            profile.Source = new BitmapImage(new Uri("pack://application:,,,/Images/"+ x.mUsername + ".png"));
             
             DirectoryInfo dir = new DirectoryInfo(mediaFolder);
             
@@ -79,8 +82,11 @@ namespace WpfApp1
 
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
+            var c = App.Current.Windows[0];
+            afterLoginWindow = c;
             Profile b = new Profile();
-            this.Close();
+            c.Hide();
+           
             b.Show();
         }
 

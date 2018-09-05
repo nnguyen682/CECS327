@@ -19,28 +19,35 @@ namespace WpfApp1
     /// </summary>
     public partial class LoginScreen : Window
     {
-        static IList<User> allUsers;
+        static IList<User> allUsers = new List<User>();
+        
         public LoginScreen()
         {
             InitializeComponent();
-            
-            
+            allUsers.Add(new User("nnguyen682", "nhannguyen1", "Nhan Nguyen", "nhannguyen683@gmail.com", "03/07/1994"));
+            allUsers.Add(new User("omponce", "cecs327", "Om Ponce", "OmPonce@gmail.com", "03/17/1974"));
+
         }
         private void Login_Click(object sender, RoutedEventArgs e)
         {
+            int counter = 0;
             var msg = "Incorrect Username or Password!";
             foreach(var x in allUsers)
             {
+                
                 if(user.Text == x.mUsername && pass.Password == x.mPassword)
                 {
-                    AfterLogin b = new AfterLogin(x.mUsername);
+                    AfterLogin b = new AfterLogin(x);
+                    counter++;
                     this.Close();
                     b.Show();
+                    break;
                 }
-                else
-                {
-                    MessageBox.Show(msg);
-                }
+                
+            }
+            if (counter == 0)
+            {
+                MessageBox.Show(msg);
             }
         }
 
@@ -49,19 +56,22 @@ namespace WpfApp1
             if (e.Key == Key.Enter)
             {
                 var msg = "Incorrect Username or Password!";
-                if (user.Text == "omponce" && pass.Password == "cecs327")
+                int counter = 0;
+                foreach (var x in allUsers)
                 {
-                    AfterLogin b = new AfterLogin("omponce");
-                    this.Close();
-                    b.Show();
+                    
+                    if (user.Text == x.mUsername && pass.Password == x.mPassword)
+                    {
+                        AfterLogin b = new AfterLogin(x);
+                        counter++;
+                        this.Close();
+                        b.Show();
+                        break;
+                    }
+
                 }
-                else if (user.Text == "nnguyen682" && pass.Password == "nhannguyen1")
-                {
-                    AfterLogin b = new AfterLogin("nnguyen682");
-                    this.Close();
-                    b.Show();
-                }
-                else
+
+                if (counter == 0)
                 {
                     MessageBox.Show(msg);
                 }
