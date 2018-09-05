@@ -27,6 +27,7 @@ namespace WpfApp1
         public static List<string> mediaFileList = new List<string>();
         public static User objectUser;
         public static Window afterLoginWindow ;
+        public static AxWMPLib.AxWindowsMediaPlayer ax;
         string mediaFolder = System.IO.Path.Combine(System.Windows.Forms.Application.StartupPath, "MusicLibrary");
         public AfterLogin()
         {
@@ -49,7 +50,8 @@ namespace WpfApp1
         {
             InitializeComponent();
             username.Content = x.mUsername;
-            
+            ax =
+                winsFormHost.Child as AxWMPLib.AxWindowsMediaPlayer;
             objectUser = x;
             profile.Source = new BitmapImage(new Uri("pack://application:,,,/Images/"+ x.mUsername + ".png"));
             
@@ -64,6 +66,7 @@ namespace WpfApp1
             {
                 list.ItemsSource = null;
                 list.ItemsSource = mediaFileList;
+                ax.URL = mediaFolder + "\\" + mediaFileList[0];
             }
             
         }
@@ -74,10 +77,7 @@ namespace WpfApp1
         }
                 private void ListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            AxWMPLib.AxWindowsMediaPlayer ax=
-                winsFormHost.Child as AxWMPLib.AxWindowsMediaPlayer;
             ax.URL = mediaFolder+ "\\" + list.SelectedItem.ToString();
-            
         }
 
         private void Button_Profile(object sender, RoutedEventArgs e)
@@ -89,7 +89,7 @@ namespace WpfApp1
             b.Show();
         }
 
-        private void Button_Click_1(object sender, RoutedEventArgs e)
+        private void Button_Logout(object sender, RoutedEventArgs e)
         {
             LoginScreen b = new LoginScreen();
             mediaFileList.Clear();
