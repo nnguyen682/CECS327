@@ -24,7 +24,7 @@ namespace WpfApp1
     {
 
         public static List<string> mediaFileList = new List<string>();
-        
+        public static string LameName;
         string mediaFolder = Directory.GetCurrentDirectory();
         public AfterLogin()
         {
@@ -42,9 +42,24 @@ namespace WpfApp1
             }
         }
         
-        public AfterLogin(string name, string pass)
+        public AfterLogin(string name)
         {
-
+            InitializeComponent();
+            username.Content = name;
+            LameName = name;
+            profile.Source = new BitmapImage(new Uri("pack://application:,,,/Images/"+ name+".png"));
+            DirectoryInfo dir = new DirectoryInfo(mediaFolder);
+            foreach (FileInfo file in dir.GetFiles("*.*", SearchOption.AllDirectories))
+            {
+                if (file.Extension == ".mp3" || file.Extension == ".mp4")
+                    mediaFileList.Add(file.Name);
+            }
+            if (mediaFileList != null)
+            {
+                list.ItemsSource = null;
+                list.ItemsSource = mediaFileList;
+            }
+            
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -58,37 +73,26 @@ namespace WpfApp1
             ax.URL = mediaFolder+ "\\" + list.SelectedItem.ToString();
             
         }
-  /*
-        private void Button_Click_1(object sender, RoutedEventArgs e)
-        {
-            
-            mediaFileList = new List<string>();
-            System.Windows.Forms.FolderBrowserDialog fbd = new
-                System.Windows.Forms.FolderBrowserDialog();
-            if (fbd.ShowDialog() != System.Windows.Forms.DialogResult.Cancel)
-            {
-                mediaFolder = fbd.SelectedPath;
-                DirectoryInfo dir = new DirectoryInfo(mediaFolder);
-                foreach (FileInfo file in dir.GetFiles("*.*", SearchOption.AllDirectories))
-                {
-                    if (file.Extension == ".mp3" || file.Extension == ".mp4")
-                        mediaFileList.Add(file.Name);
 
-                }
-                if (mediaFileList != null)
-                {
-                    list.ItemsSource = null;
-                    list.ItemsSource = mediaFileList;
-                }
-
-            }
-        }
-        */
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
             Profile b = new Profile();
             this.Close();
             b.Show();
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            LoginScreen b = new LoginScreen();
+            mediaFileList.Clear();
+            this.Close();
+            b.Show();
+
+        }
+
+        private void Button_Click_3(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

@@ -11,23 +11,50 @@
     <Grid Background="white">
         <DockPanel >
             <StackPanel>
-                <Button Click="Button_Click_2" >
+                <Button Name="profileButton" Click="Button_Click_2"  >
                     <StackPanel>
-                        <Image x:Name="profile"  Source="1.jpg" Width="73" Height="77" />
+                        <Image x:Name="profile"  Width="73" Height="77" Stretch="Uniform"    />
                     </StackPanel>
                 </Button>
+                <Label x:Name="username" Background="Green" Foreground="White">username</Label>
                 <!-- <Button Content="Browse" Margin="0,0,0,-19.2" Width="78" Click="Button_Click_1"></Button> -->
                 <ListBox x:Name="list"  Height="382" SelectionChanged="ListBox_SelectionChanged">
                 </ListBox>
             </StackPanel>
-            
+
+            <StackPanel Grid.Column="0" DockPanel.Dock="Top" Orientation="Horizontal">
+                <Grid Width="717" Background="Black">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="17*"/>
+                        <RowDefinition Height="20*"/>
+                        <RowDefinition Height="0*"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="363.5" />
+                        <ColumnDefinition Width="*" />
+
+                    </Grid.ColumnDefinitions>
+                    <StackPanel Orientation="Horizontal" Grid.Column="0"  Grid.RowSpan="3">
+                        <Button Background="Green" Foreground="White" FontSize="25" Content="PlayList"/>
+                        <Button Margin="10,0,0,0" Background="Green" Foreground="White" FontSize="25" Content="Search"/>
+                    </StackPanel>
+                    <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,0,0.2,-0.2" Grid.RowSpan="3" >
+
+                        <Button  Margin="0,0,52,0" Background="Green" Foreground="White" FontSize="25" Content="Get Out!" Click="Button_Click_1"/>
+                    </StackPanel>
+                </Grid>
+
+
+            </StackPanel>
+
+
 
             <WindowsFormsHost x:Name="winsFormHost">
                 <activeXControl:AxWindowsMediaPlayer x:Name="media">
                 </activeXControl:AxWindowsMediaPlayer>
             </WindowsFormsHost>
         </DockPanel>
-        
+
     </Grid>
 
 </Window>

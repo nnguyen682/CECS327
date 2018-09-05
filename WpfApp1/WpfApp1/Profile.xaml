@@ -15,7 +15,7 @@
             <RowDefinition Height="296" />
             <RowDefinition Height="1*" />
         </Grid.RowDefinitions>
-        <Image Source="1.jpg" HorizontalAlignment="Left" Grid.Column="0" Grid.Row="0"> </Image>
+        <Image Name="profile"  HorizontalAlignment="Left" Grid.Column="0" Grid.Row="0"> </Image>
         <StackPanel Grid.Column="1" Grid.Row="0" >
             <Label x:Name="name"  FontSize="25" Foreground="White" >Username:</Label>
             <Label  FontSize="25" Foreground="White" >Nhan Nguyen</Label>

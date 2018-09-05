@@ -22,6 +22,8 @@ namespace WpfApp1
         public Profile()
         {
             InitializeComponent();
+            
+            profile.Source = new BitmapImage(new Uri("pack://application:,,,/Images/" + AfterLogin.LameName + ".png"));
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)

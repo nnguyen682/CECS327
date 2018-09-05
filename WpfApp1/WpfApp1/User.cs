@@ -8,9 +8,9 @@ namespace WpfApp1
 {
     class User
     {
-        private string mUsername;
-        private string mPassword;
-        private string mProfilePNGDirectory;
+        public string mUsername;
+        public string mPassword;
+        public string mProfilePNGDirectory;
         private IList<Playlist> mPlaylists;
 
         public User(string name, string pass)

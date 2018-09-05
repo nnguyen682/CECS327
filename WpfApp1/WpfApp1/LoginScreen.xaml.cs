@@ -29,15 +29,18 @@ namespace WpfApp1
         private void Login_Click(object sender, RoutedEventArgs e)
         {
             var msg = "Incorrect Username or Password!";
-            if (user.Text == "omponce" && pass.Password == "cecs327")
+            foreach(var x in allUsers)
             {
-                AfterLogin b = new AfterLogin("omponce", "cecs327");
-                this.Close();
-                b.Show();
-            }
-            else
-            {
-                MessageBox.Show(msg);
+                if(user.Text == x.mUsername && pass.Password == x.mPassword)
+                {
+                    AfterLogin b = new AfterLogin(x.mUsername);
+                    this.Close();
+                    b.Show();
+                }
+                else
+                {
+                    MessageBox.Show(msg);
+                }
             }
         }
 
@@ -48,13 +51,13 @@ namespace WpfApp1
                 var msg = "Incorrect Username or Password!";
                 if (user.Text == "omponce" && pass.Password == "cecs327")
                 {
-                    AfterLogin b = new AfterLogin();
+                    AfterLogin b = new AfterLogin("omponce");
                     this.Close();
                     b.Show();
                 }
                 else if (user.Text == "nnguyen682" && pass.Password == "nhannguyen1")
                 {
-                    AfterLogin b = new AfterLogin();
+                    AfterLogin b = new AfterLogin("nnguyen682");
                     this.Close();
                     b.Show();
                 }
