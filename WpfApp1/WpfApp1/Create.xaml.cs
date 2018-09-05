@@ -48,6 +48,7 @@ namespace WpfApp1
             ListBoxItem itm = new ListBoxItem();
             itm.Content = newList.Text;
             allItems.Add(newList.Text);
+            newList.Text = "";
             list.Items.Add(itm);
         }
         private void DeleteButton(object sender, RoutedEventArgs e)
@@ -68,7 +69,8 @@ namespace WpfApp1
         }
         private void ListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            selectedList = ((ListBoxItem)list.SelectedValue).Content.ToString();
+            if (list.SelectedItem != null)
+                selectedList = ((ListBoxItem)list.SelectedValue).Content.ToString();
         }
 
         private void list_MouseDoubleClick(object sender, MouseButtonEventArgs e)
