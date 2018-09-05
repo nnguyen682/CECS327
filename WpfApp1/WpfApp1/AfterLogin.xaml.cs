@@ -93,6 +93,7 @@ namespace WpfApp1
         {
             LoginScreen b = new LoginScreen();
             mediaFileList.Clear();
+            ax.close();
             this.Close();
             b.Show();
 

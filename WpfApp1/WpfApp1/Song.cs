@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace WpfApp1
 {
-    class Song
+    public class Song
     {
         private string mTitle;
         private string mAlbumTitle;
@@ -22,6 +22,11 @@ namespace WpfApp1
             mArtist = artist;
             mMp3Directory = path.Substring(0, path.LastIndexOf("bin")) + "MusicLibrary\\" + mArtist + "-" + title + ".mp3";
             mAlbumPngDirectory = path.Substring(0, path.LastIndexOf("bin")) + "Images\\" + mArtist + "-" + title + ".png";
+        }
+        public Song(string title,  string artist)
+        {
+            mTitle = title;
+            mArtist = artist;
         }
     }
 }

@@ -242,7 +242,13 @@
     </PublishFile>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="MusicLibrary\hello.mp3">
+    <Content Include="MusicLibrary\%28G%29I-DLE-LaTaTa.mp3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="MusicLibrary\BigBang-BangBangBang.mp3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="MusicLibrary\MoMoLand-Baam.mp3">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>

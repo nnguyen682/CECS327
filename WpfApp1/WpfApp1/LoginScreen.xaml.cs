@@ -20,13 +20,21 @@ namespace WpfApp1
     public partial class LoginScreen : Window
     {
         static IList<User> allUsers = new List<User>();
-        
+        static Playlist nhanList = new Playlist("nhanList");
+        static Playlist ponceList = new Playlist("ponceList");
+        static Song BangBangBang = new Song("BangBangBang", "BigBang");
+        static Song Baam = new Song("Baam", "MoMoLand");
+        static Song LaTaTa = new Song("LaTaTa", "(G)I-DLE");
         public LoginScreen()
         {
             InitializeComponent();
             allUsers.Add(new User("nnguyen682", "nhannguyen1", "Nhan Nguyen", "nhannguyen683@gmail.com", "03/07/1994"));
             allUsers.Add(new User("omponce", "cecs327", "Om Ponce", "OmPonce@gmail.com", "03/17/1974"));
-
+            nhanList.addSong(BangBangBang);
+            nhanList.addSong(Baam);
+            ponceList.addSong(LaTaTa);
+            allUsers.Where(x => x.mUsername == "nnguyen682").Single().mPlaylists.Add(nhanList);
+            allUsers.Where(x => x.mUsername == "omponce").Single().mPlaylists.Add(ponceList);
         }
         private void Login_Click(object sender, RoutedEventArgs e)
         {

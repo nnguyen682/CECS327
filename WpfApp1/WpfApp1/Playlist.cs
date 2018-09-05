@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace WpfApp1
 {
-    class Playlist
+    public class Playlist
     {
         private string mName;
-        private IList<Song> mSongs;
+        IList<Song> mSongs;
 
         public Playlist(string name)
         {
