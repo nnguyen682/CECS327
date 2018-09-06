@@ -19,15 +19,12 @@ namespace WpfApp1
     /// </summary>
     public partial class Create : Window
     {
-        public static List<string> allItems = new List<string>();
         public static Window createWIndow;
         public static string selectedList = "";
         public Create()
         {
             InitializeComponent();
-            if (allItems.Count() != 0)
-                foreach (var b in allItems)
-                    list.Items.Add(b);
+
             foreach (var b in AfterLogin.objectUser.mPlaylists)
             {
                 ListBoxItem itm = new ListBoxItem();
@@ -38,6 +35,8 @@ namespace WpfApp1
 
         private void Button_Back(object sender, RoutedEventArgs e)
         {
+            selectedList = "";
+            list.Items.Clear();
             this.Close();
             AfterLogin.afterLoginWindow.Show();
        
@@ -53,16 +52,20 @@ namespace WpfApp1
         {
             ListBoxItem itm = new ListBoxItem();
             itm.Content = newList.Text;
-            allItems.Add(newList.Text);
-            newList.Text = "";
+            
             list.Items.Add(itm);
+            AfterLogin.objectUser.mPlaylists.Add(new Playlist(newList.Text));
+            newList.Text = "";
         }
         private void DeleteButton(object sender, RoutedEventArgs e)
         {
            
             var msg = "No Playlist was selected to delete";
-            if (list.SelectedItem!= null)
+            if (list.SelectedItem != null)
+            {
                 list.Items.Remove(list.SelectedItem);
+   
+            }
             else
                 MessageBox.Show(msg);
         }

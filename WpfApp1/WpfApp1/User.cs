@@ -15,6 +15,10 @@ namespace WpfApp1
         public string mEmail;
         public string mBirthday;
         public IList<Playlist> mPlaylists;
+        public User()
+        {
+
+        }
 
         public User(string name, string pass, string flName, string email, string birthday)
         {

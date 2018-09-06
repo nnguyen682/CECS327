@@ -19,8 +19,10 @@ namespace WpfApp1
     /// </summary>
     public partial class Adding : Window
     {
+        
         public Adding()
         {
+
             InitializeComponent();
             aList.ItemsSource = AfterLogin.mediaFileList;
             listTitle.Content =   Create.selectedList.ToString();

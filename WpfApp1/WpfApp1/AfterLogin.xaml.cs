@@ -24,7 +24,7 @@ namespace WpfApp1
     public partial class AfterLogin : Window
     {
 
-        public static List<string> mediaFileList = new List<string>();
+        public static List<string> mediaFileList ;
         public static User objectUser;
         public static Window afterLoginWindow ;
         public static AxWMPLib.AxWindowsMediaPlayer ax;
@@ -48,6 +48,8 @@ namespace WpfApp1
         
         public AfterLogin(User x)
         {
+            objectUser = new User();
+            mediaFileList = new List<string>();
             InitializeComponent();
             username.Content = x.mUsername;
             ax =
@@ -83,7 +85,7 @@ namespace WpfApp1
         private void Button_Profile(object sender, RoutedEventArgs e)
         {
 
-            afterLoginWindow = App.Current.Windows[0];
+            afterLoginWindow = this;
             Profile b = new Profile();
             this.Hide();
             b.Show();
@@ -91,7 +93,6 @@ namespace WpfApp1
 
         private void Button_Logout(object sender, RoutedEventArgs e)
         {
-            
             mediaFileList.Clear();
             ax.close();
             this.Close();
