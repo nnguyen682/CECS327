@@ -23,6 +23,7 @@ namespace WpfApp1
         static IList<User> allUsers = new List<User>();
         static Playlist nhanList;
         static Playlist ponceList = new Playlist("ponceList");
+        public static Playlist allSongs = new Playlist("allSongs");
         static Song BangBangBang = new Song("BangBangBang", "BigBang", ".mp3");
         static Song Baam = new Song("Baam", "MoMoLand", ".mp3");
         static Song LaTaTa = new Song("LaTaTa", "(G)I-DLE", ".mp3");
@@ -35,6 +36,9 @@ namespace WpfApp1
             nhanList.addSong(BangBangBang);
             nhanList.addSong(Baam);
             ponceList.addSong(LaTaTa);
+            allSongs.addSong(BangBangBang);
+            allSongs.addSong(Baam);
+            allSongs.addSong(LaTaTa);
             allUsers.Where(x => x.mUsername == "nnguyen682").Single().mPlaylists.Add(nhanList);
             allUsers.Where(x => x.mUsername == "omponce").Single().mPlaylists.Add(ponceList);
         }

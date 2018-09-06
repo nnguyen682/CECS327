@@ -15,7 +15,8 @@
         <ListBox Name="addedSongs"  HorizontalAlignment="Left" Height="294" Margin="480,116,0,0" VerticalAlignment="Top" Width="224"/>
         <Label FontSize="25" Foreground="White" HorizontalAlignment="Center" Content="Available Songs" Margin="111,51,500.6,326" Width="182"/>
         <Label FontSize="25" Foreground="White" HorizontalAlignment="Center" Content="Added Songs" Margin="509,51,102.6,326" Width="182"/>
-        <Button Click="Button_Click_1"  HorizontalAlignment="Right" Margin="0,225,366.6,158.8" FontSize="25" Foreground="White" Background="green" Width="63" Content="Add" RenderTransformOrigin="-5.554,3.499"/>
+        <Button Click="Button_Add"  HorizontalAlignment="Right" Margin="0,183,367,201" FontSize="25" Foreground="White" Background="green" Width="63" Content="Add" RenderTransformOrigin="-5.554,3.499"/>
+        <Button Click="Button_Remove"  HorizontalAlignment="Right" Margin="0,274,348,109" FontSize="25" Foreground="White" Background="green" Width="100" Content="Remove" RenderTransformOrigin="-5.554,3.499"/>
 
     </Grid>
 </Window>

@@ -19,15 +19,15 @@ namespace WpfApp1
     /// </summary>
     public partial class Adding : Window
     {
-        
+        public static Playlist currentPlayList;
         public Adding()
         {
-
+            
             InitializeComponent();
             aList.ItemsSource = AfterLogin.mediaFileList;
             listTitle.Content =   Create.selectedList.ToString();
-            
-            foreach (var b in AfterLogin.objectUser.mPlaylists.Where(x => x.mName == Create.selectedList.ToString()).Single().mSongs)
+            currentPlayList = AfterLogin.objectUser.mPlaylists.Where(x => x.mName == Create.selectedList.ToString()).Single();
+            foreach (var b in currentPlayList.mSongs)
                 addedSongs.Items.Add(b.mArtist + "-" +b.mTitle + b.mExtension);
         }
 
@@ -43,7 +43,20 @@ namespace WpfApp1
 
         }
 
-        private void Button_Click_1(object sender, RoutedEventArgs e)
+        private void Button_Add(object sender, RoutedEventArgs e)
+        {
+
+            if (aList.SelectedItem != null)
+            {
+                ListBoxItem itm = new ListBoxItem();
+                string trythis = (string) aList.SelectedValue;
+                itm.Content = trythis;
+                addedSongs.Items.Add(itm);
+                currentPlayList.addSong(LoginScreen.allSongs.mSongs.Where(x => (x.mArtist + "-" + x.mTitle + x.mExtension) == trythis).Single());
+            } 
+            
+    }
+        private void Button_Remove(object sender, RoutedEventArgs e)
         {
 
         }
