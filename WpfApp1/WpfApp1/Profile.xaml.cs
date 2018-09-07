@@ -37,15 +37,19 @@ namespace WpfApp1
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
             Create b = new Create();
-            this.Close();
+            this.Hide();
             b.Show();
         }
 
         private void Button_Back(object sender, RoutedEventArgs e)
         {
-            this.Close();
+            this.Hide();
             AfterLogin.afterLoginWindow.Show();
-           
+        }
+
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            App.Current.Shutdown();
         }
     }
 }

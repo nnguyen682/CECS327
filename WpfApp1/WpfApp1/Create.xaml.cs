@@ -39,7 +39,7 @@ namespace WpfApp1
         {
             selectedList = "";
             list.Items.Clear();
-            this.Close();
+            this.Hide();
             AfterLogin.afterLoginWindow.Show();
        
            
@@ -91,6 +91,11 @@ namespace WpfApp1
             createWIndow = this;
             this.Hide();
             b.Show();
+        }
+
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            App.Current.Shutdown();
         }
     }
 }

@@ -77,6 +77,7 @@ namespace WpfApp1
         {
 
         }
+
         private void ListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (list.SelectedItem != null)
@@ -94,10 +95,10 @@ namespace WpfApp1
 
         private void Button_Logout(object sender, RoutedEventArgs e)
         {
-            mediaFileList.Clear();
             ax.close();
-            this.Close();
             list.ItemsSource = null;
+            mediaFileList.Clear();
+            this.Hide();
             LoginScreen.LoginWindow.Show();
 
         }
@@ -113,6 +114,10 @@ namespace WpfApp1
             this.Hide();
             b.Show();
         }
-        
+
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            App.Current.Shutdown();
+        }
     }
 }

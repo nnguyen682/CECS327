@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         xmlns:windowsFrom="clr-namespace:System.Windows.Forms;assembly=System.Windows.Forms"
         xmlns:activeXControl="clr-namespace:AxWMPLib;assembly=AxInterop.WMPLib"
-        Title="AfterLogin" Height="450" Width="800">
+        Title="AfterLogin" Height="450" Width="800" Closing="Window_Closing">
     <Grid Background="white">
         <DockPanel >
             <StackPanel>

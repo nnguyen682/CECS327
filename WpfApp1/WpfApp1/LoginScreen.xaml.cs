@@ -36,6 +36,7 @@ namespace WpfApp1
             allSongs = JsonConvert.DeserializeObject<Playlist>(allSongSt);
 
         }
+
         private void Login_Click(object sender, RoutedEventArgs e)
         {
             int counter = 0;
@@ -109,6 +110,11 @@ namespace WpfApp1
             {
                 passBox.Tag = (!String.IsNullOrWhiteSpace(passBox.Password)).ToString();
             }
+        }
+
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            App.Current.Shutdown();
         }
     }
 }
