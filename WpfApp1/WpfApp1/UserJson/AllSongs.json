@@ -1,0 +1,12 @@
+{"mName": "allSongs"
+,"mSongs":[
+{"mTitle":"BangBangBang", "mArtist":"BigBang", "mExtension":".mp3" },
+{"mTitle":"Baam", "mArtist":"MoMoland", "mExtension":".mp3" },
+  {
+    "mTitle": "LaTaTa",
+    "mArtist": "(G)I-DLE",
+    "mExtension": ".mp3"
+  },
+{"mTitle":"bang", "mArtist":"BigBang", "mExtension":".mp4" }
+]
+}

@@ -1,0 +1,11 @@
+{"users":[
+{"mUsername":"omponce", "mPassword":"cecs327","mName":"Nhan Nguyen","mEmail":"omponce@gmail.com","mBirthday":"03/15/1985"},
+{"mUsername":"nnguyen682", "mPassword":"nhannguyen1","mName":"Nhan Nguyen","mEmail":"nhannguyen683@gmail.com","mBirthday":"03/07/1994",
+"mPlaylists":[
+{"mName": "nhanList", "mSongs":[
+{"mTitle": "Baam", "mArtist":"MoMoLand", "mExtension":".mp3"}
+]
+}
+]}
+]
+}

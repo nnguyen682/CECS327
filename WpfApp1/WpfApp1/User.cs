@@ -15,6 +15,11 @@ namespace WpfApp1
         public string mEmail;
         public string mBirthday;
         public IList<Playlist> mPlaylists;
+        public string UserName { get => mUsername; set => mUsername = value; }
+        public string Password { get => mPassword; set => mPassword = value; }
+        public string Name { get => mName; set => mName = value; }
+        public string Email { get => mEmail; set => mEmail = value; }
+        public string Birthday { get => mBirthday; set => mBirthday = value; }
         public User()
         {
 

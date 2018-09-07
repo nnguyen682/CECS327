@@ -41,7 +41,7 @@ namespace WpfApp1
             }
             if (mediaFileList != null)
             {
-                list.ItemsSource = null;
+                
                 list.ItemsSource = mediaFileList;
             }
         }
@@ -56,7 +56,7 @@ namespace WpfApp1
                 winsFormHost.Child as AxWMPLib.AxWindowsMediaPlayer;
             objectUser = x;
             profile.Source = new BitmapImage(new Uri("pack://application:,,,/Images/" + x.mUsername + ".png"));
-
+            
             DirectoryInfo dir = new DirectoryInfo(mediaFolder);
 
             foreach (FileInfo file in dir.GetFiles("*.*", SearchOption.AllDirectories))
@@ -113,9 +113,6 @@ namespace WpfApp1
             this.Hide();
             b.Show();
         }
-        protected virtual void OnFormClosing(System.Windows.Forms.FormClosingEventArgs e)
-        {
-
-        }
+        
     }
 }

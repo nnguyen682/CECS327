@@ -11,7 +11,13 @@ namespace WpfApp1
         public string mTitle;
         public string mArtist;
         public string mExtension;
+        public string Title { get => mTitle; set => mTitle = value; }
+        public string Artist { get => mArtist; set => mArtist = value; }
+        public string Extension { get => mExtension; set => mExtension = value; }
+        public Song()
+        {
 
+        }
         public Song(string title,  string artist)
         {
             mTitle = title;

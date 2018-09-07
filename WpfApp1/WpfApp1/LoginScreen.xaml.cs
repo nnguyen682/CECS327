@@ -11,6 +11,8 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.IO;
+using Newtonsoft.Json;
 
 namespace WpfApp1
 {
@@ -19,34 +21,27 @@ namespace WpfApp1
     /// </summary>
     public partial class LoginScreen : Window
     {
+        
+        
         public static Window LoginWindow;
-        static IList<User> allUsers = new List<User>();
-        static Playlist nhanList;
-        static Playlist ponceList = new Playlist("ponceList");
-        public static Playlist allSongs = new Playlist("allSongs");
-        static Song BangBangBang = new Song("BangBangBang", "BigBang", ".mp3");
-        static Song Baam = new Song("Baam", "MoMoLand", ".mp3");
-        static Song LaTaTa = new Song("LaTaTa", "(G)I-DLE", ".mp3");
+        static UserCollection everyUser;
+        public static Playlist allSongs ;
         public LoginScreen()
         {
             InitializeComponent();
-            allUsers.Add(new User("nnguyen682", "nhannguyen1", "Nhan Nguyen", "nhannguyen683@gmail.com", "03/07/1994"));
-            allUsers.Add(new User("omponce", "cecs327", "Om Ponce", "OmPonce@gmail.com", "03/17/1974"));
-            nhanList = new Playlist("nhanList");
-            nhanList.addSong(BangBangBang);
-            nhanList.addSong(Baam);
-            ponceList.addSong(LaTaTa);
-            allSongs.addSong(BangBangBang);
-            allSongs.addSong(Baam);
-            allSongs.addSong(LaTaTa);
-            allUsers.Where(x => x.mUsername == "nnguyen682").Single().mPlaylists.Add(nhanList);
-            allUsers.Where(x => x.mUsername == "omponce").Single().mPlaylists.Add(ponceList);
+            
+            string st = File.ReadAllText(System.IO.Path.Combine(System.Windows.Forms.Application.StartupPath, "UserJson\\Users.json"));
+            everyUser = JsonConvert.DeserializeObject<UserCollection>(st);
+            string allSongSt = File.ReadAllText(System.IO.Path.Combine(System.Windows.Forms.Application.StartupPath, "UserJson\\AllSongs.json"));
+            allSongs = JsonConvert.DeserializeObject<Playlist>(allSongSt);
+
         }
         private void Login_Click(object sender, RoutedEventArgs e)
         {
             int counter = 0;
             var msg = "Incorrect Username or Password!";
-            foreach(var x in allUsers)
+            
+            foreach(var x in everyUser.Users)
             {
                 
                 if(user.Text == x.mUsername && pass.Password == x.mPassword)
@@ -74,7 +69,7 @@ namespace WpfApp1
             {
                 var msg = "Incorrect Username or Password!";
                 int counter = 0;
-                foreach (var x in allUsers)
+                foreach (var x in everyUser.Users)
                 {
                     
                     if (user.Text == x.mUsername && pass.Password == x.mPassword)

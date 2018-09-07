@@ -22,7 +22,6 @@ namespace WpfApp1
         public static Playlist currentPlayList;
         public Adding()
         {
-            
             InitializeComponent();
             aList.ItemsSource = AfterLogin.mediaFileList;
             listTitle.Content =   Create.selectedList.ToString();
@@ -49,11 +48,17 @@ namespace WpfApp1
             if (aList.SelectedItem != null)
             {
                 ListBoxItem itm = new ListBoxItem();
-                string trythis = (string) aList.SelectedValue;
+                string trythis = (string)aList.SelectedValue;
                 itm.Content = trythis;
-                addedSongs.Items.Add(itm);
-                currentPlayList.addSong(LoginScreen.allSongs.mSongs.Where(x => (x.mArtist + "-" + x.mTitle + x.mExtension) == trythis).Single());
-            } 
+
+                if (currentPlayList.mSongs.FirstOrDefault(x => (x.mArtist + "-" + x.mTitle + x.mExtension) == trythis) == null)
+                {
+                    currentPlayList.addSong(LoginScreen.allSongs.mSongs.Where(x => (x.mArtist + "-" + x.mTitle + x.mExtension) == trythis).Single());
+                    addedSongs.Items.Add(itm);
+                }
+                else
+                    MessageBox.Show("Selected song is already added in the playlist");
+            }
             
     }
         private void Button_Remove(object sender, RoutedEventArgs e)

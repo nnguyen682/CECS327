@@ -24,12 +24,14 @@ namespace WpfApp1
         public Create()
         {
             InitializeComponent();
-
-            foreach (var b in AfterLogin.objectUser.mPlaylists)
+            if (AfterLogin.objectUser.mPlaylists != null)
             {
-                ListBoxItem itm = new ListBoxItem();
-                itm.Content = b.mName;
-                list.Items.Add(itm);
+                foreach (var b in AfterLogin.objectUser.mPlaylists)
+                {
+                    ListBoxItem itm = new ListBoxItem();
+                    itm.Content = b.mName;
+                    list.Items.Add(itm);
+                }
             }
         }
 
