@@ -63,10 +63,13 @@ namespace WpfApp1
         {
            
             var msg = "No Playlist was selected to delete";
+            
+            string b = ((ListBoxItem)list.SelectedValue).Content.ToString();
             if (list.SelectedItem != null)
             {
                 list.Items.Remove(list.SelectedItem);
-   
+                AfterLogin.objectUser.mPlaylists.Remove(AfterLogin.objectUser.mPlaylists.Where(x => x.mName == b).Single());
+
             }
             else
                 MessageBox.Show(msg);
@@ -95,7 +98,18 @@ namespace WpfApp1
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            App.Current.Shutdown();
+            if (!LoginScreen.LoginWindow.closingFlag)
+            {
+                LoginScreen.LoginWindow.ConfirmExit();
+            }
+            if (LoginScreen.LoginWindow.closingFlag)
+            {
+                App.Current.Shutdown();
+            }
+            else
+            {
+                e.Cancel = true;
+            }
         }
     }
 }

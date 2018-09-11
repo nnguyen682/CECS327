@@ -1,12 +1,28 @@
 {"mName": "allSongs"
 ,"mSongs":[
-{"mTitle":"BangBangBang", "mArtist":"BigBang", "mExtension":".mp3" },
-{"mTitle":"Baam", "mArtist":"MoMoland", "mExtension":".mp3" },
+  {
+    "mTitle": "BangBangBang",
+    "mArtist": "BigBang",
+    "mExtension": ".mp3",
+    "mAlbum": "Made Series"
+  },
+  {
+    "mTitle": "Baam",
+    "mArtist": "MoMoland",
+    "mExtension": ".mp3",
+    "mAlbum": "N/A"
+  },
   {
     "mTitle": "LaTaTa",
     "mArtist": "(G)I-DLE",
-    "mExtension": ".mp3"
+    "mExtension": ".mp3",
+    "mAlbum" :  "N/A"
   },
-{"mTitle":"bang", "mArtist":"BigBang", "mExtension":".mp4" }
+  {
+    "mTitle": "bang",
+    "mArtist": "BigBang",
+    "mExtension": ".mp4",
+    "mAlbum": "N/A"
+  }
 ]
 }
