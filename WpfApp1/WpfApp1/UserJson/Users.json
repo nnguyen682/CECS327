@@ -3,7 +3,7 @@
 {"mUsername":"nnguyen682", "mPassword":"nhannguyen1","mName":"Nhan Nguyen","mEmail":"nhannguyen683@gmail.com","mBirthday":"03/07/1994",
 "mPlaylists":[
 {"mName": "nhanList", "mSongs":[
-{"mTitle": "Baam", "mArtist":"MoMoLand", "mExtension":".mp3"}
+{"mTitle": "Baam", "mArtist":"MoMoLand", "mExtension":".mp3", "mAlbum":  "N/A"}
 ]
 }
 ]}
