@@ -23,9 +23,10 @@ namespace WpfApp1
     {
         
         
-        public static Window LoginWindow;
+        public static LoginScreen LoginWindow;
         static UserCollection everyUser;
-        public static Playlist allSongs ;
+        public static Playlist allSongs;
+        public Boolean closingFlag = false;
         public LoginScreen()
         {
             InitializeComponent();
@@ -34,7 +35,7 @@ namespace WpfApp1
             everyUser = JsonConvert.DeserializeObject<UserCollection>(st);
             string allSongSt = File.ReadAllText(System.IO.Path.Combine(System.Windows.Forms.Application.StartupPath, "UserJson\\AllSongs.json"));
             allSongs = JsonConvert.DeserializeObject<Playlist>(allSongSt);
-
+            LoginWindow = this;
         }
 
         private void Login_Click(object sender, RoutedEventArgs e)
@@ -114,7 +115,27 @@ namespace WpfApp1
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            App.Current.Shutdown();
+            if (!closingFlag)
+            {
+                ConfirmExit();
+            }
+            if (closingFlag)
+            {
+                App.Current.Shutdown();
+            }
+            else
+            {
+                e.Cancel = true;
+            }
+        }
+
+        public void ConfirmExit()
+        {
+            MessageBoxResult mbResult = MessageBox.Show("Are you sure you want to exit?", "Exit", MessageBoxButton.YesNo, MessageBoxImage.Question, MessageBoxResult.No);
+            if(mbResult == MessageBoxResult.Yes)
+            {
+                closingFlag = true;
+            }
         }
     }
 }

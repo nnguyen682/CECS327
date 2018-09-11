@@ -74,5 +74,21 @@ namespace WpfApp1
             else
                 MessageBox.Show(msg);
         }
+
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            if (!LoginScreen.LoginWindow.closingFlag)
+            {
+                LoginScreen.LoginWindow.ConfirmExit();
+            }
+            if (LoginScreen.LoginWindow.closingFlag)
+            {
+                App.Current.Shutdown();
+            }
+            else
+            {
+                e.Cancel = true;
+            }
+        }
     }
 }
