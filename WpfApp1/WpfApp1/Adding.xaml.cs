@@ -63,7 +63,16 @@ namespace WpfApp1
     }
         private void Button_Remove(object sender, RoutedEventArgs e)
         {
+            var msg = "No song was selected to delete";
 
+            string b = (string) addedSongs.SelectedItem;
+            if (addedSongs.SelectedItem != null)
+            {
+                addedSongs.Items.Remove(addedSongs.SelectedItem);
+                AfterLogin.objectUser.mPlaylists.Where(x => x.mName == currentPlayList.mName).Single().deleteSong(AfterLogin.objectUser.mPlaylists.Where(x => x.mName == currentPlayList.mName).Single().mSongs.Where(x => x.mArtist + '-' + x.mTitle + x.mExtension == b).Single());
+            }
+            else
+                MessageBox.Show(msg);
         }
     }
 }
