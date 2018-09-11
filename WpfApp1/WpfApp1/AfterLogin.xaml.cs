@@ -119,5 +119,13 @@ namespace WpfApp1
         {
             App.Current.Shutdown();
         }
+
+        private void Search_Click(object sender, RoutedEventArgs e)
+        {
+            afterLoginWindow = this;
+            SearchWindow sW = new SearchWindow();
+            this.Hide();
+            sW.Show();
+        }
     }
 }
