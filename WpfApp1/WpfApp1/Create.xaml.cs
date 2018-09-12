@@ -53,20 +53,21 @@ namespace WpfApp1
         private void AddButton(object sender, RoutedEventArgs e)
         {
             ListBoxItem itm = new ListBoxItem();
-            itm.Content = newList.Text;
-            
-            list.Items.Add(itm);
-            AfterLogin.objectUser.mPlaylists.Add(new Playlist(newList.Text));
-            newList.Text = "";
+            if(!String.IsNullOrWhiteSpace(newList.Text))
+            {
+                itm.Content = newList.Text;
+                list.Items.Add(itm);
+                AfterLogin.objectUser.mPlaylists.Add(new Playlist(newList.Text));
+                newList.Text = "";
+            }
         }
         private void DeleteButton(object sender, RoutedEventArgs e)
         {
            
             var msg = "No Playlist was selected to delete";
-            
-            string b = ((ListBoxItem)list.SelectedValue).Content.ToString();
             if (list.SelectedItem != null)
             {
+                string b = ((ListBoxItem)list.SelectedItem).Content.ToString();
                 list.Items.Remove(list.SelectedItem);
                 AfterLogin.objectUser.mPlaylists.Remove(AfterLogin.objectUser.mPlaylists.Where(x => x.mName == b).Single());
 

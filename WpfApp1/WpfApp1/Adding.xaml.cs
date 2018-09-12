@@ -33,7 +33,7 @@ namespace WpfApp1
         private void Button_Back(object sender, RoutedEventArgs e)
         {
             
-            this.Close();
+            this.Hide();
             Create.createWIndow.Show();
         }
 
