@@ -8,13 +8,13 @@
         Title="Spooftify Music Search" Height="300" Width="500">
     <DockPanel>
         <StackPanel Orientation="Horizontal" DockPanel.Dock="Top">
-            <TextBox Width="100">
+            <TextBox x:Name="SearchText" Width="100">
             </TextBox>
-            <Button >
+            <Button Click="Search_Click">
                 Search
             </Button>
             <Label Content="      Search By: "/>
-            <ComboBox SelectedIndex="0" Width="100">
+            <ComboBox x:Name="SearchBy" SelectedIndex="0" Width="100" DataContextChanged="ComboBox_DataContextChanged">
                 <ComboBoxItem Content="Song Title"/>
                 <ComboBoxItem Content="Artist"/>
                 <ComboBoxItem Content="Album"/>
@@ -31,25 +31,54 @@
             <Border Grid.Column="0" BorderBrush="Gray" BorderThickness="1">
                 <StackPanel>
                     <Label  Content="Song Title" BorderBrush="Black" BorderThickness="1"/>
-                    <ListBox/>
+                    <ListBox x:Name="Titles">
+                        <ListBox.ItemContainerStyle>
+                            <Style TargetType="ListBoxItem">
+                                <Setter Property="BorderThickness" Value="1" />
+                                <Setter Property="BorderBrush" Value="Gray" />
+                            </Style>
+                        </ListBox.ItemContainerStyle>
+                    </ListBox>
                 </StackPanel>
             </Border>
             <Border  Grid.Column="1" BorderBrush="Gray" BorderThickness="1">
                 <StackPanel>
                     <Label  Content="Artist" BorderBrush="Black" BorderThickness="1"/>
-                    <ListBox/>
+                    <ListBox x:Name="Artists">
+                        <ListBox.ItemContainerStyle>
+                            <Style TargetType="ListBoxItem">
+                                <Setter Property="BorderThickness" Value="1" />
+                                <Setter Property="BorderBrush" Value="Gray" />
+                            </Style>
+                        </ListBox.ItemContainerStyle>
+                    </ListBox>
                 </StackPanel>
             </Border>
             <Border  Grid.Column="2" BorderBrush="Gray" BorderThickness="1">
                 <StackPanel>
                     <Label  Content="Album" BorderBrush="Black" BorderThickness="1"/>
-                    <ListBox/>
+                    <ListBox x:Name="Albums">
+                        <ListBox.ItemContainerStyle>
+                            <Style TargetType="ListBoxItem">
+                                <Setter Property="BorderThickness" Value="1" />
+                                <Setter Property="BorderBrush" Value="Gray" />
+                            </Style>
+                        </ListBox.ItemContainerStyle>
+                    </ListBox>
                 </StackPanel>
             </Border>
             <Border Grid.Column="3" BorderBrush="Gray" BorderThickness="1">
                 <StackPanel>
                     <Label Content="Add to Playlist" BorderBrush="Black" BorderThickness="1"/>
-                    <ListBox/>
+                    <ListBox x:Name="AddButtons">
+                        <ListBox.ItemContainerStyle>
+                            <Style TargetType="ListBoxItem">
+                                <Setter Property="BorderThickness" Value="1" />
+                                <Setter Property="BorderBrush" Value="Gray" />
+                                <Setter Property="Background" Value="LightBlue" />
+                            </Style>
+                        </ListBox.ItemContainerStyle>
+                    </ListBox>
                 </StackPanel>
             </Border>
         </Grid>

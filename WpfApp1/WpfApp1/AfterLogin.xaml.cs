@@ -107,6 +107,7 @@ namespace WpfApp1
         {
 
         }
+
         private void OpenAddingPlayList(object sender, RoutedEventArgs e)
         {
             afterLoginWindow = this;
