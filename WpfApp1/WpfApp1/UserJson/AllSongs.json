@@ -1,28 +1,29 @@
-{"mName": "allSongs"
-,"mSongs":[
-  {
-    "mTitle": "BangBangBang",
-    "mArtist": "BigBang",
-    "mExtension": ".mp3",
-    "mAlbum": "Made Series"
-  },
-  {
-    "mTitle": "Baam",
-    "mArtist": "MoMoLand",
-    "mExtension": ".mp3",
-    "mAlbum": "N/A"
-  },
-  {
-    "mTitle": "LaTaTa",
-    "mArtist": "(G)I-DLE",
-    "mExtension": ".mp3",
-    "mAlbum" :  "N/A"
-  },
-  {
-    "mTitle": "bang",
-    "mArtist": "BigBang",
-    "mExtension": ".mp4",
-    "mAlbum": "N/A"
-  }
-]
+{
+  "mName": "allSongs",
+  "mSongs": [
+    {
+      "mTitle": "BangBangBang",
+      "mArtist": "BigBang",
+      "mExtension": ".mp3",
+      "mAlbum": "Made Series"
+    },
+    {
+      "mTitle": "Baam",
+      "mArtist": "MoMoLand",
+      "mExtension": ".mp3",
+      "mAlbum": "N/A"
+    },
+    {
+      "mTitle": "LaTaTa",
+      "mArtist": "(G)I-DLE",
+      "mExtension": ".mp3",
+      "mAlbum": "N/A"
+    },
+    {
+      "mTitle": "bang",
+      "mArtist": "BigBang",
+      "mExtension": ".mp4",
+      "mAlbum": "N/A"
+    }
+  ]
 }
