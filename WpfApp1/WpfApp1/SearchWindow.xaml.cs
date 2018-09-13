@@ -31,14 +31,7 @@ namespace WpfApp1
 
         private void Search_Click(object sender, RoutedEventArgs e)
         {
-            Titles.ItemsSource = null;
-            Artists.ItemsSource = null;
-            Albums.ItemsSource = null;
-            AddButtons.ItemsSource = null;
-            allTitles.Clear();
-            allAlbums.Clear();
-            allArtists.Clear();
-            allAdds.Clear();
+            Reset();
             string searchVal = SearchText.Text;
             if (SearchBy.SelectedIndex == 0)
             {
@@ -92,8 +85,66 @@ namespace WpfApp1
         private void Search_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.Key == Key.Enter)
-            { 
-                Titles.ItemsSource = null;
+            {
+                Reset();
+                string searchVal = SearchText.Text;
+                if (SearchBy.SelectedIndex == 0)
+                {
+                    foreach (Song x in LoginScreen.allSongs.mSongs)
+                    {
+                        if (x.mTitle.ToLower().Contains(searchVal.ToLower()))
+                        {
+                            allTitles.Add(x.mTitle);
+                            allArtists.Add(x.mArtist);
+                            allAlbums.Add(x.mAlbum);
+                            allAdds.Add("Choose Playlist");
+                        }
+                    }
+                }
+                else if (SearchBy.SelectedIndex == 1)
+                {
+                    foreach (Song x in LoginScreen.allSongs.mSongs)
+                    {
+                        if (x.mArtist.ToLower().Contains(searchVal.ToLower()))
+                        {
+                            allTitles.Add(x.mTitle);
+                            allArtists.Add(x.mArtist);
+                            allAlbums.Add(x.mAlbum);
+                            allAdds.Add("Choose Playlist");
+                        }
+                    }
+                }
+                else if (SearchBy.SelectedIndex == 2)
+                {
+                    foreach (Song x in LoginScreen.allSongs.mSongs)
+                    {
+                        if (x.mAlbum.ToLower().Contains(searchVal.ToLower()))
+                        {
+                            allTitles.Add(x.mTitle);
+                            allArtists.Add(x.mArtist);
+                            allAlbums.Add(x.mAlbum);
+                            allAdds.Add("Choose Playlist");
+                        }
+                    }
+                }
+                Titles.ItemsSource = allTitles;
+                Artists.ItemsSource = allArtists;
+                Albums.ItemsSource = allAlbums;
+                AddButtons.ItemsSource = allAdds;
+            }
+        }
+
+        private void Back_Click(object sender, RoutedEventArgs e)
+        {
+            SearchText.Text = "";
+            Reset();
+            this.Hide();
+            AfterLogin.afterLoginWindow.Show();
+        }
+
+        private void Reset()
+        {
+            Titles.ItemsSource = null;
             Artists.ItemsSource = null;
             Albums.ItemsSource = null;
             AddButtons.ItemsSource = null;
@@ -101,50 +152,21 @@ namespace WpfApp1
             allAlbums.Clear();
             allArtists.Clear();
             allAdds.Clear();
-            string searchVal = SearchText.Text;
-            if (SearchBy.SelectedIndex == 0)
+        }
+
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            if (!LoginScreen.LoginWindow.closingFlag)
             {
-                foreach (Song x in LoginScreen.allSongs.mSongs)
-                {
-                    if (x.mTitle.ToLower().Contains(searchVal.ToLower()))
-                    {
-                        allTitles.Add(x.mTitle);
-                        allArtists.Add(x.mArtist);
-                        allAlbums.Add(x.mAlbum);
-                        allAdds.Add("Choose Playlist");
-                    }
-                }
+                LoginScreen.LoginWindow.ConfirmExit();
             }
-            else if (SearchBy.SelectedIndex == 1)
+            if (LoginScreen.LoginWindow.closingFlag)
             {
-                foreach (Song x in LoginScreen.allSongs.mSongs)
-                {
-                    if (x.mArtist.ToLower().Contains(searchVal.ToLower()))
-                    {
-                        allTitles.Add(x.mTitle);
-                        allArtists.Add(x.mArtist);
-                        allAlbums.Add(x.mAlbum);
-                        allAdds.Add("Choose Playlist");
-                    }
-                }
+                App.Current.Shutdown();
             }
-            else if (SearchBy.SelectedIndex == 2)
+            else
             {
-                foreach (Song x in LoginScreen.allSongs.mSongs)
-                {
-                    if (x.mAlbum.ToLower().Contains(searchVal.ToLower()))
-                    {
-                        allTitles.Add(x.mTitle);
-                        allArtists.Add(x.mArtist);
-                        allAlbums.Add(x.mAlbum);
-                        allAdds.Add("Choose Playlist");
-                    }
-                }
-            }
-            Titles.ItemsSource = allTitles;
-            Artists.ItemsSource = allArtists;
-            Albums.ItemsSource = allAlbums;
-            AddButtons.ItemsSource = allAdds;
+                e.Cancel = true;
             }
         }
     }
