@@ -5,10 +5,11 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApp1"
         mc:Ignorable="d"
-        Title="Spooftify Music Search" Height="300" Width="500">
+        Title="Spooftify Music Search" Height="300" Width="500" Closing="Window_Closing">
     <DockPanel>
-        <StackPanel Orientation="Horizontal" DockPanel.Dock="Top">
-            <TextBox x:Name="SearchText" Width="100">
+        <DockPanel DockPanel.Dock="Top">
+            <StackPanel Orientation="Horizontal" DockPanel.Dock="Left" HorizontalAlignment="Left">
+            <TextBox KeyDown="Search_KeyDown" x:Name="SearchText" Width="100">
             </TextBox>
             <Button Click="Search_Click">
                 Search
@@ -20,7 +21,9 @@
                 <ComboBoxItem Content="Album"/>
             </ComboBox>
         </StackPanel>
-        <Grid>
+        <Button Click="Back_Click" Content="Back" Width="50" HorizontalAlignment="Right"/>
+    </DockPanel>
+    <Grid>
             <Grid.RowDefinitions/>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
