@@ -12,7 +12,7 @@
         <Button Click="Button_Back"  HorizontalAlignment="Right" Margin="0,15,19.8,368" FontSize="25" Foreground="White" Background="green" Width="63" Content="back"/>
         <Label Name="listTitle"  FontSize="25" Foreground="White" HorizontalContentAlignment="Center"  Margin="314,9,313,368" Width="165"/>
         <ListBox Name="aList"  HorizontalAlignment="Left" Height="294" Margin="90,116,0,0" VerticalAlignment="Top" Width="224" SelectionChanged="ListBox_SelectionChanged"/>
-        <ListBox Name="addedSongs"  HorizontalAlignment="Left" Height="294" Margin="480,116,0,0" VerticalAlignment="Top" Width="224"/>
+        <ListBox Name="addedSongs"  HorizontalAlignment="Left" Height="294" Margin="480,116,0,0" VerticalAlignment="Top" Width="224" SelectionChanged="addedSongs_SelectionChanged"/>
         <Label FontSize="25" Foreground="White" HorizontalAlignment="Center" Content="Available Songs" Margin="111,51,500.6,326" Width="182"/>
         <Label FontSize="25" Foreground="White" HorizontalAlignment="Center" Content="Added Songs" Margin="509,51,102.6,326" Width="182"/>
         <Button Click="Button_Add"  HorizontalAlignment="Right" Margin="0,183,367,201" FontSize="25" Foreground="White" Background="green" Width="63" Content="Add" RenderTransformOrigin="-5.554,3.499"/>

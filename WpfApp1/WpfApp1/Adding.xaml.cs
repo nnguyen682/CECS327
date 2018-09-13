@@ -27,7 +27,12 @@ namespace WpfApp1
             listTitle.Content =   Create.selectedList.ToString();
             currentPlayList = AfterLogin.objectUser.mPlaylists.Where(x => x.mName == Create.selectedList.ToString()).Single();
             foreach (var b in currentPlayList.mSongs)
-                addedSongs.Items.Add(b.mArtist + "-" +b.mTitle + b.mExtension);
+            {
+                ListBoxItem itm = new ListBoxItem();
+                string trythis = b.mArtist + "-" + b.mTitle + b.mExtension;
+                itm.Content = trythis;
+                addedSongs.Items.Add(itm);
+            }
         }
 
         private void Button_Back(object sender, RoutedEventArgs e)
@@ -64,10 +69,11 @@ namespace WpfApp1
         private void Button_Remove(object sender, RoutedEventArgs e)
         {
             var msg = "No song was selected to delete";
-
-            string b = (string) addedSongs.SelectedItem;
+            
+            
             if (addedSongs.SelectedItem != null)
             {
+                string b = ((ListBoxItem)addedSongs.SelectedItem).Content.ToString();
                 addedSongs.Items.Remove(addedSongs.SelectedItem);
                 AfterLogin.objectUser.mPlaylists.Where(x => x.mName == currentPlayList.mName).Single().deleteSong(AfterLogin.objectUser.mPlaylists.Where(x => x.mName == currentPlayList.mName).Single().mSongs.Where(x => x.mArtist + '-' + x.mTitle + x.mExtension == b).Single());
             }
@@ -89,6 +95,11 @@ namespace WpfApp1
             {
                 e.Cancel = true;
             }
+        }
+
+        private void addedSongs_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
         }
     }
 }

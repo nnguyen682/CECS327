@@ -8,7 +8,7 @@
         Title="Spooftify Music Search" Height="300" Width="500">
     <DockPanel>
         <StackPanel Orientation="Horizontal" DockPanel.Dock="Top">
-            <TextBox x:Name="SearchText" Width="100">
+            <TextBox KeyDown="Search_KeyDown" x:Name="SearchText" Width="100">
             </TextBox>
             <Button Click="Search_Click">
                 Search
