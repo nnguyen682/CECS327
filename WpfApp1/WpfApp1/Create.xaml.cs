@@ -77,10 +77,13 @@ namespace WpfApp1
         }
         private void Go(object sender, RoutedEventArgs e)
         {
-            Adding b = new Adding();
-            createWIndow = this;
-            this.Hide();
-            b.Show();
+            if (list.SelectedItem != null)
+            {
+                Adding b = new Adding();
+                createWIndow = this;
+                this.Hide();
+                b.Show();
+            }
         }
         private void ListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
