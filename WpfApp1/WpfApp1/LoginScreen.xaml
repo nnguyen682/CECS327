@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApp1"
         mc:Ignorable="d"
-        Title="LoginScreen" ResizeMode="NoResize" Height="700" Width="600" Closing="Window_Closing">
+        Title="LoginScreen" ResizeMode="CanMinimize" Height="700" Width="600" Closing="Window_Closing">
     <Window.Resources>
         <Style x:Key="{x:Type PasswordBox}"
            TargetType="{x:Type PasswordBox}">

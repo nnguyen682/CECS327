@@ -42,7 +42,7 @@ namespace WpfApp1
         {
             int counter = 0;
             var msg = "Incorrect Username or Password!";
-            
+
             foreach(var x in everyUser.Users)
             {
                 
