@@ -23,7 +23,7 @@ namespace WpfApp1
         public Adding()
         {
             InitializeComponent();
-            aList.ItemsSource = AfterLogin.mediaFileList;
+            //aList.ItemsSource = AfterLogin.mediaFileList;
             listTitle.Content =   Create.selectedList.ToString();
             currentPlayList = AfterLogin.objectUser.mPlaylists.Where(x => x.mName == Create.selectedList.ToString()).Single();
             foreach (var b in currentPlayList.mSongs)
@@ -47,6 +47,7 @@ namespace WpfApp1
 
         }
 
+        /**
         private void Button_Add(object sender, RoutedEventArgs e)
         {
 
@@ -65,7 +66,8 @@ namespace WpfApp1
                     MessageBox.Show("Selected song is already added in the playlist");
             }
             
-    }
+        }*/
+
         private void Button_Remove(object sender, RoutedEventArgs e)
         {
             var msg = "No song was selected to delete";
@@ -100,6 +102,13 @@ namespace WpfApp1
         private void addedSongs_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
 
+        }
+
+        private void Search_Click(object sender, RoutedEventArgs e)
+        {
+            SearchWindow sW = new SearchWindow();
+            this.Hide();
+            sW.Show();
         }
     }
 }

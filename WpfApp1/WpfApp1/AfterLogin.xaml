@@ -17,7 +17,6 @@
                     </StackPanel>
                 </Button>
                 <Label x:Name="username" Background="Green" Foreground="LightGray" HorizontalContentAlignment="Center" FontWeight="Bold">username</Label>
-                <!-- <Button Content="Browse" Margin="0,0,0,-19.2" Width="78" Click="Button_Click_1"></Button> -->
                 <ListBox x:Name="list"  Height="382" SelectionChanged="ListBox_SelectionChanged" Background="Black" Foreground="LightGray">
                 </ListBox>
             </StackPanel>
@@ -29,6 +28,7 @@
                         </Style>
                     </Button.Resources>
                 </Button>
+                <!--
                 <Button HorizontalAlignment="Center" FontSize="20" Foreground="LightGray" Background="Green" Width="150" Height="40" Content="Search" Click="Search_Click">
                     <Button.Resources>
                         <Style TargetType="{x:Type Border}">
@@ -36,6 +36,7 @@
                         </Style>
                     </Button.Resources>
                 </Button>
+                -->
                 <Button HorizontalAlignment="Right" FontSize="20" Foreground="LightGray" Background="Green" Margin="10" Width="150" Height="40" Content="Logout" Click="Button_Logout">
                     <Button.Resources>
                         <Style TargetType="{x:Type Border}">

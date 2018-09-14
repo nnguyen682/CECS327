@@ -70,7 +70,7 @@ namespace WpfApp1
                 list.ItemsSource = mediaFileList;
                 ax.URL = mediaFolder + "\\" + mediaFileList[0];
             }
-
+            afterLoginWindow = this;
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -87,7 +87,6 @@ namespace WpfApp1
         private void Button_Profile(object sender, RoutedEventArgs e)
         {
 
-            afterLoginWindow = this;
             Profile b = new Profile();
             this.Hide();
             b.Show();
@@ -110,7 +109,6 @@ namespace WpfApp1
 
         private void OpenAddingPlayList(object sender, RoutedEventArgs e)
         {
-            afterLoginWindow = this;
             Create b = new Create();
             this.Hide();
             b.Show();
@@ -132,12 +130,12 @@ namespace WpfApp1
             }
         }
 
+        /**
         private void Search_Click(object sender, RoutedEventArgs e)
         {
-            afterLoginWindow = this;
             SearchWindow sW = new SearchWindow();
             this.Hide();
             sW.Show();
-        }
+        }*/
     }
 }
