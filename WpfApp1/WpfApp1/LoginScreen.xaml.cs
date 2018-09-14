@@ -50,9 +50,7 @@ namespace WpfApp1
                 {
                     AfterLogin b = new AfterLogin(x);
                     counter++;
-                    LoginWindow = this;
-                    user.Text = "";
-                    pass.Password = "";
+                    Reset();
                     this.Hide();
                     b.Show();
                     break;
@@ -78,9 +76,7 @@ namespace WpfApp1
                     {
                         AfterLogin b = new AfterLogin(x);
                         counter++;
-                        LoginWindow = this;
-                        user.Text = "";
-                        pass.Password = "";
+                        Reset();
                         this.Hide();
                         b.Show();
                         break;
@@ -93,6 +89,13 @@ namespace WpfApp1
                     MessageBox.Show(msg);
                 }
             }
+        }
+
+        private void Reset()
+        {
+            user.Text = "";
+            pass.Password = "";
+            SignInButton.Focus();
         }
 
         private void OnUserChanged(object sender, RoutedEventArgs e)
