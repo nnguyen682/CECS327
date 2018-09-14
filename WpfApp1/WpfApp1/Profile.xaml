@@ -5,10 +5,47 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApp1"
         mc:Ignorable="d"
-        Title="Profile" Height="450" Width="800" Closing="Window_Closing">
+        Title="Profile" ResizeMode="CanMinimize" Height="700" Width="600" Closing="Window_Closing">
     <Grid Background="Black">
-        
-        <Grid.ColumnDefinitions>
+        <StackPanel>
+            <Button Click="Button_Back" Content="Back" FontSize="20" Background="Green" Foreground="LightGray" Margin="20" Width="80" Height="40" HorizontalAlignment="Right">
+                <Button.Resources>
+                    <Style TargetType="{x:Type Border}">
+                        <Setter Property="CornerRadius" Value="20"/>
+                    </Style>
+                </Button.Resources>
+            </Button>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="3*" />
+                    <RowDefinition Height="4*" />
+                    <RowDefinition Height="3*" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="2*" />
+                    <ColumnDefinition Width="6*" />
+                    <ColumnDefinition Width="2*" />
+                </Grid.ColumnDefinitions>
+
+                <Grid Grid.Column="1" >
+                    <StackPanel>
+                        <Viewbox Stretch="Uniform" Height="260">
+                            <Image Name="profile" HorizontalAlignment="Center"></Image>
+                        </Viewbox>
+                        <Label   FontSize="24" Foreground="LightGray" >Username:</Label>
+                        <Label x:Name="name" FontSize="24" Foreground="LightGray">Nhan Nguyen</Label>
+                        <Label   FontSize="24" Foreground="LightGray" >Email:</Label>
+                        <Label x:Name="email" FontSize="24" Foreground="LightGray">nhannguyen683@gmail.com</Label>
+                        <Label   FontSize="24" Foreground="LightGray" >Birthday:</Label>
+                        <Label x:Name="Birthday" FontSize="24" Foreground="LightGray" >03/07/94</Label>
+                    </StackPanel>
+                </Grid>
+            </Grid>
+
+        </StackPanel>
+    
+
+        <!--<Grid.ColumnDefinitions>
             <ColumnDefinition Width="296" />
             <ColumnDefinition Width="1*" />
             <ColumnDefinition Width="90"/>
@@ -30,8 +67,6 @@
             <Label x:Name="Birthday" FontSize="25" Foreground="White" >03/07/94</Label>
         </StackPanel>
         <StackPanel Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" Margin="0,0,319,0" />
-        <StackPanel Grid.Column="1" Grid.Row="1" Margin="103,0,10,0" Grid.ColumnSpan="2" />
-
-
+        <StackPanel Grid.Column="1" Grid.Row="1" Margin="103,0,10,0" Grid.ColumnSpan="2" />-->
     </Grid>
 </Window>
