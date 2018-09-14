@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         xmlns:windowsFrom="clr-namespace:System.Windows.Forms;assembly=System.Windows.Forms"
         xmlns:activeXControl="clr-namespace:AxWMPLib;assembly=AxInterop.WMPLib"
-        Title="AfterLogin" Height="450" Width="800" Closing="Window_Closing">
+        Title="AfterLogin" Height="450" Width="800" MinHeight="300" MinWidth="680" Closing="Window_Closing">
     <Grid Background="white">
         <DockPanel >
             <StackPanel>
@@ -16,38 +16,35 @@
                         <Image x:Name="profile"  Width="73" Height="77" Stretch="Uniform"    />
                     </StackPanel>
                 </Button>
-                <Label x:Name="username" Background="Green" Foreground="White">username</Label>
+                <Label x:Name="username" Background="Green" Foreground="LightGray" HorizontalContentAlignment="Center" FontWeight="Bold">username</Label>
                 <!-- <Button Content="Browse" Margin="0,0,0,-19.2" Width="78" Click="Button_Click_1"></Button> -->
-                <ListBox x:Name="list"  Height="382" SelectionChanged="ListBox_SelectionChanged">
+                <ListBox x:Name="list"  Height="382" SelectionChanged="ListBox_SelectionChanged" Background="Black" Foreground="LightGray">
                 </ListBox>
             </StackPanel>
-
-            <StackPanel Grid.Column="0" DockPanel.Dock="Top" Orientation="Horizontal" HorizontalAlignment="Stretch">
-                <Grid    Background="Black"  HorizontalAlignment="Stretch" Width="717">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="17*"/>
-                        <RowDefinition Height="20*"/>
-                        <RowDefinition Height="0*"/>
-                    </Grid.RowDefinitions>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="Auto" />
-                        <ColumnDefinition Width="452" />
-
-                    </Grid.ColumnDefinitions>
-                    <StackPanel Orientation="Horizontal" Grid.Column="0"  >
-                        <Button Click="OpenAddingPlayList"  Background="Green" Foreground="White" FontSize="25" Content="PlayList"/>
-                        <Button Margin="10,0,0,0" Background="Green" Foreground="White" FontSize="25" Content="Search" Click="Search_Click"/>
-                    </StackPanel>
-                    <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,0,0.2,-0.2" Grid.RowSpan="3" >
-
-                        <Button  Margin="0,0,0,0" Background="Green" Foreground="White" FontSize="25" Content="Get Out!" Click="Button_Logout"/>
-                    </StackPanel>
-                </Grid>
-
-
-            </StackPanel>
-
-
+            <Grid DockPanel.Dock="Top" Background="Black">
+                <Button HorizontalAlignment="Left" Click="OpenAddingPlayList" FontSize="20" Foreground="LightGray" Background="Green" Margin="10" Width="150" Height="40" Content="Edit Playlists">
+                    <Button.Resources>
+                        <Style TargetType="{x:Type Border}">
+                            <Setter Property="CornerRadius" Value="20"/>
+                        </Style>
+                    </Button.Resources>
+                </Button>
+                <Button HorizontalAlignment="Center" FontSize="20" Foreground="LightGray" Background="Green" Width="150" Height="40" Content="Search" Click="Search_Click">
+                    <Button.Resources>
+                        <Style TargetType="{x:Type Border}">
+                            <Setter Property="CornerRadius" Value="20"/>
+                        </Style>
+                    </Button.Resources>
+                </Button>
+                <Button HorizontalAlignment="Right" FontSize="20" Foreground="LightGray" Background="Green" Margin="10" Width="150" Height="40" Content="Logout" Click="Button_Logout">
+                    <Button.Resources>
+                        <Style TargetType="{x:Type Border}">
+                            <Setter Property="CornerRadius" Value="20"/>
+                        </Style>
+                    </Button.Resources>
+                </Button>
+                
+            </Grid>
 
             <WindowsFormsHost x:Name="winsFormHost">
                 <activeXControl:AxWindowsMediaPlayer x:Name="media">
