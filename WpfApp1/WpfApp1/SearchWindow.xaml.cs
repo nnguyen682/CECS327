@@ -1,10 +1,14 @@
 ﻿using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Input;
-
+<<<<<<< HEAD
 using System.Windows.Controls;
 using System.Linq;
+=======
+using System.Linq;
 
+
+>>>>>>> 6d797a4e5c35b8842395eedc4fd952e152711c65
 namespace WpfApp1
 {
     /// <summary>
