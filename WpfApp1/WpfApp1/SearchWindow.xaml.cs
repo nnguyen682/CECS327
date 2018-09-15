@@ -1,7 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Input;
-
+using System.Windows.Controls;
+using System.Linq;
 namespace WpfApp1
 {
     /// <summary>
@@ -136,19 +137,34 @@ namespace WpfApp1
 
         private void Back_Click(object sender, RoutedEventArgs e)
         {
+            List<string> temp = new List<string>();
+            foreach (var b in Adding.currentPlayList.mSongs)
+                temp.Add(b.mArtist + "-" + b.mTitle + b.mExtension);
+            AfterLogin.ListofListBox.Where(x => x.Name == Adding.currentPlayList.mName).Single().ItemsSource = temp;
             SearchText.Text = "";
             Reset();
             this.Hide();
-            AfterLogin.afterLoginWindow.Show();
+            Adding.AddingWindow.Show();
         }
         private void Add_Click(object sender, RoutedEventArgs e)
         {
             if(Titles.SelectedItem != null)
+            {
+                ListBoxItem itm = new ListBoxItem();
 
-            SearchText.Text = "";
-            Reset();
-            this.Hide();
-            AfterLogin.afterLoginWindow.Show();
+                Song b = LoginScreen.allSongs.mSongs.Where(x => x.mTitle == (string)Titles.SelectedValue).Single();
+                string trythis = b.mArtist + "-" + b.mTitle + b.mExtension;
+                
+         
+                if (Adding.currentPlayList.mSongs.FirstOrDefault(x => (x.mArtist + "-" + x.mTitle + x.mExtension) == trythis) == null)
+                {  
+                    Adding.currentPlayList.addSong(LoginScreen.allSongs.mSongs.Where(x => (x.mArtist + "-" + x.mTitle + x.mExtension) == trythis).Single());
+                }
+                else
+                    MessageBox.Show("Selected song is already added in the playlist");
+            }
+
+
         }
 
         private void Reset()

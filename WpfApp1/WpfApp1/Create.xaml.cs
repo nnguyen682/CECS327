@@ -21,6 +21,7 @@ namespace WpfApp1
     {
         public static Window createWIndow;
         public static string selectedList = "";
+        
         public Create()
         {
             InitializeComponent();
@@ -68,6 +69,8 @@ namespace WpfApp1
                 newListBox.Foreground = Brushes.White;
                 var newMediaFileList = new List<string>();
                 newStack.Children.Add(newListBox);
+                newListBox.Name = newList.Text;
+                AfterLogin.ListofListBox.Add(newListBox);
                 exp1.Content = newStack;
                 exp1.Header = newList.Text;
                 exp1.Foreground = Brushes.LightGray;

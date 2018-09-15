@@ -20,6 +20,7 @@ namespace WpfApp1
     public partial class Adding : Window
     {
         public static Playlist currentPlayList;
+        public static Window AddingWindow;
         public Adding()
         {
             InitializeComponent();
@@ -47,7 +48,7 @@ namespace WpfApp1
 
         }
 
-        /**
+        /*
         private void Button_Add(object sender, RoutedEventArgs e)
         {
 
@@ -56,7 +57,7 @@ namespace WpfApp1
                 ListBoxItem itm = new ListBoxItem();
                 string trythis = (string)aList.SelectedValue;
                 itm.Content = trythis;
-
+                
                 if (currentPlayList.mSongs.FirstOrDefault(x => (x.mArtist + "-" + x.mTitle + x.mExtension) == trythis) == null)
                 {
                     currentPlayList.addSong(LoginScreen.allSongs.mSongs.Where(x => (x.mArtist + "-" + x.mTitle + x.mExtension) == trythis).Single());
@@ -66,7 +67,8 @@ namespace WpfApp1
                     MessageBox.Show("Selected song is already added in the playlist");
             }
             
-        }*/
+        }
+        */
 
         private void Button_Remove(object sender, RoutedEventArgs e)
         {
@@ -106,6 +108,7 @@ namespace WpfApp1
 
         private void Search_Click(object sender, RoutedEventArgs e)
         {
+            AddingWindow = this;
             SearchWindow sW = new SearchWindow();
             this.Hide();
             sW.Show();

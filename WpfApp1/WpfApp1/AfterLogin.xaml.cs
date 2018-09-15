@@ -30,11 +30,14 @@ namespace WpfApp1
         public static Window afterLoginWindow;
         public static AxWMPLib.AxWindowsMediaPlayer ax;
         public static StackPanel AllPLaylist;
+        public static List<System.Windows.Controls.ListBox> ListofListBox ;
+
         string mediaFolder = System.IO.Path.Combine(System.Windows.Forms.Application.StartupPath, "MusicLibrary");
       
-
+        
         public AfterLogin(User x)
         {
+            ListofListBox = new List<System.Windows.Controls.ListBox>();
             afterLoginWindow = this;
             var newBox = new System.Windows.Controls.ListBox();
             objectUser = new User();
@@ -78,6 +81,8 @@ namespace WpfApp1
                 foreach (var d in b.mSongs)
                     newMediaFileList.Add(d.mArtist + "-" + d.mTitle + d.mExtension);
                 newListBox.ItemsSource = newMediaFileList;
+                newListBox.Name = b.mName;
+                ListofListBox.Add(newListBox);
                 newStack.Children.Add(newListBox);
                 exp1.Content = newStack;
                 exp1.Header = b.mName;
@@ -88,7 +93,6 @@ namespace WpfApp1
             AllPLaylist = allPlaylist;
 
         }
-
         private void Button_Click(object sender, RoutedEventArgs e)
         {
 
