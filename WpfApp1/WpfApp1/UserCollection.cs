@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace WpfApp1
 {
-    class UserCollection
+    public class UserCollection
     {
         private List<User> users;
         public List<User> Users { get => users; set => users = value; }

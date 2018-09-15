@@ -16,7 +16,6 @@ using WMPLib;
 using AxWMPLib;
 using System.Windows.Forms;
 
-
 namespace WpfApp1
 {
     /// <summary>
@@ -27,12 +26,13 @@ namespace WpfApp1
 
         public static List<string> mediaFileList;
         public static User objectUser;
-        public static Window afterLoginWindow;
+        public static AfterLogin afterLoginWindow;
         public static AxWMPLib.AxWindowsMediaPlayer ax;
         public static StackPanel AllPLaylist;
         public static List<System.Windows.Controls.ListBox> ListofListBox ;
 
         string mediaFolder = System.IO.Path.Combine(System.Windows.Forms.Application.StartupPath, "MusicLibrary");
+<<<<<<< HEAD
       
         
         public AfterLogin(User x)
@@ -40,6 +40,12 @@ namespace WpfApp1
             ListofListBox = new List<System.Windows.Controls.ListBox>();
             afterLoginWindow = this;
             var newBox = new System.Windows.Controls.ListBox();
+=======
+
+        public AfterLogin(User x)
+        {
+            //var newBox = new System.Windows.Controls.ListBox();
+>>>>>>> 6d797a4e5c35b8842395eedc4fd952e152711c65
             objectUser = new User();
             mediaFileList = new List<string>();
             InitializeComponent();
@@ -56,6 +62,47 @@ namespace WpfApp1
                 if (file.Extension == ".mp3" || file.Extension == ".mp4")
                     mediaFileList.Add(file.Name);
             }
+            /*if (mediaFileList != null)
+            {
+                newBox.ItemsSource = mediaFileList;
+                ax.URL = mediaFolder + "\\" + mediaFileList[0];
+            }
+            var newstackPanel = new StackPanel { Name = "NewExpanderStackPanel" };
+            newstackPanel.Children.Add(newBox);
+            Expander exp = new Expander();
+            exp.Content = newstackPanel;
+            exp.Header = "Available Songs";
+            exp.Foreground = Brushes.LightGray;
+            allPlaylist.Children.Add(exp);
+            newBox.Background = Brushes.Black;
+            newBox.Foreground = Brushes.LightGray;
+            foreach (var b in objectUser.mPlaylists)
+            {
+                Expander exp1 = new Expander();
+                var newStack = new StackPanel { Name = "NewExpanderStackPanel" };
+                var newListBox = new System.Windows.Controls.ListBox();
+                newListBox.Background = Brushes.Black;
+                newListBox.Foreground = Brushes.LightGray;
+                var newMediaFileList = new List<string>();
+                foreach (var d in b.mSongs)
+                    newMediaFileList.Add(d.mArtist + "-" + d.mTitle + d.mExtension);
+                newListBox.ItemsSource = newMediaFileList;
+                newStack.Children.Add(newListBox);
+                exp1.Content = newStack;
+                exp1.Header = b.mName;
+                exp1.Foreground = Brushes.LightGray;
+                allPlaylist.Children.Add(exp1);
+
+            }
+            AllPLaylist = allPlaylist;*/
+            AllPLaylist = new StackPanel { Name = "NewExpanderStackPanel" };
+            reloadPlaylists();
+        }
+
+        public void reloadPlaylists()
+        {
+            AllPLaylist.Children.Clear();
+            var newBox = new System.Windows.Controls.ListBox();
             if (mediaFileList != null)
             {
                 newBox.ItemsSource = mediaFileList;
@@ -91,7 +138,6 @@ namespace WpfApp1
 
             }
             AllPLaylist = allPlaylist;
-
         }
         private void Button_Click(object sender, RoutedEventArgs e)
         {
@@ -106,7 +152,7 @@ namespace WpfApp1
 
         private void Button_Profile(object sender, RoutedEventArgs e)
         {
-            
+            afterLoginWindow = this;
             Profile b = new Profile();
             this.Hide();
             b.Show();
@@ -118,7 +164,6 @@ namespace WpfApp1
             mediaFileList.Clear();
             this.Hide();
             LoginScreen.LoginWindow.Show();
-
         }
 
         private void Button_Click_3(object sender, RoutedEventArgs e)
@@ -128,6 +173,7 @@ namespace WpfApp1
 
         private void OpenAddingPlayList(object sender, RoutedEventArgs e)
         {
+            afterLoginWindow = this;
             Create b = new Create();
             this.Hide();
             b.Show();
