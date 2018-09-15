@@ -35,8 +35,7 @@ namespace WpfApp1
 
         public AfterLogin(User x)
         {
-           
-            
+            afterLoginWindow = this;
             var newBox = new System.Windows.Controls.ListBox();
             objectUser = new User();
             mediaFileList = new List<string>();
@@ -74,7 +73,7 @@ namespace WpfApp1
                 var newStack = new StackPanel { Name = "NewExpanderStackPanel" };
                 var newListBox = new System.Windows.Controls.ListBox();
                 newListBox.Background = Brushes.Black;
-                newListBox.Foreground = Brushes.White;
+                newListBox.Foreground = Brushes.LightGray;
                 var newMediaFileList = new List<string>();
                 foreach (var d in b.mSongs)
                     newMediaFileList.Add(d.mArtist + "-" + d.mTitle + d.mExtension);
@@ -103,7 +102,7 @@ namespace WpfApp1
 
         private void Button_Profile(object sender, RoutedEventArgs e)
         {
-            afterLoginWindow = this;
+            
             Profile b = new Profile();
             this.Hide();
             b.Show();
@@ -125,7 +124,6 @@ namespace WpfApp1
 
         private void OpenAddingPlayList(object sender, RoutedEventArgs e)
         {
-            afterLoginWindow = this;
             Create b = new Create();
             this.Hide();
             b.Show();
