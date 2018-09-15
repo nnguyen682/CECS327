@@ -63,6 +63,8 @@ namespace WpfApp1
             newstackPanel.Children.Add(newBox);
             Expander exp = new Expander();
             exp.Content = newstackPanel;
+            exp.Header = "Available Songs";
+            exp.Foreground = Brushes.LightGray;
             allPlaylist.Children.Add(exp);
             newBox.Background = Brushes.Black;
             newBox.Foreground = Brushes.LightGray;
@@ -80,7 +82,7 @@ namespace WpfApp1
                 newStack.Children.Add(newListBox);
                 exp1.Content = newStack;
                 exp1.Header = b.mName;
-                
+                exp1.Foreground = Brushes.LightGray;
                 allPlaylist.Children.Add(exp1);
 
             }

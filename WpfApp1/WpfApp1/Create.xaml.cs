@@ -56,9 +56,9 @@ namespace WpfApp1
             if(!String.IsNullOrWhiteSpace(newList.Text))
             {
                 itm.Content = newList.Text;
-                list.Items.Add(itm);
+                list.Items.Add(itm );
                 AfterLogin.objectUser.mPlaylists.Add(new Playlist(newList.Text));
-                newList.Text = "";
+                
 
                 Expander exp1 = new Expander();
                 var newStack = new StackPanel { Name = "NewExpanderStackPanel" };
@@ -70,8 +70,9 @@ namespace WpfApp1
                 newStack.Children.Add(newListBox);
                 exp1.Content = newStack;
                 exp1.Header = newList.Text;
-                
+                exp1.Foreground = Brushes.LightGray;
                 AfterLogin.AllPLaylist.Children.Add(exp1);
+                newList.Text = "";
             }
         }
         private void DeleteButton(object sender, RoutedEventArgs e)
