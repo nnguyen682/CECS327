@@ -32,7 +32,7 @@ namespace WpfApp1
         public static List<System.Windows.Controls.ListBox> ListofListBox ;
 
         string mediaFolder = System.IO.Path.Combine(System.Windows.Forms.Application.StartupPath, "MusicLibrary");
-<<<<<<< HEAD
+
       
         
         public AfterLogin(User x)
@@ -40,12 +40,6 @@ namespace WpfApp1
             ListofListBox = new List<System.Windows.Controls.ListBox>();
             afterLoginWindow = this;
             var newBox = new System.Windows.Controls.ListBox();
-=======
-
-        public AfterLogin(User x)
-        {
-            //var newBox = new System.Windows.Controls.ListBox();
->>>>>>> 6d797a4e5c35b8842395eedc4fd952e152711c65
             objectUser = new User();
             mediaFileList = new List<string>();
             InitializeComponent();
@@ -62,39 +56,6 @@ namespace WpfApp1
                 if (file.Extension == ".mp3" || file.Extension == ".mp4")
                     mediaFileList.Add(file.Name);
             }
-            /*if (mediaFileList != null)
-            {
-                newBox.ItemsSource = mediaFileList;
-                ax.URL = mediaFolder + "\\" + mediaFileList[0];
-            }
-            var newstackPanel = new StackPanel { Name = "NewExpanderStackPanel" };
-            newstackPanel.Children.Add(newBox);
-            Expander exp = new Expander();
-            exp.Content = newstackPanel;
-            exp.Header = "Available Songs";
-            exp.Foreground = Brushes.LightGray;
-            allPlaylist.Children.Add(exp);
-            newBox.Background = Brushes.Black;
-            newBox.Foreground = Brushes.LightGray;
-            foreach (var b in objectUser.mPlaylists)
-            {
-                Expander exp1 = new Expander();
-                var newStack = new StackPanel { Name = "NewExpanderStackPanel" };
-                var newListBox = new System.Windows.Controls.ListBox();
-                newListBox.Background = Brushes.Black;
-                newListBox.Foreground = Brushes.LightGray;
-                var newMediaFileList = new List<string>();
-                foreach (var d in b.mSongs)
-                    newMediaFileList.Add(d.mArtist + "-" + d.mTitle + d.mExtension);
-                newListBox.ItemsSource = newMediaFileList;
-                newStack.Children.Add(newListBox);
-                exp1.Content = newStack;
-                exp1.Header = b.mName;
-                exp1.Foreground = Brushes.LightGray;
-                allPlaylist.Children.Add(exp1);
-
-            }
-            AllPLaylist = allPlaylist;*/
             AllPLaylist = new StackPanel { Name = "NewExpanderStackPanel" };
             reloadPlaylists();
         }
