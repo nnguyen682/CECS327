@@ -59,6 +59,19 @@ namespace WpfApp1
                 list.Items.Add(itm);
                 AfterLogin.objectUser.mPlaylists.Add(new Playlist(newList.Text));
                 newList.Text = "";
+
+                Expander exp1 = new Expander();
+                var newStack = new StackPanel { Name = "NewExpanderStackPanel" };
+                var newListBox = new System.Windows.Controls.ListBox();
+                newListBox.Name = newList.Text;
+                newListBox.Background = Brushes.Black;
+                newListBox.Foreground = Brushes.White;
+                var newMediaFileList = new List<string>();
+                newStack.Children.Add(newListBox);
+                exp1.Content = newStack;
+                exp1.Header = newList.Text;
+                
+                AfterLogin.AllPLaylist.Children.Add(exp1);
             }
         }
         private void DeleteButton(object sender, RoutedEventArgs e)

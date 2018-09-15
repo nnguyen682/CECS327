@@ -141,6 +141,15 @@ namespace WpfApp1
             this.Hide();
             AfterLogin.afterLoginWindow.Show();
         }
+        private void Add_Click(object sender, RoutedEventArgs e)
+        {
+            if(Titles.SelectedItem != null)
+
+            SearchText.Text = "";
+            Reset();
+            this.Hide();
+            AfterLogin.afterLoginWindow.Show();
+        }
 
         private void Reset()
         {
@@ -168,6 +177,11 @@ namespace WpfApp1
             {
                 e.Cancel = true;
             }
+        }
+
+        private void Titles_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
+        {
+
         }
     }
 }

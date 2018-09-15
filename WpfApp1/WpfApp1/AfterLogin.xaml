@@ -9,6 +9,7 @@
         xmlns:activeXControl="clr-namespace:AxWMPLib;assembly=AxInterop.WMPLib"
         Title="AfterLogin" Height="450" Width="800" MinHeight="300" MinWidth="680" Closing="Window_Closing">
     <Grid Background="white">
+        
         <DockPanel >
             <StackPanel>
                 <Button Name="profileButton" Click="Button_Profile"  >
@@ -17,9 +18,12 @@
                     </StackPanel>
                 </Button>
                 <Label x:Name="username" Background="Green" Foreground="LightGray" HorizontalContentAlignment="Center" FontWeight="Bold">username</Label>
-                <ListBox x:Name="list"  Height="382" SelectionChanged="ListBox_SelectionChanged" Background="Black" Foreground="LightGray">
-                </ListBox>
+
+                <StackPanel x:Name="allPlaylist" Selector.SelectionChanged="ListBox_SelectionChanged"  Background="Black" >
+
+                </StackPanel>
             </StackPanel>
+            
             <Grid DockPanel.Dock="Top" Background="Black">
                 <Button HorizontalAlignment="Left" Click="OpenAddingPlayList" FontSize="20" Foreground="LightGray" Background="Green" Margin="10" Width="150" Height="40" Content="Edit Playlists">
                     <Button.Resources>

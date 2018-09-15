@@ -21,7 +21,9 @@
                 <ComboBoxItem Content="Album"/>
             </ComboBox>
         </StackPanel>
+            <Button Click="Add_Click" Content="Add" Width="50" HorizontalAlignment="Right"/>
         <Button Click="Back_Click" Content="Back" Width="50" HorizontalAlignment="Right"/>
+            
     </DockPanel>
     <Grid>
             <Grid.RowDefinitions/>
@@ -34,7 +36,7 @@
             <Border Grid.Column="0" BorderBrush="Gray" BorderThickness="1">
                 <StackPanel>
                     <Label  Content="Song Title" BorderBrush="Black" BorderThickness="1"/>
-                    <ListBox x:Name="Titles">
+                    <ListBox x:Name="Titles" SelectionChanged="Titles_SelectionChanged">
                         <ListBox.ItemContainerStyle>
                             <Style TargetType="ListBoxItem">
                                 <Setter Property="BorderThickness" Value="1" />
