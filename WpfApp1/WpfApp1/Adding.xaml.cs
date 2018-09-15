@@ -21,6 +21,8 @@ namespace WpfApp1
     {
         public static Playlist currentPlayList;
         public static Window AddingWindow;
+        public static ListBox AddingListBox;
+        
         public Adding()
         {
             InitializeComponent();
@@ -34,11 +36,15 @@ namespace WpfApp1
                 itm.Content = trythis;
                 addedSongs.Items.Add(itm);
             }
+            AddingListBox = addedSongs;
         }
 
         private void Button_Back(object sender, RoutedEventArgs e)
         {
-            
+            List<string> temp = new List<string>();
+            foreach (var b in Adding.currentPlayList.mSongs)
+                temp.Add(b.mArtist + "-" + b.mTitle + b.mExtension);
+            AfterLogin.ListofListBox.Where(x => x.Name == Adding.currentPlayList.mName).Single().ItemsSource = temp;
             this.Hide();
             Create.createWIndow.Show();
         }

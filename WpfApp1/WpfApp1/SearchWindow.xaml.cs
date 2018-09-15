@@ -1,14 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Input;
-<<<<<<< HEAD
 using System.Windows.Controls;
 using System.Linq;
-=======
-using System.Linq;
 
-
->>>>>>> 6d797a4e5c35b8842395eedc4fd952e152711c65
 namespace WpfApp1
 {
     /// <summary>
@@ -146,10 +141,12 @@ namespace WpfApp1
 
         private void Back_Click(object sender, RoutedEventArgs e)
         {
-            List<string> temp = new List<string>();
-            foreach (var b in Adding.currentPlayList.mSongs)
-                temp.Add(b.mArtist + "-" + b.mTitle + b.mExtension);
-            AfterLogin.ListofListBox.Where(x => x.Name == Adding.currentPlayList.mName).Single().ItemsSource = temp;
+            ListBoxItem itm = new ListBoxItem();
+            foreach (var b in Adding.currentPlayList.mSongs) {
+                itm.Content = b.mArtist + "-" + b.mTitle + b.mExtension;
+                Adding.AddingListBox.Items.Add(itm);
+            }
+            
             SearchText.Text = "";
             Reset();
             this.Hide();

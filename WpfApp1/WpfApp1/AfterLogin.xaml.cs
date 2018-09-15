@@ -32,7 +32,7 @@ namespace WpfApp1
         public static List<System.Windows.Controls.ListBox> ListofListBox ;
 
         string mediaFolder = System.IO.Path.Combine(System.Windows.Forms.Application.StartupPath, "MusicLibrary");
-<<<<<<< HEAD
+
       
         
         public AfterLogin(User x)
@@ -40,12 +40,7 @@ namespace WpfApp1
             ListofListBox = new List<System.Windows.Controls.ListBox>();
             afterLoginWindow = this;
             var newBox = new System.Windows.Controls.ListBox();
-=======
 
-        public AfterLogin(User x)
-        {
-            //var newBox = new System.Windows.Controls.ListBox();
->>>>>>> 6d797a4e5c35b8842395eedc4fd952e152711c65
             objectUser = new User();
             mediaFileList = new List<string>();
             InitializeComponent();
@@ -95,7 +90,7 @@ namespace WpfApp1
 
             }
             AllPLaylist = allPlaylist;*/
-            AllPLaylist = new StackPanel { Name = "NewExpanderStackPanel" };
+            AllPLaylist = new StackPanel();
             reloadPlaylists();
         }
 
@@ -108,7 +103,7 @@ namespace WpfApp1
                 newBox.ItemsSource = mediaFileList;
                 ax.URL = mediaFolder + "\\" + mediaFileList[0];
             }
-            var newstackPanel = new StackPanel { Name = "NewExpanderStackPanel" };
+            var newstackPanel = new StackPanel();
             newstackPanel.Children.Add(newBox);
             Expander exp = new Expander();
             exp.Content = newstackPanel;
@@ -120,7 +115,7 @@ namespace WpfApp1
             foreach (var b in objectUser.mPlaylists)
             {
                 Expander exp1 = new Expander();
-                var newStack = new StackPanel { Name = "NewExpanderStackPanel" };
+                var newStack = new StackPanel ();
                 var newListBox = new System.Windows.Controls.ListBox();
                 newListBox.Background = Brushes.Black;
                 newListBox.Foreground = Brushes.LightGray;
@@ -146,12 +141,14 @@ namespace WpfApp1
 
         private void ListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if(e.AddedItems[0] !=null)
+            if(e.AddedItems.Count !=0)
                ax.URL = mediaFolder + "\\" + e.AddedItems[0];
+ 
         }
 
         private void Button_Profile(object sender, RoutedEventArgs e)
         {
+            
             afterLoginWindow = this;
             Profile b = new Profile();
             this.Hide();
