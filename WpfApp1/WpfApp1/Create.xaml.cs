@@ -58,8 +58,8 @@ namespace WpfApp1
                 itm.Content = newList.Text;
                 list.Items.Add(itm );
                 AfterLogin.objectUser.mPlaylists.Add(new Playlist(newList.Text));
-                
-
+                AfterLogin.afterLoginWindow.reloadPlaylists();
+                /**
                 Expander exp1 = new Expander();
                 var newStack = new StackPanel { Name = "NewExpanderStackPanel" };
                 var newListBox = new System.Windows.Controls.ListBox();
@@ -72,7 +72,7 @@ namespace WpfApp1
                 exp1.Header = newList.Text;
                 exp1.Foreground = Brushes.LightGray;
                 AfterLogin.AllPLaylist.Children.Add(exp1);
-                newList.Text = "";
+                newList.Text = "";*/
             }
         }
         private void DeleteButton(object sender, RoutedEventArgs e)
@@ -84,7 +84,7 @@ namespace WpfApp1
                 string b = ((ListBoxItem)list.SelectedItem).Content.ToString();
                 list.Items.Remove(list.SelectedItem);
                 AfterLogin.objectUser.mPlaylists.Remove(AfterLogin.objectUser.mPlaylists.Where(x => x.mName == b).Single());
-
+                AfterLogin.afterLoginWindow.reloadPlaylists();
             }
             else
                 MessageBox.Show(msg);

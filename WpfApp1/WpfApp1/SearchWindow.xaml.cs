@@ -1,6 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Input;
+using System.Linq;
+
 
 namespace WpfApp1
 {
@@ -13,9 +15,12 @@ namespace WpfApp1
         private List<string> allArtists = new List<string>();
         private List<string> allAlbums = new List<string>();
         private List<string> allAdds = new List<string>();
+        private Playlist currentPlayList;
         public SearchWindow()
         {
             InitializeComponent();
+            //listTitle.Content = "Adding to " + Create.selectedList.ToString() + "playlist";
+            currentPlayList = AfterLogin.objectUser.mPlaylists.Where(x => x.mName == Create.selectedList.ToString()).Single();
             foreach (Song x in LoginScreen.allSongs.mSongs)
             {
                 allTitles.Add(x.mTitle);

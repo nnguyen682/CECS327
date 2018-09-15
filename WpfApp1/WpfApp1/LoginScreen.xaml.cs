@@ -24,7 +24,7 @@ namespace WpfApp1
         
         
         public static LoginScreen LoginWindow;
-        static UserCollection everyUser;
+        public static UserCollection everyUser;
         public static Playlist allSongs;
         public Boolean closingFlag = false;
         public LoginScreen()
@@ -124,6 +124,7 @@ namespace WpfApp1
             }
             if (closingFlag)
             {
+                saveUsers();
                 App.Current.Shutdown();
             }
             else
@@ -139,6 +140,11 @@ namespace WpfApp1
             {
                 closingFlag = true;
             }
+        }
+
+        private void saveUsers()
+        {
+            File.WriteAllText(System.IO.Path.Combine(System.Windows.Forms.Application.StartupPath, "UserJson\\Users.json"), JsonConvert.SerializeObject(LoginScreen.everyUser));
         }
     }
 }
