@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApp1"
         mc:Ignorable="d"
-        Title="Spooftify Music Search" Height="300" Width="500" Closing="Window_Closing">
+        Title="Spooftify Music Search" Height="300" Width="700" Closing="Window_Closing">
     <DockPanel>
         <DockPanel DockPanel.Dock="Top">
             <StackPanel Orientation="Horizontal" DockPanel.Dock="Left" HorizontalAlignment="Left">
@@ -21,67 +21,23 @@
                 <ComboBoxItem Content="Album"/>
             </ComboBox>
         </StackPanel>
-            <Button Click="Add_Click" Content="Add" Width="50" HorizontalAlignment="Right"/>
+            <Button Click="Add_Click" Content="Add" Width="50" Margin="20,0,0,0" HorizontalAlignment="Right"/>
         <Button Click="Back_Click" Content="Back" Width="50" HorizontalAlignment="Right"/>
             
     </DockPanel>
-    <Grid>
-            <Grid.RowDefinitions/>
+            <Grid>
+                <Grid.RowDefinitions/>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
             <Border Grid.Column="0" BorderBrush="Gray" BorderThickness="1">
                 <StackPanel>
-                    <Label  Content="Song Title" BorderBrush="Black" BorderThickness="1"/>
+                    <Label x:Name="PlaylistName" BorderBrush="Black" BorderThickness="1" FontSize="16" FontWeight="Bold"/>
                     <ListBox x:Name="Titles" SelectionChanged="Titles_SelectionChanged">
                         <ListBox.ItemContainerStyle>
                             <Style TargetType="ListBoxItem">
                                 <Setter Property="BorderThickness" Value="1" />
                                 <Setter Property="BorderBrush" Value="Gray" />
-                            </Style>
-                        </ListBox.ItemContainerStyle>
-                    </ListBox>
-                </StackPanel>
-            </Border>
-            <Border  Grid.Column="1" BorderBrush="Gray" BorderThickness="1">
-                <StackPanel>
-                    <Label  Content="Artist" BorderBrush="Black" BorderThickness="1"/>
-                    <ListBox x:Name="Artists">
-                        <ListBox.ItemContainerStyle>
-                            <Style TargetType="ListBoxItem">
-                                <Setter Property="BorderThickness" Value="1" />
-                                <Setter Property="BorderBrush" Value="Gray" />
-                                
-                            </Style>
-                        </ListBox.ItemContainerStyle>
-                    </ListBox>
-                </StackPanel>
-            </Border>
-            <Border  Grid.Column="2" BorderBrush="Gray" BorderThickness="1">
-                <StackPanel>
-                    <Label  Content="Album" BorderBrush="Black" BorderThickness="1"/>
-                    <ListBox x:Name="Albums">
-                        <ListBox.ItemContainerStyle>
-                            <Style TargetType="ListBoxItem">
-                                <Setter Property="BorderThickness" Value="1" />
-                                <Setter Property="BorderBrush" Value="Gray" />
-                            </Style>
-                        </ListBox.ItemContainerStyle>
-                    </ListBox>
-                </StackPanel>
-            </Border>
-            <Border Grid.Column="3" BorderBrush="Gray" BorderThickness="1">
-                <StackPanel>
-                    <Label Content="Add to Playlist" BorderBrush="Black" BorderThickness="1"/>
-                    <ListBox x:Name="AddButtons">
-                        <ListBox.ItemContainerStyle>
-                            <Style TargetType="ListBoxItem">
-                                <Setter Property="BorderThickness" Value="1" />
-                                <Setter Property="BorderBrush" Value="Gray" />
-                                <Setter Property="Background" Value="LightBlue" />
                             </Style>
                         </ListBox.ItemContainerStyle>
                     </ListBox>

@@ -121,7 +121,7 @@ namespace WpfApp1
                 newListBox.Foreground = Brushes.LightGray;
                 var newMediaFileList = new List<string>();
                 foreach (var d in b.mSongs)
-                    newMediaFileList.Add(d.mArtist + "-" + d.mTitle + d.mExtension);
+                    newMediaFileList.Add(d.mTitle + " - " + d.mArtist);// + d.mExtension);
                 newListBox.ItemsSource = newMediaFileList;
                 newListBox.Tag = b.mName;
                 ListofListBox.Add(newListBox);

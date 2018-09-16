@@ -11,43 +11,98 @@ namespace WpfApp1
     /// </summary>
     public partial class SearchWindow : Window
     {
-        private List<string> allTitles = new List<string>();
-        private List<string> allArtists = new List<string>();
-        private List<string> allAlbums = new List<string>();
-        private List<string> allAdds = new List<string>();
+        private List<Panel> songObjs = new List<Panel>();
         private Playlist currentPlayList;
+        private List<string> songStr = new List<string>();
         public SearchWindow()
         {
             InitializeComponent();
             //listTitle.Content = "Adding to " + Create.selectedList.ToString() + "playlist";
+            
             currentPlayList = AfterLogin.objectUser.mPlaylists.Where(x => x.mName == Create.selectedList.ToString()).Single();
+            PlaylistName.Content = "Adding songs to: " + currentPlayList.mName + " (select a song and click add)";
             foreach (Song x in LoginScreen.allSongs.mSongs)
             {
-                allTitles.Add(x.mTitle);
-                allArtists.Add(x.mArtist);
-                allAlbums.Add(x.mAlbum);
-                allAdds.Add("Choose Playlist");
+                StackPanel sP = new StackPanel();
+                sP.Orientation = Orientation.Horizontal;
+                Label titleLbl = new Label();
+                Label artistLbl = new Label();
+                Label albumLbl = new Label();
+                Label extensionLbl = new Label();
+                titleLbl.Content = " Song Title: ";
+                artistLbl.Content = " Artist(s): ";
+                albumLbl.Content = " Album: ";
+                extensionLbl.Content = " File Type: ";
+                titleLbl.FontWeight = FontWeights.Bold;
+                artistLbl.FontWeight = FontWeights.Bold;
+                albumLbl.FontWeight = FontWeights.Bold;
+                extensionLbl.FontWeight = FontWeights.Bold;
+                Label dspTitle = new Label();
+                Label dspArtist = new Label();
+                Label dspAlbum = new Label();
+                Label dspExtension = new Label();
+                dspTitle.Content = x.mTitle;
+                dspArtist.Content = x.mArtist;
+                dspAlbum.Content = x.mAlbum;
+                dspExtension.Content = x.mExtension;
+                sP.Children.Add(titleLbl);
+                sP.Children.Add(dspTitle);
+                sP.Children.Add(artistLbl);
+                sP.Children.Add(dspArtist);
+                sP.Children.Add(albumLbl);
+                sP.Children.Add(dspAlbum);
+                sP.Children.Add(extensionLbl);
+                sP.Children.Add(dspExtension);
+                songObjs.Add(sP);
+                songStr.Add(" Song Title: " + x.mTitle + " Artist(s): " + x.mArtist + " Album: " + x.mAlbum + " File Type: " + x.mExtension);
+
             }
-            Titles.ItemsSource = allTitles;
-            Artists.ItemsSource = allArtists;
-            Albums.ItemsSource = allAlbums;
-            AddButtons.ItemsSource = allAdds;
+            Titles.ItemsSource = songObjs;
         }
 
         private void Search_Click(object sender, RoutedEventArgs e)
         {
             Reset();
             string searchVal = SearchText.Text;
+            
             if (SearchBy.SelectedIndex == 0)
             {
                 foreach(Song x in LoginScreen.allSongs.mSongs)
                 {
                     if (x.mTitle.ToLower().Contains(searchVal.ToLower()))
                     {
-                        allTitles.Add(x.mTitle);
-                        allArtists.Add(x.mArtist);
-                        allAlbums.Add(x.mAlbum);
-                        allAdds.Add("Choose Playlist");
+                        StackPanel sP = new StackPanel();
+                        sP.Orientation = Orientation.Horizontal;
+                        Label titleLbl = new Label();
+                        Label artistLbl = new Label();
+                        Label albumLbl = new Label();
+                        Label extensionLbl = new Label();
+                        titleLbl.Content = " Song Title: ";
+                        artistLbl.Content = " Artist(s): ";
+                        albumLbl.Content = " Album: ";
+                        extensionLbl.Content = " File Type: ";
+                        titleLbl.FontWeight = FontWeights.Bold;
+                        artistLbl.FontWeight = FontWeights.Bold;
+                        albumLbl.FontWeight = FontWeights.Bold;
+                        extensionLbl.FontWeight = FontWeights.Bold;
+                        Label dspTitle = new Label();
+                        Label dspArtist = new Label();
+                        Label dspAlbum = new Label();
+                        Label dspExtension = new Label();
+                        dspTitle.Content = x.mTitle;
+                        dspArtist.Content = x.mArtist;
+                        dspAlbum.Content = x.mAlbum;
+                        dspExtension.Content = x.mExtension;
+                        sP.Children.Add(titleLbl);
+                        sP.Children.Add(dspTitle);
+                        sP.Children.Add(artistLbl);
+                        sP.Children.Add(dspArtist);
+                        sP.Children.Add(albumLbl);
+                        sP.Children.Add(dspAlbum);
+                        sP.Children.Add(extensionLbl);
+                        sP.Children.Add(dspExtension);
+                        songObjs.Add(sP);
+                        songStr.Add(" Song Title: " + x.mTitle + " Artist(s): " + x.mArtist + " Album: " + x.mAlbum + " File Type: " + x.mExtension);
                     }
                 }
             }
@@ -57,10 +112,38 @@ namespace WpfApp1
                 {
                     if (x.mArtist.ToLower().Contains(searchVal.ToLower()))
                     {
-                        allTitles.Add(x.mTitle);
-                        allArtists.Add(x.mArtist);
-                        allAlbums.Add(x.mAlbum);
-                        allAdds.Add("Choose Playlist");
+                        StackPanel sP = new StackPanel();
+                        sP.Orientation = Orientation.Horizontal;
+                        Label titleLbl = new Label();
+                        Label artistLbl = new Label();
+                        Label albumLbl = new Label();
+                        Label extensionLbl = new Label();
+                        titleLbl.Content = " Song Title: ";
+                        artistLbl.Content = " Artist(s): ";
+                        albumLbl.Content = " Album: ";
+                        extensionLbl.Content = " File Type: ";
+                        titleLbl.FontWeight = FontWeights.Bold;
+                        artistLbl.FontWeight = FontWeights.Bold;
+                        albumLbl.FontWeight = FontWeights.Bold;
+                        extensionLbl.FontWeight = FontWeights.Bold;
+                        Label dspTitle = new Label();
+                        Label dspArtist = new Label();
+                        Label dspAlbum = new Label();
+                        Label dspExtension = new Label();
+                        dspTitle.Content = x.mTitle;
+                        dspArtist.Content = x.mArtist;
+                        dspAlbum.Content = x.mAlbum;
+                        dspExtension.Content = x.mExtension;
+                        sP.Children.Add(titleLbl);
+                        sP.Children.Add(dspTitle);
+                        sP.Children.Add(artistLbl);
+                        sP.Children.Add(dspArtist);
+                        sP.Children.Add(albumLbl);
+                        sP.Children.Add(dspAlbum);
+                        sP.Children.Add(extensionLbl);
+                        sP.Children.Add(dspExtension);
+                        songObjs.Add(sP);
+                        songStr.Add(" Song Title: " + x.mTitle + " Artist(s): " + x.mArtist + " Album: " + x.mAlbum + " File Type: " + x.mExtension);
                     }
                 }
             }
@@ -70,17 +153,50 @@ namespace WpfApp1
                 {
                     if (x.mAlbum.ToLower().Contains(searchVal.ToLower()))
                     {
-                        allTitles.Add(x.mTitle);
-                        allArtists.Add(x.mArtist);
-                        allAlbums.Add(x.mAlbum);
-                        allAdds.Add("Choose Playlist");
+                        StackPanel sP = new StackPanel();
+                        sP.Orientation = Orientation.Horizontal;
+                        Label titleLbl = new Label();
+                        Label artistLbl = new Label();
+                        Label albumLbl = new Label();
+                        Label extensionLbl = new Label();
+                        titleLbl.Content = " Song Title: ";
+                        artistLbl.Content = " Artist(s): ";
+                        albumLbl.Content = " Album: ";
+                        extensionLbl.Content = " File Type: ";
+                        titleLbl.FontWeight = FontWeights.Bold;
+                        artistLbl.FontWeight = FontWeights.Bold;
+                        albumLbl.FontWeight = FontWeights.Bold;
+                        extensionLbl.FontWeight = FontWeights.Bold;
+                        Label dspTitle = new Label();
+                        Label dspArtist = new Label();
+                        Label dspAlbum = new Label();
+                        Label dspExtension = new Label();
+                        dspTitle.Content = x.mTitle;
+                        dspArtist.Content = x.mArtist;
+                        dspAlbum.Content = x.mAlbum;
+                        dspExtension.Content = x.mExtension;
+                        sP.Children.Add(titleLbl);
+                        sP.Children.Add(dspTitle);
+                        sP.Children.Add(artistLbl);
+                        sP.Children.Add(dspArtist);
+                        sP.Children.Add(albumLbl);
+                        sP.Children.Add(dspAlbum);
+                        sP.Children.Add(extensionLbl);
+                        sP.Children.Add(dspExtension);
+                        songObjs.Add(sP);
+                        songStr.Add(" Song Title: " + x.mTitle + " Artist(s): " + x.mArtist + " Album: " + x.mAlbum + " File Type: " + x.mExtension);
+
                     }
                 }
             }
-            Titles.ItemsSource = allTitles;
-            Artists.ItemsSource = allArtists;
-            Albums.ItemsSource = allAlbums;
-            AddButtons.ItemsSource = allAdds;
+            if (songObjs.Count != 0)
+            {
+                Titles.ItemsSource = songObjs;
+            }
+            else
+            {
+                Titles.ItemsSource = "No results found :(";
+            }
         }
 
         private void ComboBox_DataContextChanged(object sender, DependencyPropertyChangedEventArgs e)
@@ -91,6 +207,7 @@ namespace WpfApp1
         {
             if (e.Key == Key.Enter)
             {
+
                 Reset();
                 string searchVal = SearchText.Text;
                 if (SearchBy.SelectedIndex == 0)
@@ -99,10 +216,39 @@ namespace WpfApp1
                     {
                         if (x.mTitle.ToLower().Contains(searchVal.ToLower()))
                         {
-                            allTitles.Add(x.mTitle);
-                            allArtists.Add(x.mArtist);
-                            allAlbums.Add(x.mAlbum);
-                            allAdds.Add("Choose Playlist");
+                            StackPanel sP = new StackPanel();
+                            sP.Orientation = Orientation.Horizontal;
+                            Label titleLbl = new Label();
+                            Label artistLbl = new Label();
+                            Label albumLbl = new Label();
+                            Label extensionLbl = new Label();
+                            titleLbl.Content = " Song Title: ";
+                            artistLbl.Content = " Artist(s): ";
+                            albumLbl.Content = " Album: ";
+                            extensionLbl.Content = " File Type: ";
+                            titleLbl.FontWeight = FontWeights.Bold;
+                            artistLbl.FontWeight = FontWeights.Bold;
+                            albumLbl.FontWeight = FontWeights.Bold;
+                            extensionLbl.FontWeight = FontWeights.Bold;
+                            Label dspTitle = new Label();
+                            Label dspArtist = new Label();
+                            Label dspAlbum = new Label();
+                            Label dspExtension = new Label();
+                            dspTitle.Content = x.mTitle;
+                            dspArtist.Content = x.mArtist;
+                            dspAlbum.Content = x.mAlbum;
+                            dspExtension.Content = x.mExtension;
+                            sP.Children.Add(titleLbl);
+                            sP.Children.Add(dspTitle);
+                            sP.Children.Add(artistLbl);
+                            sP.Children.Add(dspArtist);
+                            sP.Children.Add(albumLbl);
+                            sP.Children.Add(dspAlbum);
+                            sP.Children.Add(extensionLbl);
+                            sP.Children.Add(dspExtension);
+                            songObjs.Add(sP);
+                            songStr.Add(" Song Title: " + x.mTitle + " Artist(s): " + x.mArtist + " Album: " + x.mAlbum + " File Type: " + x.mExtension);
+
                         }
                     }
                 }
@@ -112,10 +258,39 @@ namespace WpfApp1
                     {
                         if (x.mArtist.ToLower().Contains(searchVal.ToLower()))
                         {
-                            allTitles.Add(x.mTitle);
-                            allArtists.Add(x.mArtist);
-                            allAlbums.Add(x.mAlbum);
-                            allAdds.Add("Choose Playlist");
+                            StackPanel sP = new StackPanel();
+                            sP.Orientation = Orientation.Horizontal;
+                            Label titleLbl = new Label();
+                            Label artistLbl = new Label();
+                            Label albumLbl = new Label();
+                            Label extensionLbl = new Label();
+                            titleLbl.Content = " Song Title: ";
+                            artistLbl.Content = " Artist(s): ";
+                            albumLbl.Content = " Album: ";
+                            extensionLbl.Content = " File Type: ";
+                            titleLbl.FontWeight = FontWeights.Bold;
+                            artistLbl.FontWeight = FontWeights.Bold;
+                            albumLbl.FontWeight = FontWeights.Bold;
+                            extensionLbl.FontWeight = FontWeights.Bold;
+                            Label dspTitle = new Label();
+                            Label dspArtist = new Label();
+                            Label dspAlbum = new Label();
+                            Label dspExtension = new Label();
+                            dspTitle.Content = x.mTitle;
+                            dspArtist.Content = x.mArtist;
+                            dspAlbum.Content = x.mAlbum;
+                            dspExtension.Content = x.mExtension;
+                            sP.Children.Add(titleLbl);
+                            sP.Children.Add(dspTitle);
+                            sP.Children.Add(artistLbl);
+                            sP.Children.Add(dspArtist);
+                            sP.Children.Add(albumLbl);
+                            sP.Children.Add(dspAlbum);
+                            sP.Children.Add(extensionLbl);
+                            sP.Children.Add(dspExtension);
+                            songObjs.Add(sP);
+                            songStr.Add(" Song Title: " + x.mTitle + " Artist(s): " + x.mArtist + " Album: " + x.mAlbum + " File Type: " + x.mExtension);
+
                         }
                     }
                 }
@@ -125,17 +300,50 @@ namespace WpfApp1
                     {
                         if (x.mAlbum.ToLower().Contains(searchVal.ToLower()))
                         {
-                            allTitles.Add(x.mTitle);
-                            allArtists.Add(x.mArtist);
-                            allAlbums.Add(x.mAlbum);
-                            allAdds.Add("Choose Playlist");
+                            StackPanel sP = new StackPanel();
+                            sP.Orientation = Orientation.Horizontal;
+                            Label titleLbl = new Label();
+                            Label artistLbl = new Label();
+                            Label albumLbl = new Label();
+                            Label extensionLbl = new Label();
+                            titleLbl.Content = " Song Title: ";
+                            artistLbl.Content = " Artist(s): ";
+                            albumLbl.Content = " Album: ";
+                            extensionLbl.Content = " File Type: ";
+                            titleLbl.FontWeight = FontWeights.Bold;
+                            artistLbl.FontWeight = FontWeights.Bold;
+                            albumLbl.FontWeight = FontWeights.Bold;
+                            extensionLbl.FontWeight = FontWeights.Bold;
+                            Label dspTitle = new Label();
+                            Label dspArtist = new Label();
+                            Label dspAlbum = new Label();
+                            Label dspExtension = new Label();
+                            dspTitle.Content = x.mTitle;
+                            dspArtist.Content = x.mArtist;
+                            dspAlbum.Content = x.mAlbum;
+                            dspExtension.Content = x.mExtension;
+                            sP.Children.Add(titleLbl);
+                            sP.Children.Add(dspTitle);
+                            sP.Children.Add(artistLbl);
+                            sP.Children.Add(dspArtist);
+                            sP.Children.Add(albumLbl);
+                            sP.Children.Add(dspAlbum);
+                            sP.Children.Add(extensionLbl);
+                            sP.Children.Add(dspExtension);
+                            songObjs.Add(sP);
+                            songStr.Add(" Song Title: " + x.mTitle + " Artist(s): " + x.mArtist + " Album: " + x.mAlbum + " File Type: " + x.mExtension);
+
                         }
                     }
                 }
-                Titles.ItemsSource = allTitles;
-                Artists.ItemsSource = allArtists;
-                Albums.ItemsSource = allAlbums;
-                AddButtons.ItemsSource = allAdds;
+                if (songObjs.Count != 0)
+                {
+                    Titles.ItemsSource = songObjs;
+                }
+                else
+                {
+                    Titles.ItemsSource = "No results found :(";
+                }
             }
         }
 
@@ -150,10 +358,10 @@ namespace WpfApp1
         }
         private void Add_Click(object sender, RoutedEventArgs e)
         {
-            if(Titles.SelectedItem != null)
+            if (Titles.SelectedItem != null && !Titles.SelectedItem.Equals("No results found :("))
             {
                 ListBoxItem itm = new ListBoxItem();
-                Song b = LoginScreen.allSongs.mSongs.Where(x => x.mTitle == (string)Titles.SelectedValue).Single();
+                Song b = LoginScreen.allSongs.mSongs.Where(x => (" Song Title: "+x.mTitle+" Artist(s): "+x.mArtist+" Album: "+x.mAlbum+" File Type: "+x.mExtension).Equals(songStr[Titles.SelectedIndex])).Single();
                 string trythis = b.mArtist + "-" + b.mTitle + b.mExtension;
                 
          
@@ -164,10 +372,14 @@ namespace WpfApp1
                      ListBoxItem itm1 = new ListBoxItem();
                      itm1.Content = trythis;
                      Adding.AddingListBox.Items.Add(itm1);
-
+                     MessageBox.Show(b.mTitle+" has been added to "+currentPlayList.mName);
                 }
                 else
                     MessageBox.Show("Selected song is already added in the playlist");
+            }
+            else
+            {
+                MessageBox.Show("No songs were selected");
             }
 
 
@@ -176,13 +388,8 @@ namespace WpfApp1
         private void Reset()
         {
             Titles.ItemsSource = null;
-            Artists.ItemsSource = null;
-            Albums.ItemsSource = null;
-            AddButtons.ItemsSource = null;
-            allTitles.Clear();
-            allAlbums.Clear();
-            allArtists.Clear();
-            allAdds.Clear();
+            songObjs.Clear();
+            songStr.Clear();
         }
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
