@@ -123,7 +123,7 @@ namespace WpfApp1
                 foreach (var d in b.mSongs)
                     newMediaFileList.Add(d.mArtist + "-" + d.mTitle + d.mExtension);
                 newListBox.ItemsSource = newMediaFileList;
-                newListBox.Name = b.mName;
+                newListBox.Tag = b.mName;
                 ListofListBox.Add(newListBox);
                 newStack.Children.Add(newListBox);
                 exp1.Content = newStack;

@@ -44,7 +44,7 @@ namespace WpfApp1
             List<string> temp = new List<string>();
             foreach (var b in Adding.currentPlayList.mSongs)
                 temp.Add(b.mArtist + "-" + b.mTitle + b.mExtension);
-            AfterLogin.ListofListBox.Where(x => x.Name == Adding.currentPlayList.mName).Single().ItemsSource = temp;
+            AfterLogin.ListofListBox.Where(x => (string) x.Tag ==  Adding.currentPlayList.mName).Single().ItemsSource = temp;
             this.Hide();
             Create.createWIndow.Show();
         }
