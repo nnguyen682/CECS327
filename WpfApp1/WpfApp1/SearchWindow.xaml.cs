@@ -502,7 +502,7 @@ namespace WpfApp1
                     Adding.currentPlayList.addSong(LoginScreen.allSongs.mSongs.Where(x => (x.mArtist + "-" + x.mTitle + x.mExtension) == trythis).Single());
                     
                      ListBoxItem itm1 = new ListBoxItem();
-                     itm1.Content = trythis;
+                     itm1.Content = Adding.currentPlayList.mSongs.Last().ToString();
                      Adding.AddingListBox.Items.Add(itm1);
 
                     songObjs.RemoveAt(Titles.SelectedIndex);

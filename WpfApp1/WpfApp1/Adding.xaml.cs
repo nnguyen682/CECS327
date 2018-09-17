@@ -82,9 +82,9 @@ namespace WpfApp1
             
             if (addedSongs.SelectedItem != null)
             {
-                string b = ((ListBoxItem)addedSongs.SelectedItem).Content.ToString();
+                string b = addedSongs.SelectedItem.ToString();
                 addedSongs.Items.Remove(addedSongs.SelectedItem);
-                AfterLogin.objectUser.mPlaylists.Where(x => x.mName == currentPlayList.mName).Single().deleteSong(AfterLogin.objectUser.mPlaylists.Where(x => x.mName == currentPlayList.mName).Single().mSongs.Where(x => x.mArtist + '-' + x.mTitle + x.mExtension == b).Single());
+                AfterLogin.objectUser.mPlaylists.Where(x => x.mName == currentPlayList.mName).Single().deleteSong(AfterLogin.objectUser.mPlaylists.Where(x => x.mName == currentPlayList.mName).Single().mSongs.Where(x => x.ToString() == b).Single());
             }
             else
                 MessageBox.Show(msg);
