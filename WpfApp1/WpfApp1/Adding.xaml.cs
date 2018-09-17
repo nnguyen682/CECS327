@@ -83,6 +83,10 @@ namespace WpfApp1
             if (addedSongs.SelectedItem != null)
             {
                 string b = addedSongs.SelectedItem.ToString();
+                if (AfterLogin.afterLoginWindow.currMedia == ((Song) addedSongs.SelectedItem).Directory)
+                {
+                    AfterLogin.ax.close();
+                }
                 addedSongs.Items.Remove(addedSongs.SelectedItem);
                 AfterLogin.objectUser.mPlaylists.Where(x => x.mName == currentPlayList.mName).Single().deleteSong(AfterLogin.objectUser.mPlaylists.Where(x => x.mName == currentPlayList.mName).Single().mSongs.Where(x => x.ToString() == b).Single());
             }

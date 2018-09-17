@@ -33,7 +33,7 @@ namespace WpfApp1
 
         string mediaFolder = System.IO.Path.Combine(System.Windows.Forms.Application.StartupPath, "MusicLibrary");
 
-      
+        public string currMedia = "";
         
         public AfterLogin(User x)
         {
@@ -145,10 +145,11 @@ namespace WpfApp1
 
         private void ListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            
             if (e.AddedItems.Count !=0)
-               ax.URL = mediaFolder + "\\" + ((Song)e.AddedItems[0]).Directory;
- 
+            {
+                ax.URL = mediaFolder + "\\" + ((Song)e.AddedItems[0]).Directory;
+                currMedia = ((Song)e.AddedItems[0]).Directory;
+            }
         }
 
         private void Button_Profile(object sender, RoutedEventArgs e)
