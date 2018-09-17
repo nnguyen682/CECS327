@@ -269,9 +269,11 @@ namespace WpfApp1
                 StackPanel sP = new StackPanel();
                 Label noRes = new Label();
                 noRes.Content = "No results found :(";
+                songStr.Add("No results found :(");
                 sP.Children.Add(noRes);
                 songObjs.Add(sP);
                 Titles.ItemsSource = songObjs;
+                Titles.IsEnabled = false;
             }
         }
 
@@ -472,9 +474,11 @@ namespace WpfApp1
                     StackPanel sP = new StackPanel();
                     Label noRes = new Label();
                     noRes.Content = "No results found :(";
+                    songStr.Add("No results found :(");
                     sP.Children.Add(noRes);
                     songObjs.Add(sP);
                     Titles.ItemsSource = songObjs;
+                    Titles.IsEnabled = false;
                 }
             }
         }
@@ -490,7 +494,7 @@ namespace WpfApp1
         }
         private void Add_Click(object sender, RoutedEventArgs e)
         {
-            if (Titles.SelectedItem != null && !Titles.SelectedItem.Equals("No results found :("))
+            if (Titles.SelectedItem != null && !songStr[Titles.SelectedIndex].Equals("No results found :("))
             {
                 ListBoxItem itm = new ListBoxItem();
                 Song b = LoginScreen.allSongs.mSongs.Where(x => (" Song Title: "+x.mTitle+" Artist(s): "+x.mArtist+" Album: "+x.mAlbum+" File Type: "+x.mExtension).Equals(songStr[Titles.SelectedIndex])).Single();
@@ -569,6 +573,7 @@ namespace WpfApp1
             Titles.ItemsSource = null;
             songObjs.Clear();
             songStr.Clear();
+            Titles.IsEnabled = true;
         }
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
@@ -591,7 +596,7 @@ namespace WpfApp1
         {
 
             Song b = new Song();
-            if(Titles.SelectedIndex != -1)
+            if(Titles.SelectedIndex != -1 && !songStr[Titles.SelectedIndex].Equals("No results found :("))
                 b= LoginScreen.allSongs.mSongs.Where(x => (" Song Title: " + x.mTitle + " Artist(s): " +
                  x.mArtist + " Album: " + x.mAlbum + " File Type: " + x.mExtension).Equals(songStr[Titles.SelectedIndex])).Single();
             
