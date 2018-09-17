@@ -83,7 +83,7 @@ namespace WpfApp1
             if (addedSongs.SelectedItem != null)
             {
                 string b = addedSongs.SelectedItem.ToString();
-                if (AfterLogin.afterLoginWindow.currMedia == ((Song) addedSongs.SelectedItem).Directory)
+                if (AfterLogin.afterLoginWindow.currPlaylistName == currentPlayList.mName && AfterLogin.afterLoginWindow.currMediaName == ((Song) addedSongs.SelectedItem).Directory)
                 {
                     AfterLogin.ax.close();
                 }

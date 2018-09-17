@@ -33,8 +33,9 @@ namespace WpfApp1
 
         string mediaFolder = System.IO.Path.Combine(System.Windows.Forms.Application.StartupPath, "MusicLibrary");
 
-        public string currMedia = "";
-        
+        public string currMediaName = "";
+        public string currPlaylistName = "";
+
         public AfterLogin(User x)
         {
             ListofListBox = new List<System.Windows.Controls.ListBox>();
@@ -148,7 +149,8 @@ namespace WpfApp1
             if (e.AddedItems.Count !=0)
             {
                 ax.URL = mediaFolder + "\\" + ((Song)e.AddedItems[0]).Directory;
-                currMedia = ((Song)e.AddedItems[0]).Directory;
+                currMediaName = ((Song)e.AddedItems[0]).Directory;
+                currPlaylistName = ((System.Windows.Controls.ListBox)e.OriginalSource).Tag.ToString();
             }
         }
 

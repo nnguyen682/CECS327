@@ -85,6 +85,10 @@ namespace WpfApp1
             if (list.SelectedItem != null)
             {
                 string b = ((ListBoxItem)list.SelectedItem).Content.ToString();
+                if (AfterLogin.afterLoginWindow.currPlaylistName == b)
+                {
+                    AfterLogin.ax.close();
+                }
                 list.Items.Remove(list.SelectedItem);
                 AfterLogin.objectUser.mPlaylists.Remove(AfterLogin.objectUser.mPlaylists.Where(x => x.mName == b).Single());
                 AfterLogin.afterLoginWindow.reloadPlaylists();
