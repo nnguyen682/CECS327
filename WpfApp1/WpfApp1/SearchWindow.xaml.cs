@@ -53,6 +53,23 @@ namespace WpfApp1
                 sP.Children.Add(dspAlbum);
                 sP.Children.Add(extensionLbl);
                 sP.Children.Add(dspExtension);
+                Label statusLbl = new Label();
+                statusLbl.Content = " Status: ";
+                statusLbl.FontWeight = FontWeights.Bold;
+                Label dspStatusNeg = new Label();
+                Label dspStatusPos = new Label();
+                sP.Children.Add(statusLbl);
+                string trythis = x.mArtist + "-" + x.mTitle + x.mExtension;
+                if (Adding.currentPlayList.mSongs.FirstOrDefault(y => (y.mArtist + "-" + y.mTitle + y.mExtension) == trythis) != null)
+                {
+                    dspStatusPos.Content = "In Playlist";
+                    sP.Children.Add(dspStatusPos);
+                }
+                else
+                {
+                    dspStatusNeg.Content = "Not In Playlist";
+                    sP.Children.Add(dspStatusNeg);
+                }
                 songObjs.Add(sP);
                 songStr.Add(" Song Title: " + x.mTitle + " Artist(s): " + x.mArtist + " Album: " + x.mAlbum + " File Type: " + x.mExtension);
 
@@ -101,6 +118,23 @@ namespace WpfApp1
                         sP.Children.Add(dspAlbum);
                         sP.Children.Add(extensionLbl);
                         sP.Children.Add(dspExtension);
+                        Label statusLbl = new Label();
+                        statusLbl.Content = " Status: ";
+                        statusLbl.FontWeight = FontWeights.Bold;
+                        Label dspStatusNeg = new Label();
+                        Label dspStatusPos = new Label();
+                        sP.Children.Add(statusLbl);
+                        string trythis = x.mArtist + "-" + x.mTitle + x.mExtension;
+                        if (Adding.currentPlayList.mSongs.FirstOrDefault(y => (y.mArtist + "-" + y.mTitle + y.mExtension) == trythis) != null)
+                        {
+                            dspStatusPos.Content = "In Playlist";
+                            sP.Children.Add(dspStatusPos);
+                        }
+                        else
+                        {
+                            dspStatusNeg.Content = "Not In Playlist";
+                            sP.Children.Add(dspStatusNeg);
+                        }
                         songObjs.Add(sP);
                         songStr.Add(" Song Title: " + x.mTitle + " Artist(s): " + x.mArtist + " Album: " + x.mAlbum + " File Type: " + x.mExtension);
                     }
@@ -142,6 +176,23 @@ namespace WpfApp1
                         sP.Children.Add(dspAlbum);
                         sP.Children.Add(extensionLbl);
                         sP.Children.Add(dspExtension);
+                        Label statusLbl = new Label();
+                        statusLbl.Content = " Status: ";
+                        statusLbl.FontWeight = FontWeights.Bold;
+                        Label dspStatusNeg = new Label();
+                        Label dspStatusPos = new Label();
+                        sP.Children.Add(statusLbl);
+                        string trythis = x.mArtist + "-" + x.mTitle + x.mExtension;
+                        if (Adding.currentPlayList.mSongs.FirstOrDefault(y => (y.mArtist + "-" + y.mTitle + y.mExtension) == trythis) != null)
+                        {
+                            dspStatusPos.Content = "In Playlist";
+                            sP.Children.Add(dspStatusPos);
+                        }
+                        else
+                        {
+                            dspStatusNeg.Content = "Not In Playlist";
+                            sP.Children.Add(dspStatusNeg);
+                        }
                         songObjs.Add(sP);
                         songStr.Add(" Song Title: " + x.mTitle + " Artist(s): " + x.mArtist + " Album: " + x.mAlbum + " File Type: " + x.mExtension);
                     }
@@ -183,6 +234,23 @@ namespace WpfApp1
                         sP.Children.Add(dspAlbum);
                         sP.Children.Add(extensionLbl);
                         sP.Children.Add(dspExtension);
+                        Label statusLbl = new Label();
+                        statusLbl.Content = " Status: ";
+                        statusLbl.FontWeight = FontWeights.Bold;
+                        Label dspStatusNeg = new Label();
+                        Label dspStatusPos = new Label();
+                        sP.Children.Add(statusLbl);
+                        string trythis = x.mArtist + "-" + x.mTitle + x.mExtension;
+                        if (Adding.currentPlayList.mSongs.FirstOrDefault(y => (y.mArtist + "-" + y.mTitle + y.mExtension) == trythis) != null)
+                        {
+                            dspStatusPos.Content = "In Playlist";
+                            sP.Children.Add(dspStatusPos);
+                        }
+                        else
+                        {
+                            dspStatusNeg.Content = "Not In Playlist";
+                            sP.Children.Add(dspStatusNeg);
+                        }
                         songObjs.Add(sP);
                         songStr.Add(" Song Title: " + x.mTitle + " Artist(s): " + x.mArtist + " Album: " + x.mAlbum + " File Type: " + x.mExtension);
 
@@ -195,7 +263,12 @@ namespace WpfApp1
             }
             else
             {
-                Titles.ItemsSource = "No results found :(";
+                StackPanel sP = new StackPanel();
+                Label noRes = new Label();
+                noRes.Content = "No results found :(";
+                sP.Children.Add(noRes);
+                songObjs.Add(sP);
+                Titles.ItemsSource = songObjs;
             }
         }
 
@@ -246,6 +319,23 @@ namespace WpfApp1
                             sP.Children.Add(dspAlbum);
                             sP.Children.Add(extensionLbl);
                             sP.Children.Add(dspExtension);
+                            Label statusLbl = new Label();
+                            statusLbl.Content = " Status: ";
+                            statusLbl.FontWeight = FontWeights.Bold;
+                            Label dspStatusNeg = new Label();
+                            Label dspStatusPos = new Label();
+                            sP.Children.Add(statusLbl);
+                            string trythis = x.mArtist + "-" + x.mTitle + x.mExtension;
+                            if (Adding.currentPlayList.mSongs.FirstOrDefault(y => (y.mArtist + "-" + y.mTitle + y.mExtension) == trythis) != null)
+                            {
+                                dspStatusPos.Content = "In Playlist";
+                                sP.Children.Add(dspStatusPos);
+                            }
+                            else
+                            {
+                                dspStatusNeg.Content = "Not In Playlist";
+                                sP.Children.Add(dspStatusNeg);
+                            }
                             songObjs.Add(sP);
                             songStr.Add(" Song Title: " + x.mTitle + " Artist(s): " + x.mArtist + " Album: " + x.mAlbum + " File Type: " + x.mExtension);
 
@@ -288,6 +378,23 @@ namespace WpfApp1
                             sP.Children.Add(dspAlbum);
                             sP.Children.Add(extensionLbl);
                             sP.Children.Add(dspExtension);
+                            Label statusLbl = new Label();
+                            statusLbl.Content = " Status: ";
+                            statusLbl.FontWeight = FontWeights.Bold;
+                            Label dspStatusNeg = new Label();
+                            Label dspStatusPos = new Label();
+                            sP.Children.Add(statusLbl);
+                            string trythis = x.mArtist + "-" + x.mTitle + x.mExtension;
+                            if (Adding.currentPlayList.mSongs.FirstOrDefault(y => (y.mArtist + "-" + y.mTitle + y.mExtension) == trythis) != null)
+                            {
+                                dspStatusPos.Content = "In Playlist";
+                                sP.Children.Add(dspStatusPos);
+                            }
+                            else
+                            {
+                                dspStatusNeg.Content = "Not In Playlist";
+                                sP.Children.Add(dspStatusNeg);
+                            }
                             songObjs.Add(sP);
                             songStr.Add(" Song Title: " + x.mTitle + " Artist(s): " + x.mArtist + " Album: " + x.mAlbum + " File Type: " + x.mExtension);
 
@@ -330,6 +437,23 @@ namespace WpfApp1
                             sP.Children.Add(dspAlbum);
                             sP.Children.Add(extensionLbl);
                             sP.Children.Add(dspExtension);
+                            Label statusLbl = new Label();
+                            statusLbl.Content = " Status: ";
+                            statusLbl.FontWeight = FontWeights.Bold;
+                            Label dspStatusNeg = new Label();
+                            Label dspStatusPos = new Label();
+                            sP.Children.Add(statusLbl);
+                            string trythis = x.mArtist + "-" + x.mTitle + x.mExtension;
+                            if (Adding.currentPlayList.mSongs.FirstOrDefault(y => (y.mArtist + "-" + y.mTitle + y.mExtension) == trythis) != null)
+                            {
+                                dspStatusPos.Content = "In Playlist";
+                                sP.Children.Add(dspStatusPos);
+                            }
+                            else
+                            {
+                                dspStatusNeg.Content = "Not In Playlist";
+                                sP.Children.Add(dspStatusNeg);
+                            }
                             songObjs.Add(sP);
                             songStr.Add(" Song Title: " + x.mTitle + " Artist(s): " + x.mArtist + " Album: " + x.mAlbum + " File Type: " + x.mExtension);
 
@@ -342,7 +466,12 @@ namespace WpfApp1
                 }
                 else
                 {
-                    Titles.ItemsSource = "No results found :(";
+                    StackPanel sP = new StackPanel();
+                    Label noRes = new Label();
+                    noRes.Content = "No results found :(";
+                    sP.Children.Add(noRes);
+                    songObjs.Add(sP);
+                    Titles.ItemsSource = songObjs;
                 }
             }
         }
@@ -372,7 +501,54 @@ namespace WpfApp1
                      ListBoxItem itm1 = new ListBoxItem();
                      itm1.Content = trythis;
                      Adding.AddingListBox.Items.Add(itm1);
-                     MessageBox.Show(b.mTitle+" has been added to "+currentPlayList.mName);
+
+                    songObjs.RemoveAt(Titles.SelectedIndex);
+                    songStr.RemoveAt(Titles.SelectedIndex);
+
+                    StackPanel sP = new StackPanel();
+                    sP.Orientation = Orientation.Horizontal;
+                    Label titleLbl = new Label();
+                    Label artistLbl = new Label();
+                    Label albumLbl = new Label();
+                    Label extensionLbl = new Label();
+                    titleLbl.Content = " Song Title: ";
+                    artistLbl.Content = " Artist(s): ";
+                    albumLbl.Content = " Album: ";
+                    extensionLbl.Content = " File Type: ";
+                    titleLbl.FontWeight = FontWeights.Bold;
+                    artistLbl.FontWeight = FontWeights.Bold;
+                    albumLbl.FontWeight = FontWeights.Bold;
+                    extensionLbl.FontWeight = FontWeights.Bold;
+                    Label dspTitle = new Label();
+                    Label dspArtist = new Label();
+                    Label dspAlbum = new Label();
+                    Label dspExtension = new Label();
+                    dspTitle.Content = b.mTitle;
+                    dspArtist.Content = b.mArtist;
+                    dspAlbum.Content = b.mAlbum;
+                    dspExtension.Content = b.mExtension;
+                    sP.Children.Add(titleLbl);
+                    sP.Children.Add(dspTitle);
+                    sP.Children.Add(artistLbl);
+                    sP.Children.Add(dspArtist);
+                    sP.Children.Add(albumLbl);
+                    sP.Children.Add(dspAlbum);
+                    sP.Children.Add(extensionLbl);
+                    sP.Children.Add(dspExtension);
+                    Label statusLbl = new Label();
+                    statusLbl.Content = " Status: ";
+                    statusLbl.FontWeight = FontWeights.Bold;
+                    Label dspStatusPos = new Label();
+                    sP.Children.Add(statusLbl);
+                    dspStatusPos.Content = "In playlist";
+                    sP.Children.Add(dspStatusPos);
+                    songObjs.Add(sP);
+                    songStr.Add(" Song Title: " + b.mTitle + " Artist(s): " + b.mArtist + " Album: " + b.mAlbum + " File Type: " + b.mExtension);
+
+                    Titles.ItemsSource = null;
+                    Titles.ItemsSource = songObjs;
+
+                    MessageBox.Show(b.mTitle+" has been added to "+currentPlayList.mName);
                 }
                 else
                     MessageBox.Show("Selected song is already added in the playlist");
