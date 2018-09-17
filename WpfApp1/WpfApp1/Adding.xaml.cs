@@ -32,9 +32,8 @@ namespace WpfApp1
             foreach (var b in currentPlayList.mSongs)
             {
                 ListBoxItem itm = new ListBoxItem();
-                string trythis = b.mArtist + "-" + b.mTitle + b.mExtension;
-                itm.Content = trythis;
-                addedSongs.Items.Add(itm);
+                itm.Content = b;
+                addedSongs.Items.Add(b);
             }
             AddingListBox = addedSongs;
         }
@@ -83,9 +82,13 @@ namespace WpfApp1
             
             if (addedSongs.SelectedItem != null)
             {
-                string b = ((ListBoxItem)addedSongs.SelectedItem).Content.ToString();
+                string b = addedSongs.SelectedItem.ToString();
+                if (AfterLogin.afterLoginWindow.currMedia == ((Song) addedSongs.SelectedItem).Directory)
+                {
+                    AfterLogin.ax.close();
+                }
                 addedSongs.Items.Remove(addedSongs.SelectedItem);
-                AfterLogin.objectUser.mPlaylists.Where(x => x.mName == currentPlayList.mName).Single().deleteSong(AfterLogin.objectUser.mPlaylists.Where(x => x.mName == currentPlayList.mName).Single().mSongs.Where(x => x.mArtist + '-' + x.mTitle + x.mExtension == b).Single());
+                AfterLogin.objectUser.mPlaylists.Where(x => x.mName == currentPlayList.mName).Single().deleteSong(AfterLogin.objectUser.mPlaylists.Where(x => x.mName == currentPlayList.mName).Single().mSongs.Where(x => x.ToString() == b).Single());
             }
             else
                 MessageBox.Show(msg);

@@ -18,7 +18,7 @@
             </Button>
             <Label Name="listTitle" FontSize="32" Foreground="LightGray" HorizontalAlignment="Center">Playlist Name</Label>
             <Label FontSize="20" Margin="20" Foreground="LightGray" HorizontalAlignment="Center">Songs in playlist:</Label>
-            <ListBox Name="addedSongs" HorizontalAlignment="Center" Height="300" VerticalAlignment="Top" Width="340" Margin="0,10,0,10" Background="Black" Foreground="LightGray" BorderBrush="Black" FontSize="20" SelectionChanged="addedSongs_SelectionChanged"/>
+            <ListBox Name="addedSongs" HorizontalAlignment="Center" Height="300" VerticalAlignment="Top" Width="Auto" Margin="0,10,0,10" Background="Black" Foreground="LightGray" BorderBrush="Black" FontSize="20" SelectionChanged="addedSongs_SelectionChanged"/>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                 <Button Click="Search_Click" Content="Add a Song" FontSize="20" Background="Green" Foreground="LightGray" Margin="20" Width="150" Height="40">
                     <Button.Resources>

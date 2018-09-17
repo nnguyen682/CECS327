@@ -110,11 +110,15 @@ namespace WpfApp1
 
         private void list_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            selectedList = ((ListBoxItem)list.SelectedValue).Content.ToString();
-            Adding b = new Adding();
-            createWIndow = this;
-            this.Hide();
-            b.Show();
+            if (list.SelectedValue != null)
+            {
+                selectedList = ((ListBoxItem)list.SelectedValue).Content.ToString();
+                Adding b = new Adding();
+                createWIndow = this;
+                this.Hide();
+                b.Show();
+            }
+            
         }
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
