@@ -40,10 +40,13 @@ namespace WpfApp1
 
         private void Button_Back(object sender, RoutedEventArgs e)
         {
+            /*
             List<Song> temp = new List<Song>();
+            //bug here 2 playlists delete a playlist
             foreach (var b in Adding.currentPlayList.mSongs)
                 temp.Add(b);
-            AfterLogin.ListofListBox.Where(x => (string) x.Tag ==  Adding.currentPlayList.mName).Single().ItemsSource = temp;
+            AfterLogin.ListofListBox.Where(x => (string) x.Tag ==  Adding.currentPlayList.mName).Single().ItemsSource = temp;*/
+            AfterLogin.afterLoginWindow.reloadPlaylists();
             this.Hide();
             Create.createWIndow.Show();
         }
@@ -83,7 +86,7 @@ namespace WpfApp1
             if (addedSongs.SelectedItem != null)
             {
                 string b = addedSongs.SelectedItem.ToString();
-                if (AfterLogin.afterLoginWindow.currPlaylistName == currentPlayList.mName && AfterLogin.afterLoginWindow.currMediaName == ((Song) addedSongs.SelectedItem).Directory)
+                if (AfterLogin.afterLoginWindow.currPlaylistName == currentPlayList.mName && addedSongs.SelectedItem.GetType() == typeof(Song) && AfterLogin.afterLoginWindow.currMediaName == ((Song) addedSongs.SelectedItem).Directory)
                 {
                     AfterLogin.ax.close();
                 }
