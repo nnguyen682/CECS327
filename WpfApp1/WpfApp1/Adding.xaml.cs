@@ -32,9 +32,8 @@ namespace WpfApp1
             foreach (var b in currentPlayList.mSongs)
             {
                 ListBoxItem itm = new ListBoxItem();
-                string trythis = b.mArtist + "-" + b.mTitle + b.mExtension;
-                itm.Content = trythis;
-                addedSongs.Items.Add(itm);
+                itm.Content = b;
+                addedSongs.Items.Add(b);
             }
             AddingListBox = addedSongs;
         }
