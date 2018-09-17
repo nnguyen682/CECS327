@@ -34,7 +34,7 @@ namespace WpfApp1
         }
         public override string ToString()
         {
-            return mArtist + " - " + mTitle + mExtension == ".mp3"? " - Music" : " - Music Video";
+            return mArtist + " - " + mTitle + (mExtension == ".mp3"? " - Music" : " - Music Video");
         }
     }
 }
