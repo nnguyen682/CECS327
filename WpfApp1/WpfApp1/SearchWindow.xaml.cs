@@ -53,6 +53,7 @@ namespace WpfApp1
                 sP.Children.Add(dspAlbum);
                 sP.Children.Add(extensionLbl);
                 sP.Children.Add(dspExtension);
+                
                 Label statusLbl = new Label();
                 statusLbl.Content = " Status: ";
                 statusLbl.FontWeight = FontWeights.Bold;
@@ -71,6 +72,8 @@ namespace WpfApp1
                     sP.Children.Add(dspStatusNeg);
                 }
                 songObjs.Add(sP);
+                ListBox NewListBox = new ListBox();
+                
                 songStr.Add(" Song Title: " + x.mTitle + " Artist(s): " + x.mArtist + " Album: " + x.mAlbum + " File Type: " + x.mExtension);
 
             }
@@ -586,7 +589,18 @@ namespace WpfApp1
 
         private void Titles_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
         {
-
+            Song b = LoginScreen.allSongs.mSongs.Where(x => (" Song Title: " + x.mTitle + " Artist(s): " + x.mArtist + " Album: " + x.mAlbum + " File Type: " + x.mExtension).Equals(songStr[Titles.SelectedIndex])).Single();
+            if (currentPlayList.mSongs.FirstOrDefault(x => x.Directory == b.Directory) == null)
+            {
+                AddButton.IsEnabled = true;
+                AddButton.Content = "Add";
+            }
+            else
+            {
+                AddButton.IsEnabled = false;
+                AddButton.Content = "Added";
+            }
+           
         }
     }
 }

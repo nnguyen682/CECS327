@@ -24,7 +24,7 @@ namespace WpfApp1
     public partial class AfterLogin : Window
     {
 
-        public static List<string> mediaFileList;
+        public static List<Song> mediaFileList;
         public static User objectUser;
         public static AfterLogin afterLoginWindow;
         public static AxWMPLib.AxWindowsMediaPlayer ax;
@@ -42,14 +42,14 @@ namespace WpfApp1
             var newBox = new System.Windows.Controls.ListBox();
 
             objectUser = new User();
-            mediaFileList = new List<string>();
+            mediaFileList = new List<Song>();
             InitializeComponent();
             username.Content = x.mUsername;
             ax =
                 winsFormHost.Child as AxWMPLib.AxWindowsMediaPlayer;
             objectUser = x;
             profile.Source = new BitmapImage(new Uri("pack://application:,,,/Images/" + x.mUsername + ".png"));
-            
+            /*
             DirectoryInfo dir = new DirectoryInfo(mediaFolder);
 
             foreach (FileInfo file in dir.GetFiles("*.*", SearchOption.AllDirectories))
@@ -57,6 +57,10 @@ namespace WpfApp1
                 if (file.Extension == ".mp3" || file.Extension == ".mp4")
                     mediaFileList.Add(file.Name);
             }
+            */
+            foreach (var b in LoginScreen.allSongs.mSongs)
+                mediaFileList.Add(b);
+        
             /*if (mediaFileList != null)
             {
                 newBox.ItemsSource = mediaFileList;
@@ -101,7 +105,7 @@ namespace WpfApp1
             if (mediaFileList != null)
             {
                 newBox.ItemsSource = mediaFileList;
-                ax.URL = mediaFolder + "\\" + mediaFileList[0];
+                //ax.URL = mediaFolder + "\\" + mediaFileList[0];
             }
             var newstackPanel = new StackPanel();
             newstackPanel.Children.Add(newBox);
@@ -119,9 +123,9 @@ namespace WpfApp1
                 var newListBox = new System.Windows.Controls.ListBox();
                 newListBox.Background = Brushes.Black;
                 newListBox.Foreground = Brushes.LightGray;
-                var newMediaFileList = new List<string>();
+                var newMediaFileList = new List<Song>();
                 foreach (var d in b.mSongs)
-                    newMediaFileList.Add(d.mArtist + "-" + d.mTitle + d.mExtension);
+                    newMediaFileList.Add(d);
                 newListBox.ItemsSource = newMediaFileList;
                 newListBox.Tag = b.mName;
                 ListofListBox.Add(newListBox);
@@ -141,8 +145,9 @@ namespace WpfApp1
 
         private void ListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if(e.AddedItems.Count !=0)
-               ax.URL = mediaFolder + "\\" + e.AddedItems[0];
+            
+            if (e.AddedItems.Count !=0)
+               ax.URL = mediaFolder + "\\" + ((Song)e.AddedItems[0]).Directory;
  
         }
 

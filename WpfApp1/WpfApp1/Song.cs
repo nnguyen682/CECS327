@@ -16,6 +16,7 @@ namespace WpfApp1
         public string Artist { get => mArtist; set => mArtist = value; }
         public string Extension { get => mExtension; set => mExtension = value; }
         public string Album { get => mExtension; set => mExtension = value; }
+        public string Directory { get => mArtist + "-" + mTitle + mExtension; }
         public Song()
         {
 
@@ -30,6 +31,10 @@ namespace WpfApp1
             mTitle = title;
             mArtist = artist;
             mExtension = extension;
+        }
+        public override string ToString()
+        {
+            return mArtist + " - " + mTitle + mExtension == ".mp3"? " - Music" : " - Music Video";
         }
     }
 }

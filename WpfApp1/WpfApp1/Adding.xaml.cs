@@ -41,9 +41,9 @@ namespace WpfApp1
 
         private void Button_Back(object sender, RoutedEventArgs e)
         {
-            List<string> temp = new List<string>();
+            List<Song> temp = new List<Song>();
             foreach (var b in Adding.currentPlayList.mSongs)
-                temp.Add(b.mArtist + "-" + b.mTitle + b.mExtension);
+                temp.Add(b);
             AfterLogin.ListofListBox.Where(x => (string) x.Tag ==  Adding.currentPlayList.mName).Single().ItemsSource = temp;
             this.Hide();
             Create.createWIndow.Show();
