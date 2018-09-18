@@ -103,6 +103,7 @@ namespace WpfApp1
         {
             AllPLaylist.Children.Clear();
             var newBox = new System.Windows.Controls.ListBox();
+            newBox.Tag = "Available Songs";
             if (mediaFileList != null)
             {
                 newBox.ItemsSource = mediaFileList;
