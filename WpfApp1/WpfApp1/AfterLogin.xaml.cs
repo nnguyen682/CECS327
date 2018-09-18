@@ -113,10 +113,12 @@ namespace WpfApp1
             Expander exp = new Expander();
             exp.Content = newstackPanel;
             exp.Header = "Available Songs";
+            
             exp.Foreground = Brushes.LightGray;
             allPlaylist.Children.Add(exp);
             newBox.Background = Brushes.Black;
             newBox.Foreground = Brushes.LightGray;
+            newBox.Tag = "Available Songs";
             foreach (var b in objectUser.mPlaylists)
             {
                 Expander exp1 = new Expander();
