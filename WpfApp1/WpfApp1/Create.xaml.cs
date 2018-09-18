@@ -51,14 +51,39 @@ namespace WpfApp1
         {
 
         }
+        private void Playlist_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+            {
+                ListBoxItem itm = new ListBoxItem();
+                itm.Content = newList.Text;
+
+                if (AfterLogin.objectUser.mPlaylists.FirstOrDefault(x => x.mName == newList.Text) == null)
+                {
+                    AfterLogin.objectUser.mPlaylists.Add(new Playlist(newList.Text));
+                    list.Items.Add(itm);
+                }
+                else
+                    MessageBox.Show("Please choose a different name for the playlist");
+                AfterLogin.afterLoginWindow.reloadPlaylists();
+
+            }
+        }
+        
         private void AddButton(object sender, RoutedEventArgs e)
         {
             ListBoxItem itm = new ListBoxItem();
             if(!String.IsNullOrWhiteSpace(newList.Text))
             {
                 itm.Content = newList.Text;
-                list.Items.Add(itm );
-                AfterLogin.objectUser.mPlaylists.Add(new Playlist(newList.Text));
+
+                if (AfterLogin.objectUser.mPlaylists.FirstOrDefault(x => x.mName == newList.Text) == null)
+                {
+                    AfterLogin.objectUser.mPlaylists.Add(new Playlist(newList.Text));
+                    list.Items.Add(itm);
+                }
+                else
+                    MessageBox.Show("Please choose a different name for the playlist");
                 AfterLogin.afterLoginWindow.reloadPlaylists();
                 /**
                 Expander exp1 = new Expander();
