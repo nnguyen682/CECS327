@@ -506,8 +506,9 @@ namespace WpfApp1
                     Adding.currentPlayList.addSong(LoginScreen.allSongs.mSongs.Where(x => (x.mArtist + "-" + x.mTitle + x.mExtension) == trythis).Single());
                     
                      ListBoxItem itm1 = new ListBoxItem();
-                     itm1.Content = Adding.currentPlayList.mSongs.Last().ToString();
-                     Adding.AddingListBox.Items.Add(itm1);
+                     //itm1.Content = Adding.currentPlayList.mSongs.Last().ToString();
+                     //itm1.Content = b;
+                    Adding.AddingListBox.Items.Add(b);
 
                     songObjs.RemoveAt(Titles.SelectedIndex);
                     songStr.RemoveAt(Titles.SelectedIndex);

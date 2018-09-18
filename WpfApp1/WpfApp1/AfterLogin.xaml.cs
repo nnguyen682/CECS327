@@ -59,9 +59,10 @@ namespace WpfApp1
                     mediaFileList.Add(file.Name);
             }
             */
+            /*
             foreach (var b in LoginScreen.allSongs.mSongs)
                 mediaFileList.Add(b);
-        
+            */
             /*if (mediaFileList != null)
             {
                 newBox.ItemsSource = mediaFileList;
@@ -102,6 +103,7 @@ namespace WpfApp1
         public void reloadPlaylists() // refresh playlist everytime something is updated
         {
             AllPLaylist.Children.Clear();
+            
             var newBox = new System.Windows.Controls.ListBox();
             newBox.Tag = "Available Songs";
             if (mediaFileList != null)
@@ -116,7 +118,7 @@ namespace WpfApp1
             exp.Header = "Available Songs";
             
             exp.Foreground = Brushes.LightGray;
-            allPlaylist.Children.Add(exp);
+            /*allPlaylist.Children.Add(exp);*/
             newBox.Background = Brushes.Black;
             newBox.Foreground = Brushes.LightGray;
             newBox.Tag = "Available Songs";
