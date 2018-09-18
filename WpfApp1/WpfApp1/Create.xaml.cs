@@ -27,7 +27,7 @@ namespace WpfApp1
             InitializeComponent();
             if (AfterLogin.objectUser.mPlaylists != null)
             {
-                foreach (var b in AfterLogin.objectUser.mPlaylists)
+                foreach (var b in AfterLogin.objectUser.mPlaylists) // add all the playlist name to the list box
                 {
                     ListBoxItem itm = new ListBoxItem();
                     itm.Content = b.mName;
@@ -36,9 +36,9 @@ namespace WpfApp1
             }
         }
 
-        private void Button_Back(object sender, RoutedEventArgs e)
+        private void Button_Back(object sender, RoutedEventArgs e) // Going back to the After Login Screen
         {
-            selectedList = "";
+            selectedList = ""; 
             list.Items.Clear();
             this.Hide();
             AfterLogin.afterLoginWindow.Show();
@@ -46,19 +46,14 @@ namespace WpfApp1
            
 
         }
-
-        private void TextBlock_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-        private void Playlist_KeyDown(object sender, KeyEventArgs e)
+        private void Playlist_KeyDown(object sender, KeyEventArgs e) // implementing enter key so it will add the playlist name to the list box
         {
             if (e.Key == Key.Enter)
             {
                 ListBoxItem itm = new ListBoxItem();
                 itm.Content = newList.Text;
 
-                if (AfterLogin.objectUser.mPlaylists.FirstOrDefault(x => x.mName == newList.Text) == null)
+                if (AfterLogin.objectUser.mPlaylists.FirstOrDefault(x => x.mName == newList.Text) == null) // check if the playlist name already exist or not
                 {
                     AfterLogin.objectUser.mPlaylists.Add(new Playlist(newList.Text));
                     list.Items.Add(itm);
@@ -70,7 +65,7 @@ namespace WpfApp1
             }
         }
         
-        private void AddButton(object sender, RoutedEventArgs e)
+        private void AddButton(object sender, RoutedEventArgs e) // add the playlist name to the list box by clicking the add button
         {
             ListBoxItem itm = new ListBoxItem();
             if(!String.IsNullOrWhiteSpace(newList.Text))
@@ -85,25 +80,9 @@ namespace WpfApp1
                 else
                     MessageBox.Show("Please choose a different name for the playlist");
                 AfterLogin.afterLoginWindow.reloadPlaylists();
-                /**
-                Expander exp1 = new Expander();
-                var newStack = new StackPanel { Name = "NewExpanderStackPanel" };
-                var newListBox = new System.Windows.Controls.ListBox();
-                newListBox.Name = newList.Text;
-                newListBox.Background = Brushes.Black;
-                newListBox.Foreground = Brushes.White;
-                var newMediaFileList = new List<string>();
-                newStack.Children.Add(newListBox);
-                newListBox.Name = newList.Text;
-                AfterLogin.ListofListBox.Add(newListBox);
-                exp1.Content = newStack;
-                exp1.Header = newList.Text;
-                exp1.Foreground = Brushes.LightGray;
-                AfterLogin.AllPLaylist.Children.Add(exp1);
-                newList.Text = "";*/
             }
         }
-        private void DeleteButton(object sender, RoutedEventArgs e)
+        private void DeleteButton(object sender, RoutedEventArgs e) // remnove the name of the playlist from the list box
         {
            
             var msg = "No Playlist was selected to delete";
@@ -121,7 +100,7 @@ namespace WpfApp1
             else
                 MessageBox.Show(msg);
         }
-        private void Go(object sender, RoutedEventArgs e)
+        private void Go(object sender, RoutedEventArgs e) // Go to the Adding Screen by the button edit
         {
             if (list.SelectedItem != null)
             {
@@ -131,13 +110,13 @@ namespace WpfApp1
                 b.Show();
             }
         }
-        private void ListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void ListBox_SelectionChanged(object sender, SelectionChangedEventArgs e) // save the name of the selected playlist for later use
         {
             if (list.SelectedItem != null)
                 selectedList = ((ListBoxItem)list.SelectedValue).Content.ToString();
         }
 
-        private void list_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        private void list_MouseDoubleClick(object sender, MouseButtonEventArgs e) // Go the the Adding Screen by double click on the name of the playlist
         {
             if (list.SelectedValue != null)
             {
@@ -150,7 +129,7 @@ namespace WpfApp1
             
         }
 
-        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e) // overide x button
         {
             if (!LoginScreen.LoginWindow.closingFlag)
             {

@@ -29,7 +29,7 @@ namespace WpfApp1
             //aList.ItemsSource = AfterLogin.mediaFileList;
             listTitle.Content =   Create.selectedList.ToString();
             currentPlayList = AfterLogin.objectUser.mPlaylists.Where(x => x.mName == Create.selectedList.ToString()).Single();
-            foreach (var b in currentPlayList.mSongs)
+            foreach (var b in currentPlayList.mSongs) // adding song object to listbox
             {
                 ListBoxItem itm = new ListBoxItem();
                 itm.Content = b;
@@ -46,7 +46,7 @@ namespace WpfApp1
             foreach (var b in Adding.currentPlayList.mSongs)
                 temp.Add(b);
             AfterLogin.ListofListBox.Where(x => (string) x.Tag ==  Adding.currentPlayList.mName).Single().ItemsSource = temp;*/
-            AfterLogin.afterLoginWindow.reloadPlaylists();
+            AfterLogin.afterLoginWindow.reloadPlaylists(); // going back and reload the listbox
             this.Hide();
             Create.createWIndow.Show();
         }
@@ -83,9 +83,9 @@ namespace WpfApp1
             var msg = "No song was selected to delete";
             
             
-            if (addedSongs.SelectedItem != null)
+            if (addedSongs.SelectedItem != null) // if ther is no song was selected then do nothing
             {
-                string b = addedSongs.SelectedItem.ToString();
+                string b = addedSongs.SelectedItem.ToString(); //if the song is playing in the current playlist got removed then stop running the song
                 if (AfterLogin.afterLoginWindow.currPlaylistName == currentPlayList.mName && addedSongs.SelectedItem.GetType() == typeof(Song) && AfterLogin.afterLoginWindow.currMediaName == ((Song) addedSongs.SelectedItem).Directory)
                 {
                     AfterLogin.ax.close();
@@ -97,7 +97,7 @@ namespace WpfApp1
                 MessageBox.Show(msg);
         }
 
-        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e) // override X button
         {
             if (!LoginScreen.LoginWindow.closingFlag)
             {
@@ -113,12 +113,8 @@ namespace WpfApp1
             }
         }
 
-        private void addedSongs_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
 
-        }
-
-        private void Search_Click(object sender, RoutedEventArgs e)
+        private void Search_Click(object sender, RoutedEventArgs e) //open new search window
         {
             AddingWindow = this;
             SearchWindow sW = new SearchWindow();

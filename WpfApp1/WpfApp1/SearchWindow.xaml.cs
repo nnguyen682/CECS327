@@ -21,7 +21,7 @@ namespace WpfApp1
             
             currentPlayList = AfterLogin.objectUser.mPlaylists.Where(x => x.mName == Create.selectedList.ToString()).Single();
             PlaylistName.Content = "Adding songs to: " + currentPlayList.mName + " (select a song and click add)";
-            foreach (Song x in LoginScreen.allSongs.mSongs)
+            foreach (Song x in LoginScreen.allSongs.mSongs) // output the information of available songs
             {
                 StackPanel sP = new StackPanel();
                 sP.Orientation = Orientation.Horizontal;
@@ -80,7 +80,7 @@ namespace WpfApp1
             Titles.ItemsSource = songObjs;
         }
 
-        private void Search_Click(object sender, RoutedEventArgs e)
+        private void Search_Click(object sender, RoutedEventArgs e) // 
         {
             Reset();
             string searchVal = SearchText.Text;

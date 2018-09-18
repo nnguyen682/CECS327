@@ -22,32 +22,20 @@ namespace WpfApp1
         public Profile()
         {
             InitializeComponent();
-            
+            // passing the user picture
             profile.Source = new BitmapImage(new Uri("pack://application:,,,/Images/" + AfterLogin.objectUser.mUsername + ".png"));
             name.Content = AfterLogin.objectUser.mName;
             email.Content = AfterLogin.objectUser.mEmail;
             Birthday.Content = AfterLogin.objectUser.mBirthday;
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void Button_Click_1(object sender, RoutedEventArgs e)
-        {
-            Create b = new Create();
-            this.Hide();
-            b.Show();
-        }
-
-        private void Button_Back(object sender, RoutedEventArgs e)
+        private void Button_Back(object sender, RoutedEventArgs e)// going back to the login screen
         {
             this.Hide();
             AfterLogin.afterLoginWindow.Show();
         }
 
-        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e) //override the x button
         {
             if (!LoginScreen.LoginWindow.closingFlag)
             {

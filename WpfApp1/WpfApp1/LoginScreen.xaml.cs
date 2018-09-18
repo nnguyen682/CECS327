@@ -30,7 +30,7 @@ namespace WpfApp1
         public LoginScreen()
         {
             InitializeComponent();
-            
+            //loading the json objects
             string st = File.ReadAllText(System.IO.Path.Combine(System.Windows.Forms.Application.StartupPath, "UserJson\\Users.json"));
             everyUser = JsonConvert.DeserializeObject<UserCollection>(st);
             string allSongSt = File.ReadAllText(System.IO.Path.Combine(System.Windows.Forms.Application.StartupPath, "UserJson\\AllSongs.json"));
@@ -38,7 +38,7 @@ namespace WpfApp1
             LoginWindow = this;
         }
 
-        private void Login_Click(object sender, RoutedEventArgs e)
+        private void Login_Click(object sender, RoutedEventArgs e) // click the button login to login
         {
             int counter = 0;
             var msg = "Incorrect Username or Password!";
@@ -63,7 +63,7 @@ namespace WpfApp1
             }
         }
 
-        private void Login_KeyDown(object sender, KeyEventArgs e)
+        private void Login_KeyDown(object sender, KeyEventArgs e) // push the enter keyboard button to login
         {
             if (e.Key == Key.Enter)
             {
@@ -91,14 +91,14 @@ namespace WpfApp1
             }
         }
 
-        private void Reset()
+        private void Reset() // reset the test after successfully login 
         {
             user.Text = "";
             pass.Password = "";
             SignInButton.Focus();
         }
 
-        private void OnUserChanged(object sender, RoutedEventArgs e)
+        private void OnUserChanged(object sender, RoutedEventArgs e) // modifying the user textbox
         {
             TextBox textBox = sender as TextBox;
             if (textBox.Tag != null)
@@ -107,7 +107,7 @@ namespace WpfApp1
             }
         }
 
-        private void OnPasswordChanged(object sender, RoutedEventArgs e)
+        private void OnPasswordChanged(object sender, RoutedEventArgs e) // modifying the password text box
         {
             PasswordBox passBox = sender as PasswordBox;
             if (passBox.Tag != null)
@@ -116,7 +116,7 @@ namespace WpfApp1
             }
         }
 
-        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e) //overide x button
         {
             if (!closingFlag)
             {
@@ -133,7 +133,7 @@ namespace WpfApp1
             }
         }
 
-        public void ConfirmExit()
+        public void ConfirmExit() // promt confirm exit or not
         {
             MessageBoxResult mbResult = MessageBox.Show("Are you sure you want to exit?", "Exit", MessageBoxButton.YesNo, MessageBoxImage.Question, MessageBoxResult.No);
             if(mbResult == MessageBoxResult.Yes)
@@ -142,7 +142,7 @@ namespace WpfApp1
             }
         }
 
-        private void saveUsers()
+        private void saveUsers() // save the changed to the json for futher 
         {
             File.WriteAllText(System.IO.Path.Combine(System.Windows.Forms.Application.StartupPath, "UserJson\\Users.json"), JsonConvert.SerializeObject(LoginScreen.everyUser));
         }

@@ -23,7 +23,7 @@ namespace WpfApp1
     /// </summary>
     public partial class AfterLogin : Window
     {
-
+        // create static object so it will be easier to refer
         public static List<Song> mediaFileList;
         public static User objectUser;
         public static AfterLogin afterLoginWindow;
@@ -99,7 +99,7 @@ namespace WpfApp1
             reloadPlaylists();
         }
 
-        public void reloadPlaylists()
+        public void reloadPlaylists() // refresh playlist everytime something is updated
         {
             AllPLaylist.Children.Clear();
             var newBox = new System.Windows.Controls.ListBox();
@@ -142,14 +142,10 @@ namespace WpfApp1
             }
             AllPLaylist = allPlaylist;
         }
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
 
         private void ListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (e.AddedItems.Count !=0)
+            if (e.AddedItems.Count !=0) // playing a song if we select a song in the list box
             {
                 ax.URL = mediaFolder + "\\" + ((Song)e.AddedItems[0]).Directory;
                 currMediaName = ((Song)e.AddedItems[0]).Directory;
@@ -157,7 +153,7 @@ namespace WpfApp1
             }
         }
 
-        private void Button_Profile(object sender, RoutedEventArgs e)
+        private void Button_Profile(object sender, RoutedEventArgs e) // open new Profile Screen
         {
             
             afterLoginWindow = this;
@@ -166,7 +162,7 @@ namespace WpfApp1
             b.Show();
         }
 
-        private void Button_Logout(object sender, RoutedEventArgs e)
+        private void Button_Logout(object sender, RoutedEventArgs e) // going back to the login screen
         {
             ax.close();
             mediaFileList.Clear();
@@ -174,12 +170,7 @@ namespace WpfApp1
             LoginScreen.LoginWindow.Show();
         }
 
-        private void Button_Click_3(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void OpenAddingPlayList(object sender, RoutedEventArgs e)
+        private void OpenAddingPlayList(object sender, RoutedEventArgs e) // Open creat Playlist Screen
         {
             afterLoginWindow = this;
             Create b = new Create();
@@ -187,7 +178,7 @@ namespace WpfApp1
             b.Show();
         }
 
-        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)// overide x button
         {
             if (!LoginScreen.LoginWindow.closingFlag)
             {
@@ -203,12 +194,6 @@ namespace WpfApp1
             }
         }
 
-        /**
-        private void Search_Click(object sender, RoutedEventArgs e)
-        {
-            SearchWindow sW = new SearchWindow();
-            this.Hide();
-            sW.Show();
-        }*/
+
     }
 }
