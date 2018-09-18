@@ -19,7 +19,7 @@
                 </Button>
                 <Label x:Name="username" Background="Green" Foreground="LightGray" HorizontalContentAlignment="Center" FontWeight="Bold">username</Label>
 
-                <StackPanel x:Name="allPlaylist" Selector.SelectionChanged="ListBox_SelectionChanged"  Background="Black" >
+                <StackPanel x:Name="allPlaylist"  Height="308" Selector.SelectionChanged="ListBox_SelectionChanged"  Background="Black" >
 
                 </StackPanel>
             </StackPanel>

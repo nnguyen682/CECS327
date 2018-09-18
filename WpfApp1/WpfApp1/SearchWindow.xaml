@@ -33,7 +33,7 @@
             <Border Grid.Column="0" BorderBrush="Gray" BorderThickness="1">
                 <StackPanel >
                     <Label x:Name="PlaylistName" BorderBrush="Black" BorderThickness="1" FontSize="16" FontWeight="Bold" />
-                    <ListBox x:Name="Titles" SelectionChanged="Titles_SelectionChanged">
+                    <ListBox x:Name="Titles" SelectionChanged="Titles_SelectionChanged" Height="230">
                         <ListBox.ItemContainerStyle>
                             <Style TargetType="ListBoxItem">
                                 <Setter Property="BorderThickness" Value="1" />
