@@ -123,6 +123,7 @@ namespace WpfApp1
             foreach (var b in objectUser.mPlaylists)
             {
                 Expander exp1 = new Expander();
+                exp1.MouseRightButtonUp += Mouse_RightButtonClickPlaylist;
                 var newStack = new StackPanel ();
                 var newListBox = new System.Windows.Controls.ListBox();
                 newListBox.Background = Brushes.Black;
@@ -142,9 +143,22 @@ namespace WpfApp1
             }
             AllPLaylist = allPlaylist;
         }
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
 
+        private void Mouse_RightButtonClickPlaylist(object sender, RoutedEventArgs e)
+        {
+            ContextMenuStrip cMS = new ContextMenuStrip();
+            cMS.Name = "Playlist Control";
+            ToolStripMenuItem addSong = new ToolStripMenuItem("Add Songs");
+            ToolStripMenuItem renamePlaylist = new ToolStripMenuItem("Rename");
+            ToolStripMenuItem removePlaylist = new ToolStripMenuItem("Remove Playlist");
+            addSong.Click += AddSongClick;
+            renamePlaylist.Click += RenamePlaylistClick;
+            removePlaylist.Click += RemovePlaylistClick;
+
+            cMS.Items.Add(addSong);
+            cMS.Items.Add(renamePlaylist);
+            cMS.Items.Add(removePlaylist);
+            
         }
 
         private void ListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -174,7 +188,17 @@ namespace WpfApp1
             LoginScreen.LoginWindow.Show();
         }
 
-        private void Button_Click_3(object sender, RoutedEventArgs e)
+        private void RenamePlaylistClick(object sender, EventArgs e)
+        {
+
+        }
+
+        private void AddSongClick(object sender, EventArgs e)
+        {
+            System.Windows.Forms.MessageBox.Show("Please Work");
+        }
+
+        private void RemovePlaylistClick(object sender, EventArgs e)
         {
 
         }
