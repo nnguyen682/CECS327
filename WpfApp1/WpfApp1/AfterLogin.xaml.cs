@@ -181,20 +181,24 @@ namespace WpfApp1
             if (e.AddedItems.Count !=0)
             {
                 currPlaylistName = ((System.Windows.Controls.ListBox)e.OriginalSource).Tag.ToString();
-                Playlist currentPL = objectUser.mPlaylists.Where(x => currPlaylistName.Equals(x.mName)).Single();
-                var wmpPL = ax.playlistCollection.newPlaylist("Current Playlist - "+currPlaylistName);
-                var startMedia = ax.newMedia(mediaFolder + "\\" + ((Song)e.AddedItems[0]).Directory);
-                wmpPL.appendItem(startMedia);
-                foreach (Song cur in currentPL.mSongs)
+                Playlist currentPL = objectUser.mPlaylists.Where(x => currPlaylistName.Equals(x.mName)).DefaultIfEmpty(null).Single();
+                if (currentPL != null)
                 {
-                    if (!cur.mTitle.Equals(((Song)e.AddedItems[0]).mTitle))
+                    var wmpPL = ax.playlistCollection.newPlaylist("Current Playlist - " + currPlaylistName);
+                    var startMedia = ax.newMedia(mediaFolder + "\\" + ((Song)e.AddedItems[0]).Directory);
+                    wmpPL.appendItem(startMedia);
+                    foreach (Song cur in currentPL.mSongs)
                     {
-                        var fileLocation = mediaFolder + "\\" + cur.Directory;
-                        var mediaItem = ax.newMedia(fileLocation);
-                        wmpPL.appendItem(mediaItem);
+                        if (!cur.mTitle.Equals(((Song)e.AddedItems[0]).mTitle))
+                        {
+                            var fileLocation = mediaFolder + "\\" + cur.Directory;
+                            var mediaItem = ax.newMedia(fileLocation);
+                            wmpPL.appendItem(mediaItem);
+                        }
                     }
+                    ax.currentPlaylist = wmpPL;
                 }
-                ax.currentPlaylist = wmpPL;
+                
                 
 
                 //ax.URL = mediaFolder + "\\" + ((Song)e.AddedItems[0]).Directory;
