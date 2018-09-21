@@ -12,7 +12,7 @@
         
         <DockPanel >
             <StackPanel Background="Black">
-                <Button Name="profileButton" MouseLeftButtonUp="Button_Profile">
+                <Button Name="profileButton" Click="Button_Profile">
                     <StackPanel>
                         <Image x:Name="profile"  Width="73" Height="77" Stretch="Uniform"    />
                     </StackPanel>
