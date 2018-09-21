@@ -30,6 +30,7 @@ namespace WpfApp1
         public static AxWMPLib.AxWindowsMediaPlayer ax;
         public static StackPanel AllPLaylist;
         public static List<System.Windows.Controls.ListBox> ListofListBox ;
+        public static Expander currentExpander;
 
         string mediaFolder = System.IO.Path.Combine(System.Windows.Forms.Application.StartupPath, "MusicLibrary");
 
@@ -146,6 +147,9 @@ namespace WpfApp1
 
         private void Mouse_RightButtonClickPlaylist(object sender, RoutedEventArgs e)
         {
+            System.Windows.Controls.Expander ctrl = ((System.Windows.Controls.Expander)sender);
+            Brush highlight = new SolidColorBrush(Colors.Green);
+            ctrl.Background = highlight;
             ContextMenuStrip cMS = new ContextMenuStrip();
             cMS.Name = "Playlist Control";
             ToolStripMenuItem addSong = new ToolStripMenuItem("Add Songs");
@@ -158,7 +162,17 @@ namespace WpfApp1
             cMS.Items.Add(addSong);
             cMS.Items.Add(renamePlaylist);
             cMS.Items.Add(removePlaylist);
-            
+            System.Drawing.Point pt = System.Windows.Forms.Cursor.Position;
+            cMS.Show(pt);
+            cMS.Closed += RightClickMenu_Closed;
+            currentExpander = ctrl;
+        }
+
+        private void RightClickMenu_Closed(object sender, ToolStripDropDownClosedEventArgs e)
+        {
+            ContextMenuStrip cMS = (ContextMenuStrip)sender;
+            Brush unhighlight = new SolidColorBrush(Colors.Black);
+            currentExpander.Background = unhighlight;
         }
 
         private void ListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -190,17 +204,17 @@ namespace WpfApp1
 
         private void RenamePlaylistClick(object sender, EventArgs e)
         {
-
+            System.Windows.Forms.MessageBox.Show("Have a nice day.");
         }
 
         private void AddSongClick(object sender, EventArgs e)
         {
-            System.Windows.Forms.MessageBox.Show("Please Work");
+            System.Windows.Forms.MessageBox.Show("Please Work.");
         }
 
         private void RemovePlaylistClick(object sender, EventArgs e)
         {
-
+            System.Windows.Forms.MessageBox.Show("Fuck!");
         }
 
         private void OpenAddingPlayList(object sender, RoutedEventArgs e)
