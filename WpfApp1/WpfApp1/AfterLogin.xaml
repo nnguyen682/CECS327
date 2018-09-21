@@ -14,12 +14,12 @@
             <StackPanel Background="Black">
                 <Button Name="profileButton" Click="Button_Profile"  >
                     <StackPanel>
-                        <Image x:Name="profile"  Width="73" Height="77" Stretch="Uniform"    />
+                        <Image x:Name="profile"  Width="73" Height="77" Stretch="Uniform" MouseRightButtonUp="profile_MouseRightButtonUp" />
                     </StackPanel>
                 </Button>
                 <Label x:Name="username" Background="Green" Foreground="LightGray" HorizontalContentAlignment="Center" FontWeight="Bold">username</Label>
 
-                <StackPanel x:Name="allPlaylist" Selector.SelectionChanged="ListBox_SelectionChanged"  Background="Black" >
+                <StackPanel x:Name="allPlaylist" Selector.SelectionChanged="ListBox_SelectionChanged"  Background="Black"  >
 
                 </StackPanel>
             </StackPanel>

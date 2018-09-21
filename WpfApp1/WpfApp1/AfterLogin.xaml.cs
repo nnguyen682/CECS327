@@ -15,6 +15,7 @@ using System.IO;
 using WMPLib;
 using AxWMPLib;
 using System.Windows.Forms;
+using MenuItem = System.Windows.Forms.MenuItem;
 
 namespace WpfApp1
 {
@@ -116,12 +117,13 @@ namespace WpfApp1
             Expander exp = new Expander();
             exp.Content = newstackPanel;
             exp.Header = "Available Songs";
-            
+           
             exp.Foreground = Brushes.LightGray;
             /*allPlaylist.Children.Add(exp);*/
             newBox.Background = Brushes.Black;
             newBox.Foreground = Brushes.LightGray;
             newBox.Tag = "Available Songs";
+            newBox.MouseRightButtonUp += profile_MouseRightButtonUp;
             foreach (var b in objectUser.mPlaylists)
             {
                 Expander exp1 = new Expander();
@@ -196,6 +198,20 @@ namespace WpfApp1
             }
         }
 
+        private void profile_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
 
+        }
+
+        private void profile_MouseRightButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            System.Windows.Controls.ContextMenu cm = new System.Windows.Controls.ContextMenu();
+            MenuItem addDevice = new MenuItem("Add Device");
+            //addDevice.MenuItems.Add( new MenuItem("Add More .."));
+            cm.Items.Add(addDevice);    
+            cm.Items.Add("Item 2");
+            cm.Items.Add(objectUser);
+            profile.ContextMenu = cm;
+        }
     }
 }
