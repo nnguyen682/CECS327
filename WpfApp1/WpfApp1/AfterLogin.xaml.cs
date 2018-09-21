@@ -43,6 +43,7 @@ namespace WpfApp1
             afterLoginWindow = this;
             var newBox = new System.Windows.Controls.ListBox();
 
+            
             objectUser = new User();
             mediaFileList = new List<Song>();
             InitializeComponent();
@@ -179,9 +180,26 @@ namespace WpfApp1
         {
             if (e.AddedItems.Count !=0)
             {
-                ax.URL = mediaFolder + "\\" + ((Song)e.AddedItems[0]).Directory;
-                currMediaName = ((Song)e.AddedItems[0]).Directory;
                 currPlaylistName = ((System.Windows.Controls.ListBox)e.OriginalSource).Tag.ToString();
+                Playlist currentPL = objectUser.mPlaylists.Where(x => currPlaylistName.Equals(x.mName)).Single();
+                var wmpPL = ax.playlistCollection.newPlaylist("Current Playlist - "+currPlaylistName);
+                var startMedia = ax.newMedia(mediaFolder + "\\" + ((Song)e.AddedItems[0]).Directory);
+                wmpPL.appendItem(startMedia);
+                foreach (Song cur in currentPL.mSongs)
+                {
+                    if (!cur.mTitle.Equals(((Song)e.AddedItems[0]).mTitle))
+                    {
+                        var fileLocation = mediaFolder + "\\" + cur.Directory;
+                        var mediaItem = ax.newMedia(fileLocation);
+                        wmpPL.appendItem(mediaItem);
+                    }
+                }
+                ax.currentPlaylist = wmpPL;
+                
+
+                //ax.URL = mediaFolder + "\\" + ((Song)e.AddedItems[0]).Directory;
+                //currMediaName = ((Song)e.AddedItems[0]).Directory;
+
             }
         }
 
@@ -240,6 +258,7 @@ namespace WpfApp1
                 e.Cancel = true;
             }
         }
+
 
         /**
         private void Search_Click(object sender, RoutedEventArgs e)
