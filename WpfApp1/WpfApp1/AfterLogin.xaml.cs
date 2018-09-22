@@ -191,6 +191,7 @@ namespace WpfApp1
                     cMS.Closed += RightClickMenu_Closed;
                     currentExpander = ctrl;
                 }
+               
             }
         }
 
@@ -309,6 +310,19 @@ namespace WpfApp1
 
         private void allPlaylist_MouseUp(object sender, MouseButtonEventArgs e)
         {
+
+        }
+
+        private void allPlaylist_MouseRightButtonUp(object sender, MouseButtonEventArgs e)
+        {
+
+
+            ContextMenuStrip cMS = new ContextMenuStrip();
+            cMS.Name = "Playlist Control";
+            ToolStripMenuItem addPlaylist = new ToolStripMenuItem("Add PlayList");
+            cMS.Items.Add(addPlaylist);
+            System.Drawing.Point pt = System.Windows.Forms.Cursor.Position;
+            cMS.Show(pt);
 
         }
 
