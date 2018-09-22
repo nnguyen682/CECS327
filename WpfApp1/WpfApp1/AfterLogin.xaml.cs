@@ -23,7 +23,7 @@ namespace WpfApp1
     /// </summary>
     public partial class AfterLogin : Window
     {
-
+        Playlist selectedPlaylist;
         public static List<Song> mediaFileList;
         public static User objectUser;
         public static AfterLogin afterLoginWindow;
@@ -148,26 +148,51 @@ namespace WpfApp1
 
         private void Mouse_RightButtonClickPlaylist(object sender, RoutedEventArgs e)
         {
-            System.Windows.Controls.Expander ctrl = ((System.Windows.Controls.Expander)sender);
-            Brush highlight = new SolidColorBrush(Colors.Green);
-            ctrl.Background = highlight;
-            ContextMenuStrip cMS = new ContextMenuStrip();
-            cMS.Name = "Playlist Control";
-            ToolStripMenuItem addSong = new ToolStripMenuItem("Add Songs");
-            ToolStripMenuItem renamePlaylist = new ToolStripMenuItem("Rename");
-            ToolStripMenuItem removePlaylist = new ToolStripMenuItem("Remove Playlist");
-            addSong.Click += AddSongClick;
-            renamePlaylist.Click += RenamePlaylistClick;
-            removePlaylist.Click += RemovePlaylistClick;
+            if (e.OriginalSource.GetType() == typeof(TextBlock))
+            {
+                if (((TextBlock)e.OriginalSource).DataContext.GetType() == typeof(string))
+                {
+                    selectedPlaylist = objectUser.mPlaylists.Where(x => x.mName == (string)((TextBlock)e.OriginalSource).DataContext).Single();
+                    System.Windows.Controls.Expander ctrl = ((System.Windows.Controls.Expander)sender);
+                    Brush highlight = new SolidColorBrush(Colors.Green);
+                    ctrl.Background = highlight;
+                    ContextMenuStrip cMS = new ContextMenuStrip();
+                    cMS.Name = "Playlist Control";
+                    ToolStripMenuItem addSong = new ToolStripMenuItem("Add Songs");
 
-            cMS.Items.Add(addSong);
-            cMS.Items.Add(renamePlaylist);
-            cMS.Items.Add(removePlaylist);
-            System.Drawing.Point pt = System.Windows.Forms.Cursor.Position;
-            cMS.Show(pt);
-            cMS.Closed += RightClickMenu_Closed;
-            currentExpander = ctrl;
+                    ToolStripMenuItem renamePlaylist = new ToolStripMenuItem("Rename");
+                    ToolStripMenuItem removePlaylist = new ToolStripMenuItem("Remove Playlist");
+                    //addSong.Click += AddSongClick;
+                    renamePlaylist.Click += RenamePlaylistClick;
+                    removePlaylist.Click += RemovePlaylistClick;
+
+                    System.Windows.Controls.Button b2 = new System.Windows.Controls.Button();
+
+
+                    cMS.Items.Add(addSong);
+                    int i = 0;
+                    foreach (var b in LoginScreen.allSongs.mSongs)
+                    {
+
+                        if (selectedPlaylist.mSongs.FirstOrDefault(x=> x.ToString() == b.ToString()) == null)
+                        {
+                            (cMS.Items[0] as ToolStripMenuItem).DropDownItems.Add(b.ToString());
+                            (cMS.Items[0] as ToolStripMenuItem).DropDownItems[i].Click += AddSongClick;
+                            i++;
+                        }
+                    }
+                    cMS.Items.Add(renamePlaylist);
+                    cMS.Items.Add(removePlaylist);
+                    System.Drawing.Point pt = System.Windows.Forms.Cursor.Position;
+                    cMS.Show(pt);
+                    cMS.Closed += RightClickMenu_Closed;
+                    currentExpander = ctrl;
+                }
+            }
         }
+
+
+
 
         private void RightClickMenu_Closed(object sender, ToolStripDropDownClosedEventArgs e)
         {
@@ -231,7 +256,12 @@ namespace WpfApp1
 
         private void AddSongClick(object sender, EventArgs e)
         {
-            System.Windows.Forms.MessageBox.Show("Please Work.");
+            objectUser.mPlaylists.Where(x=> x.mName == selectedPlaylist.mName).Single().mSongs.Add(LoginScreen.allSongs.mSongs.Where(x=> x.ToString() ==((ToolStripMenuItem)sender).Text).Single());
+            List<Song> temp = new List<Song>();
+            //bug here 2 playlists delete a playlist
+            foreach (var b in selectedPlaylist.mSongs)
+                temp.Add(b);
+            AfterLogin.ListofListBox.Where(x => (string)x.Tag == selectedPlaylist.mName).Single().ItemsSource = temp;
         }
 
         private void RemovePlaylistClick(object sender, EventArgs e)
@@ -263,6 +293,10 @@ namespace WpfApp1
             }
         }
 
+        private void allPlaylist_MouseUp(object sender, MouseButtonEventArgs e)
+        {
+
+        }
 
         /**
         private void Search_Click(object sender, RoutedEventArgs e)
