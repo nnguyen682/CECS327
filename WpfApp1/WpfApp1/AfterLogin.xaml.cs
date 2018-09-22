@@ -104,6 +104,7 @@ namespace WpfApp1
         public void reloadPlaylists()
         {
             AllPLaylist.Children.Clear();
+            /*
             var newBox = new System.Windows.Controls.ListBox();
             newBox.Tag = "Available Songs";
             if (mediaFileList != null)
@@ -122,6 +123,7 @@ namespace WpfApp1
             newBox.Background = Brushes.Black;
             newBox.Foreground = Brushes.LightGray;
             newBox.Tag = "Available Songs";
+            */
             foreach (var b in objectUser.mPlaylists)
             {
                 Expander exp1 = new Expander();
@@ -141,6 +143,7 @@ namespace WpfApp1
                 exp1.Header = b.mName;
                 exp1.Foreground = Brushes.LightGray;
                 allPlaylist.Children.Add(exp1);
+                
 
             }
             AllPLaylist = allPlaylist;
@@ -251,6 +254,7 @@ namespace WpfApp1
 
         private void RenamePlaylistClick(object sender, EventArgs e)
         {
+            
             System.Windows.Forms.MessageBox.Show("Have a nice day.");
         }
 
@@ -266,7 +270,17 @@ namespace WpfApp1
 
         private void RemovePlaylistClick(object sender, EventArgs e)
         {
-            System.Windows.Forms.MessageBox.Show("Fuck!");
+            objectUser.mPlaylists.Remove(selectedPlaylist);
+            foreach(var b in allPlaylist.Children)
+            {
+                if ((string)((Expander)b).Header == selectedPlaylist.mName)
+                {
+                    allPlaylist.Children.Remove((Expander)b);
+                    break;
+                }
+            }
+            
+            ListofListBox.Remove(ListofListBox.Where(x => (string)x.Tag ==  selectedPlaylist.mName).Single());
         }
 
         private void OpenAddingPlayList(object sender, RoutedEventArgs e)
