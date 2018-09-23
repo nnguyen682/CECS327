@@ -15,6 +15,8 @@ using System.IO;
 using WMPLib;
 using AxWMPLib;
 using System.Windows.Forms;
+using TextBox = System.Windows.Controls.TextBox;
+using MessageBox = System.Windows.MessageBox;
 
 namespace WpfApp1
 {
@@ -31,7 +33,6 @@ namespace WpfApp1
         public static StackPanel AllPLaylist;
         public static List<System.Windows.Controls.ListBox> ListofListBox ;
         public static Expander currentExpander;
-
         string mediaFolder = System.IO.Path.Combine(System.Windows.Forms.Application.StartupPath, "MusicLibrary");
 
         public string currMediaName = "";
@@ -148,12 +149,11 @@ namespace WpfApp1
             }
             AllPLaylist = allPlaylist;
         }
-
         private void Mouse_RightButtonClickPlaylist(object sender, RoutedEventArgs e)
         {
-            if (e.OriginalSource.GetType() == typeof(TextBlock))
+            if (sender.GetType() == typeof(Expander))
             {
-                if (((TextBlock)e.OriginalSource).DataContext.GetType() == typeof(string))
+                if (e.OriginalSource.GetType() == typeof(TextBlock) && ((TextBlock)e.OriginalSource).DataContext.GetType() != typeof(Song))
                 {
                     selectedPlaylist = objectUser.mPlaylists.Where(x => x.mName == (string)((TextBlock)e.OriginalSource).DataContext).Single();
                     System.Windows.Controls.Expander ctrl = ((System.Windows.Controls.Expander)sender);
@@ -162,7 +162,6 @@ namespace WpfApp1
                     ContextMenuStrip cMS = new ContextMenuStrip();
                     cMS.Name = "Playlist Control";
                     ToolStripMenuItem addSong = new ToolStripMenuItem("Add Songs");
-
                     ToolStripMenuItem renamePlaylist = new ToolStripMenuItem("Rename");
                     ToolStripMenuItem removePlaylist = new ToolStripMenuItem("Remove Playlist");
                     //addSong.Click += AddSongClick;
@@ -191,18 +190,57 @@ namespace WpfApp1
                     cMS.Closed += RightClickMenu_Closed;
                     currentExpander = ctrl;
                 }
-               
+                if (e.OriginalSource.GetType() == typeof(TextBlock) && ((TextBlock)e.OriginalSource).DataContext.GetType() == typeof(Song))
+                {
+                    selectedPlaylist = objectUser.mPlaylists.Where(x => x.mName == (string) ((Expander)sender).Header).Single(); 
+                    System.Windows.Controls.Expander ctrl = ((System.Windows.Controls.Expander)sender);
+                    Brush highlight = new SolidColorBrush(Colors.Green);
+                    ctrl.Background = highlight;
+                    ContextMenuStrip cMS = new ContextMenuStrip();
+                    ToolStripMenuItem removeSong = new ToolStripMenuItem("Remove");
+                    removeSong.Click += RemoveSong_Click;
+                    removeSong.Name = ((TextBlock)e.OriginalSource).DataContext.ToString();
+                    cMS.Items.Add(removeSong);
+                    System.Drawing.Point pt = System.Windows.Forms.Cursor.Position;
+                    cMS.Show(pt);
+                    cMS.Closed += RightClickMenu_Closed;
+                }
+
+
+            }
+            if(sender.GetType() == typeof(StackPanel) && e.OriginalSource.GetType() == typeof(StackPanel))
+            {
+                ContextMenuStrip cMS = new ContextMenuStrip();
+                cMS.Name = "Playlist Control";
+                ToolStripMenuItem addPlaylist = new ToolStripMenuItem("Add PlayList");
+                addPlaylist.Click += AddPlaylist_Click;
+                cMS.Items.Add(addPlaylist);
+                System.Drawing.Point pt = System.Windows.Forms.Cursor.Position;
+                cMS.Show(pt);
             }
         }
 
-
-
+        private void RemoveSong_Click(object sender, EventArgs e)
+        {
+            if (objectUser.mPlaylists.Where(x => x.mName == selectedPlaylist.mName).Single().mSongs.Where(x => x.ToString() == ((ToolStripMenuItem)sender).Name).Single().ToString()
+                 == ax.currentMedia.name)
+                ax.close();
+            objectUser.mPlaylists.Where(x => x.mName == selectedPlaylist.mName).Single().mSongs.Remove
+                (objectUser.mPlaylists.Where(x => x.mName == selectedPlaylist.mName).Single().mSongs.Where(x => x.ToString() == ((ToolStripMenuItem)sender).Name).Single());
+            
+            List<Song> temp = new List<Song>();
+            //bug here 2 playlists delete a playlist
+            foreach (var b in selectedPlaylist.mSongs)
+                temp.Add(b);
+            AfterLogin.ListofListBox.Where(x => (string)x.Tag == selectedPlaylist.mName).Single().ItemsSource = temp;
+        }
 
         private void RightClickMenu_Closed(object sender, ToolStripDropDownClosedEventArgs e)
         {
             ContextMenuStrip cMS = (ContextMenuStrip)sender;
             Brush unhighlight = new SolidColorBrush(Colors.Black);
-            currentExpander.Background = unhighlight;
+            if(currentExpander != null)
+                currentExpander.Background = unhighlight;
         }
 
         private void ListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -215,6 +253,7 @@ namespace WpfApp1
                 {
                     var wmpPL = ax.playlistCollection.newPlaylist("Current Playlist - " + currPlaylistName);
                     var startMedia = ax.newMedia(mediaFolder + "\\" + ((Song)e.AddedItems[0]).Directory);
+                    startMedia.name = ((Song)e.AddedItems[0]).ToString();
                     wmpPL.appendItem(startMedia);
                     foreach (Song cur in currentPL.mSongs)
                     {
@@ -226,6 +265,7 @@ namespace WpfApp1
                         }
                     }
                     ax.currentPlaylist = wmpPL;
+                   
                 }
                 
                 
@@ -313,17 +353,73 @@ namespace WpfApp1
 
         }
 
-        private void allPlaylist_MouseRightButtonUp(object sender, MouseButtonEventArgs e)
+      
+
+        private void AddPlaylist_Click(object sender, EventArgs e)
         {
+            TextBox newPlayList = new TextBox();
+            
+            newPlayList.KeyUp += NewPlayList_KeyUp;
+            allPlaylist.Children.Add(newPlayList);
+            newPlayList.Focus();
+        }
 
+        private void NewPlayList_KeyUp(object sender, System.Windows.Input.KeyEventArgs e)
+        {
+            
+            if (e.Key == Key.Enter)
+            {
+                var d = (TextBox)sender;
+                var msg = "No song was selected to delete";
+                if (AfterLogin.objectUser.mPlaylists.FirstOrDefault(x => x.mName == d.Text) == null)
+                {
+                    
+                    
+                    ListBoxItem itm = new ListBoxItem();
+                    itm.Content = d.Text;
+                    Expander exp1 = new Expander();
+                    exp1.MouseRightButtonUp += Mouse_RightButtonClickPlaylist;
+                    var newStack = new StackPanel();
+                    var newListBox = new System.Windows.Controls.ListBox();
+                    newListBox.Background = Brushes.Black;
+                    newListBox.Foreground = Brushes.LightGray;
+                    //var newMediaFileList = new List<Song>();
+                    //foreach (var d in b.mSongs)
+                    //  newMediaFileList.Add(d);
+                    //newListBox.ItemsSource = newMediaFileList;
+                    newListBox.Tag = d.Text;
+                    ListofListBox.Add(newListBox);
+                    newStack.Children.Add(newListBox);
+                    exp1.Content = newStack;
+                    exp1.Header = d.Text;
+                    exp1.Foreground = Brushes.LightGray;
+                    allPlaylist.Children.Add(exp1);
+                    AfterLogin.objectUser.mPlaylists.Add(new Playlist(d.Text));
+                }
+                else
+                    MessageBox.Show("Failed to create a playlist. Playlist name is already exist");
 
-            ContextMenuStrip cMS = new ContextMenuStrip();
-            cMS.Name = "Playlist Control";
-            ToolStripMenuItem addPlaylist = new ToolStripMenuItem("Add PlayList");
-            cMS.Items.Add(addPlaylist);
-            System.Drawing.Point pt = System.Windows.Forms.Cursor.Position;
-            cMS.Show(pt);
+                foreach (var b in allPlaylist.Children)
+                {
+                    if (b.GetType() == typeof(TextBox))
+                    {
+                        allPlaylist.Children.Remove((TextBox)b);
+                        break;
+                    }
+                }
+            }
+            if (e.Key == Key.Escape)
+            {
 
+                foreach (var b in allPlaylist.Children)
+                {
+                    if (b.GetType() == typeof(TextBox))
+                    {
+                        allPlaylist.Children.Remove((TextBox)b);
+                        break;
+                    }
+                }
+            }
         }
 
         /**
