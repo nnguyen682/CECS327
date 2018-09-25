@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApp1"
         mc:Ignorable="d"
-        Title="LoginScreen" ResizeMode="CanMinimize" Height="700" Width="600" Closing="Window_Closing">
+        Title="LoginScreen" MinHeight="700" MinWidth="600" Height="700" Width="600" Closing="Window_Closing">
     <Window.Resources>
         <Style x:Key="{x:Type PasswordBox}"
            TargetType="{x:Type PasswordBox}">
@@ -45,7 +45,7 @@
                         </Style>
                     </Label.Resources>
                 </Label>
-                <TextBox x:Name="user" VerticalContentAlignment="Center" HorizontalAlignment="Center" Width="450" Height="50" FontSize="24" TextChanged="OnUserChanged" Padding="16,0,0,0" Tag="False">
+                <TextBox x:Name="user" KeyDown="Login_KeyDown" VerticalContentAlignment="Center" HorizontalAlignment="Center" Width="450" Height="50" FontSize="24" TextChanged="OnUserChanged" Padding="16,0,0,0" Tag="False">
                     <TextBox.Resources>
                         <Style TargetType="{x:Type Border}">
                             <Setter Property="CornerRadius" Value="24"/>
@@ -84,6 +84,7 @@
                     </Style>
                 </Button.Resources>
             </Button>
+            <Label x:Name="InvalidLogin" Content="Incorrect Username or Password!" Foreground="Tomato" Margin="20" FontSize="24" HorizontalAlignment="Center" Visibility="Hidden"/>
         </StackPanel>
     </Grid>
 </Window>
