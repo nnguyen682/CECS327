@@ -490,7 +490,7 @@ namespace WpfApp1
             SearchText.Text = "";
             Reset();
             this.Hide();
-            Adding.AddingWindow.Show();
+            //Adding.AddingWindow.Show();
         }
         private void Add_Click(object sender, RoutedEventArgs e)
         {
