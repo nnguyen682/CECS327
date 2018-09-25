@@ -17,6 +17,7 @@ using AxWMPLib;
 using System.Windows.Forms;
 using TextBox = System.Windows.Controls.TextBox;
 using MessageBox = System.Windows.MessageBox;
+using ListBox = System.Windows.Controls.ListBox;
 
 namespace WpfApp1
 {
@@ -25,7 +26,8 @@ namespace WpfApp1
     /// </summary>
     public partial class AfterLogin : Window
     {
-        Playlist selectedPlaylist;
+        public static ListBox selectedListBox;
+        public static Playlist selectedPlaylist;
         public static List<Song> mediaFileList;
         public static User objectUser;
         public static AfterLogin afterLoginWindow;
@@ -170,9 +172,11 @@ namespace WpfApp1
 
                     System.Windows.Controls.Button b2 = new System.Windows.Controls.Button();
 
-
+                    addSong.DropDownItems.Add("Search");
+                    addSong.DropDownItems[0].Click += AddSongClick;
                     cMS.Items.Add(addSong);
                     int i = 0;
+                    /*
                     foreach (var b in LoginScreen.allSongs.mSongs)
                     {
 
@@ -182,7 +186,7 @@ namespace WpfApp1
                             (cMS.Items[0] as ToolStripMenuItem).DropDownItems[i].Click += AddSongClick;
                             i++;
                         }
-                    }
+                    }*/
                     cMS.Items.Add(renamePlaylist);
                     cMS.Items.Add(removePlaylist);
                     System.Drawing.Point pt = System.Windows.Forms.Cursor.Position;
@@ -301,12 +305,17 @@ namespace WpfApp1
 
         private void AddSongClick(object sender, EventArgs e)
         {
+            selectedListBox= ListofListBox.Where(x => (string)x.Tag == selectedPlaylist.mName).Single();
+            SearchWindow b = new SearchWindow();
+            b.Show();
+            /*
             objectUser.mPlaylists.Where(x=> x.mName == selectedPlaylist.mName).Single().mSongs.Add(LoginScreen.allSongs.mSongs.Where(x=> x.ToString() ==((ToolStripMenuItem)sender).Text).Single());
             List<Song> temp = new List<Song>();
             //bug here 2 playlists delete a playlist
             foreach (var b in selectedPlaylist.mSongs)
                 temp.Add(b);
             AfterLogin.ListofListBox.Where(x => (string)x.Tag == selectedPlaylist.mName).Single().ItemsSource = temp;
+            */
         }
 
         private void RemovePlaylistClick(object sender, EventArgs e)

@@ -19,7 +19,7 @@ namespace WpfApp1
             InitializeComponent();
             //listTitle.Content = "Adding to " + Create.selectedList.ToString() + "playlist";
             
-            currentPlayList = AfterLogin.objectUser.mPlaylists.Where(x => x.mName == Create.selectedList.ToString()).Single();
+            currentPlayList = AfterLogin.objectUser.mPlaylists.Where(x => x.mName == AfterLogin.selectedPlaylist.mName).Single();
             PlaylistName.Content = "Adding songs to: " + currentPlayList.mName + " (select a song and click add)";
             foreach (Song x in LoginScreen.allSongs.mSongs)
             {
@@ -61,7 +61,7 @@ namespace WpfApp1
                 Label dspStatusPos = new Label();
                 sP.Children.Add(statusLbl);
                 string trythis = x.mArtist + "-" + x.mTitle + x.mExtension;
-                if (Adding.currentPlayList.mSongs.FirstOrDefault(y => (y.mArtist + "-" + y.mTitle + y.mExtension) == trythis) != null)
+                if (AfterLogin.selectedPlaylist.mSongs.FirstOrDefault(y => (y.mArtist + "-" + y.mTitle + y.mExtension) == trythis) != null)
                 {
                     dspStatusPos.Content = "In Playlist";
                     sP.Children.Add(dspStatusPos);
@@ -128,7 +128,7 @@ namespace WpfApp1
                         Label dspStatusPos = new Label();
                         sP.Children.Add(statusLbl);
                         string trythis = x.mArtist + "-" + x.mTitle + x.mExtension;
-                        if (Adding.currentPlayList.mSongs.FirstOrDefault(y => (y.mArtist + "-" + y.mTitle + y.mExtension) == trythis) != null)
+                        if (AfterLogin.selectedPlaylist.mSongs.FirstOrDefault(y => (y.mArtist + "-" + y.mTitle + y.mExtension) == trythis) != null)
                         {
                             dspStatusPos.Content = "In Playlist";
                             sP.Children.Add(dspStatusPos);
@@ -186,7 +186,7 @@ namespace WpfApp1
                         Label dspStatusPos = new Label();
                         sP.Children.Add(statusLbl);
                         string trythis = x.mArtist + "-" + x.mTitle + x.mExtension;
-                        if (Adding.currentPlayList.mSongs.FirstOrDefault(y => (y.mArtist + "-" + y.mTitle + y.mExtension) == trythis) != null)
+                        if (AfterLogin.selectedPlaylist.mSongs.FirstOrDefault(y => (y.mArtist + "-" + y.mTitle + y.mExtension) == trythis) != null)
                         {
                             dspStatusPos.Content = "In Playlist";
                             sP.Children.Add(dspStatusPos);
@@ -244,7 +244,7 @@ namespace WpfApp1
                         Label dspStatusPos = new Label();
                         sP.Children.Add(statusLbl);
                         string trythis = x.mArtist + "-" + x.mTitle + x.mExtension;
-                        if (Adding.currentPlayList.mSongs.FirstOrDefault(y => (y.mArtist + "-" + y.mTitle + y.mExtension) == trythis) != null)
+                        if (AfterLogin.selectedPlaylist.mSongs.FirstOrDefault(y => (y.mArtist + "-" + y.mTitle + y.mExtension) == trythis) != null)
                         {
                             dspStatusPos.Content = "In Playlist";
                             sP.Children.Add(dspStatusPos);
@@ -331,7 +331,7 @@ namespace WpfApp1
                             Label dspStatusPos = new Label();
                             sP.Children.Add(statusLbl);
                             string trythis = x.mArtist + "-" + x.mTitle + x.mExtension;
-                            if (Adding.currentPlayList.mSongs.FirstOrDefault(y => (y.mArtist + "-" + y.mTitle + y.mExtension) == trythis) != null)
+                            if (AfterLogin.selectedPlaylist.mSongs.FirstOrDefault(y => (y.mArtist + "-" + y.mTitle + y.mExtension) == trythis) != null)
                             {
                                 dspStatusPos.Content = "In Playlist";
                                 sP.Children.Add(dspStatusPos);
@@ -390,7 +390,7 @@ namespace WpfApp1
                             Label dspStatusPos = new Label();
                             sP.Children.Add(statusLbl);
                             string trythis = x.mArtist + "-" + x.mTitle + x.mExtension;
-                            if (Adding.currentPlayList.mSongs.FirstOrDefault(y => (y.mArtist + "-" + y.mTitle + y.mExtension) == trythis) != null)
+                            if (AfterLogin.selectedPlaylist.mSongs.FirstOrDefault(y => (y.mArtist + "-" + y.mTitle + y.mExtension) == trythis) != null)
                             {
                                 dspStatusPos.Content = "In Playlist";
                                 sP.Children.Add(dspStatusPos);
@@ -449,7 +449,7 @@ namespace WpfApp1
                             Label dspStatusPos = new Label();
                             sP.Children.Add(statusLbl);
                             string trythis = x.mArtist + "-" + x.mTitle + x.mExtension;
-                            if (Adding.currentPlayList.mSongs.FirstOrDefault(y => (y.mArtist + "-" + y.mTitle + y.mExtension) == trythis) != null)
+                            if (AfterLogin.selectedPlaylist.mSongs.FirstOrDefault(y => (y.mArtist + "-" + y.mTitle + y.mExtension) == trythis) != null)
                             {
                                 dspStatusPos.Content = "In Playlist";
                                 sP.Children.Add(dspStatusPos);
@@ -501,12 +501,16 @@ namespace WpfApp1
                 string trythis = b.mArtist + "-" + b.mTitle + b.mExtension;
                 
          
-                if (Adding.currentPlayList.mSongs.FirstOrDefault(x => (x.mArtist + "-" + x.mTitle + x.mExtension) == trythis) == null)
+                if (AfterLogin.selectedPlaylist.mSongs.FirstOrDefault(x => (x.mArtist + "-" + x.mTitle + x.mExtension) == trythis) == null)
                 {  
-                    Adding.currentPlayList.addSong(LoginScreen.allSongs.mSongs.Where(x => (x.mArtist + "-" + x.mTitle + x.mExtension) == trythis).Single());
-
-                    Adding.AddingListBox.Items.Add(b);
-
+                    AfterLogin.selectedPlaylist.addSong(LoginScreen.allSongs.mSongs.Where(x => (x.mArtist + "-" + x.mTitle + x.mExtension) == trythis).Single());
+                    
+                    List<Song> temp = new List<Song>();
+                    //bug here 2 playlists delete a playlist
+                    foreach (var d in AfterLogin.selectedPlaylist.mSongs)
+                        temp.Add(d);
+                    AfterLogin.selectedListBox.ItemsSource = temp;
+              
                     songObjs.RemoveAt(Titles.SelectedIndex);
                     songStr.RemoveAt(Titles.SelectedIndex);
 
