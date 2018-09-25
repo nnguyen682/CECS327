@@ -379,8 +379,7 @@ namespace WpfApp1
             if (e.Key == Key.Enter)
             {
                 var d = (TextBox)sender;
-                var msg = "No song was selected to delete";
-                if (AfterLogin.objectUser.mPlaylists.FirstOrDefault(x => x.mName == d.Text) == null)
+                if (AfterLogin.objectUser.mPlaylists.FirstOrDefault(x => x.mName == d.Text) == null && d.Text != "")
                 {
                     
                     
