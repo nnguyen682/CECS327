@@ -155,7 +155,7 @@ namespace WpfApp1
         {
             if (sender.GetType() == typeof(Expander))
             {
-                if (e.OriginalSource.GetType() == typeof(TextBlock) && ((TextBlock)e.OriginalSource).DataContext.GetType() != typeof(Song))
+                if ((e.OriginalSource.GetType() == typeof(TextBlock) || e.OriginalSource.GetType() == typeof(Grid)) && ((TextBlock)e.OriginalSource).DataContext.GetType() != typeof(Song))
                 {
                     selectedPlaylist = objectUser.mPlaylists.Where(x => x.mName == (string)((TextBlock)e.OriginalSource).DataContext).Single();
                     System.Windows.Controls.Expander ctrl = ((System.Windows.Controls.Expander)sender);
