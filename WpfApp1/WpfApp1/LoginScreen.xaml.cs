@@ -59,7 +59,8 @@ namespace WpfApp1
             }
             if (counter == 0)
             {
-                MessageBox.Show(msg);
+                InvalidLogin.Visibility = Visibility.Visible;
+                //MessageBox.Show(msg);
             }
         }
 
@@ -86,7 +87,8 @@ namespace WpfApp1
 
                 if (counter == 0)
                 {
-                    MessageBox.Show(msg);
+                    InvalidLogin.Visibility = Visibility.Visible;
+                    //MessageBox.Show(msg);
                 }
             }
         }
@@ -96,6 +98,7 @@ namespace WpfApp1
             user.Text = "";
             pass.Password = "";
             SignInButton.Focus();
+            InvalidLogin.Visibility = Visibility.Hidden;
         }
 
         private void OnUserChanged(object sender, RoutedEventArgs e)
