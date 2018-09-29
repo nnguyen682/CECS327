@@ -24,6 +24,8 @@ namespace WpfApp1
             foreach (Song x in LoginScreen.allSongs.mSongs)
             {
                 StackPanel sP = new StackPanel();
+                sP.Width = 700;
+                sP.CanHorizontallyScroll = true;
                 sP.Orientation = Orientation.Horizontal;
                 Label titleLbl = new Label();
                 Label artistLbl = new Label();
@@ -92,6 +94,7 @@ namespace WpfApp1
                     if (x.mTitle.ToLower().Contains(searchVal.ToLower()))
                     {
                         StackPanel sP = new StackPanel();
+                        sP.Width = 700;
                         sP.Orientation = Orientation.Horizontal;
                         Label titleLbl = new Label();
                         Label artistLbl = new Label();
@@ -150,6 +153,7 @@ namespace WpfApp1
                     if (x.mArtist.ToLower().Contains(searchVal.ToLower()))
                     {
                         StackPanel sP = new StackPanel();
+                        sP.Width = 700;
                         sP.Orientation = Orientation.Horizontal;
                         Label titleLbl = new Label();
                         Label artistLbl = new Label();
@@ -208,6 +212,7 @@ namespace WpfApp1
                     if (x.mAlbum.ToLower().Contains(searchVal.ToLower()))
                     {
                         StackPanel sP = new StackPanel();
+                        sP.Width = 700;
                         sP.Orientation = Orientation.Horizontal;
                         Label titleLbl = new Label();
                         Label artistLbl = new Label();
@@ -295,6 +300,7 @@ namespace WpfApp1
                         if (x.mTitle.ToLower().Contains(searchVal.ToLower()))
                         {
                             StackPanel sP = new StackPanel();
+                            sP.Width = 700;
                             sP.Orientation = Orientation.Horizontal;
                             Label titleLbl = new Label();
                             Label artistLbl = new Label();
@@ -354,6 +360,7 @@ namespace WpfApp1
                         if (x.mArtist.ToLower().Contains(searchVal.ToLower()))
                         {
                             StackPanel sP = new StackPanel();
+                            sP.Width = 700;
                             sP.Orientation = Orientation.Horizontal;
                             Label titleLbl = new Label();
                             Label artistLbl = new Label();
@@ -413,6 +420,7 @@ namespace WpfApp1
                         if (x.mAlbum.ToLower().Contains(searchVal.ToLower()))
                         {
                             StackPanel sP = new StackPanel();
+                            sP.Width = 700;
                             sP.Orientation = Orientation.Horizontal;
                             Label titleLbl = new Label();
                             Label artistLbl = new Label();
@@ -515,6 +523,7 @@ namespace WpfApp1
                     songStr.RemoveAt(Titles.SelectedIndex);
 
                     StackPanel sP = new StackPanel();
+                    sP.Width = 700;
                     sP.Orientation = Orientation.Horizontal;
                     Label titleLbl = new Label();
                     Label artistLbl = new Label();

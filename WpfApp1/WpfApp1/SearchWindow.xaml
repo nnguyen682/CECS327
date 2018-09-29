@@ -6,34 +6,34 @@
         xmlns:local="clr-namespace:WpfApp1"
         mc:Ignorable="d"
         Title="Spooftify Music Search" ResizeMode="CanMinimize" Height="300" Width="700" Closing="Window_Closing">
-    <DockPanel>
-        <DockPanel DockPanel.Dock="Top">
-            <StackPanel Orientation="Horizontal" DockPanel.Dock="Left" HorizontalAlignment="Left">
-            <TextBox KeyDown="Search_KeyDown" x:Name="SearchText" Width="100">
+    <DockPanel Background="Black">
+        <DockPanel DockPanel.Dock="Top" Background="Black" Margin="1,4,1,4">
+            <StackPanel Orientation="Horizontal" DockPanel.Dock="Left" HorizontalAlignment="Left" Background="Black">
+            <TextBox KeyDown="Search_KeyDown" x:Name="SearchText" Width="100" >
             </TextBox>
-            <Button Click="Search_Click">
+            <Button Click="Search_Click" Background="Green" FontWeight="Bold" Foreground="White">
                 Search
             </Button>
-            <Label Content="      Search By: "/>
+            <Label Content="      Search By: " Foreground="White"/>
             <ComboBox x:Name="SearchBy" SelectedIndex="0" Width="100" DataContextChanged="ComboBox_DataContextChanged">
                 <ComboBoxItem Content="Song Title"/>
                 <ComboBoxItem Content="Artist"/>
                 <ComboBoxItem Content="Album"/>
             </ComboBox>
         </StackPanel>
-            <Button x:Name="AddButton" Click="Add_Click" Content="Add" Width="50" Margin="20,0,0,0" HorizontalAlignment="Right"/>
-        <Button Click="Back_Click" Content="Back" Width="50" HorizontalAlignment="Right"/>
+            <Button x:Name="AddButton" Click="Add_Click" Background="Green" FontWeight="Bold" Foreground="White" Content="Add" Width="50" Margin="20,0,0,0" HorizontalAlignment="Right"/>
+        <Button Click="Back_Click" Content="Back" Width="50" FontWeight="Bold" HorizontalAlignment="Right" Background="Green" Foreground="White"/>
             
     </DockPanel>
-            <Grid>
+            <Grid ScrollViewer.HorizontalScrollBarVisibility="Visible" Width="692" Margin="1,1,1,3">
                 <Grid.RowDefinitions/>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
-            <Border Grid.Column="0" BorderBrush="Gray" BorderThickness="1">
-                <StackPanel >
-                    <Label x:Name="PlaylistName" BorderBrush="Black" BorderThickness="1" FontSize="16" FontWeight="Bold" />
-                    <ListBox x:Name="Titles" SelectionChanged="Titles_SelectionChanged" Height="230">
+            <Border Grid.Column="0" BorderBrush="Gray" Width="690" BorderThickness="1" ScrollViewer.HorizontalScrollBarVisibility="Visible">
+                <StackPanel Background="Black" CanHorizontallyScroll="true">
+                    <Label x:Name="PlaylistName" BorderBrush="Black" BorderThickness="1" FontSize="16" FontWeight="Bold" Foreground="White" />
+                    <ListBox x:Name="Titles" SelectionChanged="Titles_SelectionChanged" ScrollViewer.HorizontalScrollBarVisibility="Auto"  Height="230">
                         <ListBox.ItemContainerStyle>
                             <Style TargetType="ListBoxItem">
                                 <Setter Property="BorderThickness" Value="1" />
